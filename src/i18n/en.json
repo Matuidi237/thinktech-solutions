@@ -99,8 +99,10 @@
     "cta": "Request a demo"
   },
   "contact": {
+    "eyebrow": "Contact",
     "title": "Ready to transform your training?",
     "subtitle": "Let's talk about your project. In under 30 minutes, we'll show you how a well-designed Moodle platform can simplify your training management with no commitment.",
+    "formNote": "Response within 24 to 48 business hours.",
     "form": {
       "name": "Full name",
       "organization": "Organization",
@@ -118,11 +120,13 @@
   "faq": {
     "title": "Frequently asked questions",
     "items": [
-      { "q": "How long does it take to deploy a Moodle platform?", "a": "Depending on project complexity, a platform can be operational within 2 to 6 weeks." },
-      { "q": "Does the platform work on smartphones?", "a": "Yes, all our platforms are mobile-first, with low data consumption." },
-      { "q": "Can third-party tools be integrated?", "a": "Yes, we can connect your platform to existing tools (payment, HR, video conferencing...)." },
-      { "q": "Do you offer maintenance and support?", "a": "Yes, we support every client after launch with responsive technical support." },
-      { "q": "Is data secure?", "a": "Yes: protected hosting, HTTPS, regular backups and strict access management." }
+      { "q": "How long does it take to deploy a Moodle platform?", "a": "Usually between 2 and 6 weeks, depending on your project's complexity and the level of customization you need. We always start with a needs analysis so we can give you a precise timeline before committing to anything." },
+      { "q": "How much does a custom Moodle platform cost?", "a": "Pricing depends on the number of learners targeted, the features you need, and the level of support involved. Rather than fixed packages, we put together a quote tailored to your situation after a free, no-commitment first conversation." },
+      { "q": "Does the platform work well on a limited internet connection?", "a": "Yes, that's one of our strengths: every platform is built mobile-first and optimized for low data consumption, designed for real connectivity conditions across Africa, including rural areas." },
+      { "q": "Can you integrate our existing tools (payment, HR, video conferencing)?", "a": "Yes. We connect your platform to your existing tools through APIs or custom integrations, so you avoid duplicate data entry and keep your internal processes running smoothly." },
+      { "q": "Do you train our teams to use the platform?", "a": "Always. Every deployment includes guided onboarding for your administrators and trainers, along with clear documentation, so your team is self-sufficient from day one." },
+      { "q": "What happens after launch? Do you offer ongoing support?", "a": "Yes, our support doesn't stop at launch. We stay available for technical support, security updates, and future improvements to your platform." },
+      { "q": "How do you guarantee the security of our data and our learners'?", "a": "Monitored hosting, HTTPS certificate, regular and tested backups, and strict role and access management: security is built into every platform from the start, not bolted on afterward." }
     ],
     "ctaText": "Another question?",
     "cta": "Request a demo"

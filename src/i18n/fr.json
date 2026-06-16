@@ -99,8 +99,10 @@
     "cta": "Demander une démo"
   },
   "contact": {
+    "eyebrow": "Contact",
     "title": "Prêt à transformer votre formation ?",
     "subtitle": "Parlons de votre projet. En moins de 30 minutes, nous vous montrons comment une plateforme Moodle bien pensée peut simplifier la gestion de vos formations sans engagement de votre part.",
+    "formNote": "Réponse sous 24 à 48 heures ouvrées.",
     "form": {
       "name": "Nom complet",
       "organization": "Organisation",
@@ -118,11 +120,13 @@
   "faq": {
     "title": "Questions fréquentes",
     "items": [
-      { "q": "Combien de temps faut-il pour déployer une plateforme Moodle ?", "a": "Selon la complexité de votre projet, une plateforme peut être opérationnelle entre 2 et 6 semaines." },
-      { "q": "La plateforme fonctionne-t-elle sur smartphone ?", "a": "Oui, toutes nos plateformes sont conçues mobile-first, avec une faible consommation de données." },
-      { "q": "Est-il possible d'intégrer des outils tiers ?", "a": "Oui, nous pouvons connecter votre plateforme à vos outils existants (paiement, RH, visioconférence...)." },
-      { "q": "Proposez-vous la maintenance et le support ?", "a": "Oui, nous accompagnons chaque client après la mise en ligne avec un support réactif." },
-      { "q": "Les données sont-elles sécurisées ?", "a": "Oui : hébergement protégé, HTTPS, sauvegardes régulières et gestion stricte des accès." }
+      { "q": "Combien de temps faut-il pour déployer une plateforme Moodle ?", "a": "Comptez généralement entre 2 et 6 semaines, selon la complexité de votre projet et le niveau de personnalisation souhaité. Nous démarrons toujours par une analyse de vos besoins pour vous donner un calendrier précis avant de nous engager sur quoi que ce soit." },
+      { "q": "Quel est le coût d'une plateforme Moodle sur mesure ?", "a": "Le tarif dépend du nombre d'apprenants visés, des fonctionnalités souhaitées et du niveau d'accompagnement. Plutôt que des forfaits standardisés, nous établissons un devis adapté à votre réalité après un premier échange gratuit, sans engagement de votre part." },
+      { "q": "La plateforme fonctionne-t-elle bien avec une connexion internet limitée ?", "a": "Oui, c'est l'un de nos points forts : chaque plateforme est conçue mobile-first et optimisée pour une faible consommation de données, pensée pour les réalités de connexion en Afrique, y compris en zones rurales." },
+      { "q": "Pouvez-vous intégrer nos outils existants (paiement, RH, visioconférence) ?", "a": "Oui. Nous connectons votre plateforme à vos outils déjà en place via des API ou des intégrations sur mesure, pour éviter les doubles saisies et fluidifier vos processus internes." },
+      { "q": "Formez-vous nos équipes à l'utilisation de la plateforme ?", "a": "Systématiquement. Chaque déploiement inclut une prise en main guidée pour vos administrateurs et formateurs, accompagnée d'une documentation claire, pour que votre équipe soit autonome dès le lancement." },
+      { "q": "Que se passe-t-il après la mise en ligne ? Proposez-vous un support continu ?", "a": "Oui, notre accompagnement ne s'arrête pas à la mise en ligne. Nous restons disponibles pour le support technique, les mises à jour de sécurité et les évolutions futures de votre plateforme." },
+      { "q": "Comment garantissez-vous la sécurité de nos données et de celles de nos apprenants ?", "a": "Hébergement surveillé, certificat HTTPS, sauvegardes régulières et testées, et gestion stricte des rôles et accès : la sécurité est intégrée dès la conception de chaque plateforme, pas ajoutée après coup." }
     ],
     "ctaText": "Une autre question ?",
     "cta": "Demander une démo"

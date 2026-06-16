@@ -9,7 +9,7 @@ const t = useTranslations(lang);
 
 <section id="faq" class="faq" aria-labelledby="faq-title">
   <div class="container">
-    <h2 id="faq-title">{t.faq.title}</h2>
+    <h2 id="faq-title" class="reveal">{t.faq.title}</h2>
     <div class="accordion">
       {t.faq.items.map((item: any, i: number) => (
         <details open={i === 0}>
@@ -26,9 +26,16 @@ const t = useTranslations(lang);
 </section>
 
 <style>
-  .accordion { display: flex; flex-direction: column; gap: 0.75rem; max-width: 800px; }
-  details { background: var(--color-bg-secondary); border-radius: 10px; padding: 1rem 1.25rem; }
-  summary { font-weight: 600; list-style: none; }
-  details p { margin-top: 0.75rem; }
-  .faq-cta { margin-top: 2rem; display: flex; align-items: center; gap: 1rem; }
+  .accordion { display: flex; flex-direction: column; gap: 0.75rem; max-width: 800px; margin: 0 auto; }
+  details {
+    background: var(--color-bg-secondary);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    transition: border-color 0.2s ease;
+  }
+  details:hover { border-color: var(--color-accent); }
+  summary { font-weight: 600; list-style: none; cursor: pointer; }
+  details p { margin-top: 0.85rem; line-height: 1.7; }
+  .faq-cta { margin-top: 2.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; text-align: center; }
 </style>
