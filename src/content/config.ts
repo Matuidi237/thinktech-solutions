@@ -7,7 +7,8 @@ const articles = defineCollection({
     description: z.string(),
     publishDate: z.date(),
     lang: z.enum(["fr", "en"]),
-    image: z.string().optional()
+    image: z.string().optional(),
+    category: z.string().optional()
   })
 });
 

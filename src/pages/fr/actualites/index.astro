@@ -3,32 +3,109 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Header from "../../../components/layout/Header.astro";
 import Footer from "../../../components/layout/Footer.astro";
+import ChatbotWidget from "../../../components/chatbot/ChatbotWidget.astro";
 
 const allArticles = await getCollection("articles", ({ data }) => data.lang === "fr");
 const articles = allArticles.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+const gradients: Record<string, string> = {
+  "Conseils": "linear-gradient(135deg, #022179, #A42593)",
+  "Sécurité": "linear-gradient(135deg, #0B0E2E, #022179)",
+  "Étude de cas": "linear-gradient(135deg, #A42593, #C94BB0)",
+};
+const fallbackGradient = "linear-gradient(135deg, #022179, #A42593)";
 ---
 
 <BaseLayout lang="fr" title="Actualités ThinkTech Solutions" description="Les actualités, projets et conseils de ThinkTech Solutions sur l'e-learning en Afrique.">
   <Header lang="fr" />
-  <main id="main-content" class="container" style="padding: 4rem 0;">
-    <h1>Actualités</h1>
-    <ul class="article-list">
-      {articles.map((article) => (
-        <li>
-          <a href={`/fr/actualites/${article.slug.replace(/^fr\//, "")}`}>
-            <h2>{article.data.title}</h2>
-            <p>{article.data.description}</p>
-            <time>{article.data.publishDate.toLocaleDateString("fr-FR")}</time>
-          </a>
-        </li>
-      ))}
-    </ul>
+  <main id="main-content">
+    <section class="actu-hero">
+      <div class="circle-deco actu-circle-1" aria-hidden="true"></div>
+      <div class="circle-deco circle-delay circle-fill actu-circle-2" aria-hidden="true"></div>
+      <div class="container actu-hero-text reveal">
+        <p class="eyebrow">Notre blog</p>
+        <h1>Actualités</h1>
+        <p class="actu-subtitle">Conseils pratiques, coulisses de nos projets et retours d'expérience sur l'e-learning en Afrique. Mis à jour chaque semaine.</p>
+      </div>
+    </section>
+
+    <section class="actu-list">
+      <div class="container">
+        <ul class="article-grid">
+          {articles.map((article, i) => (
+            <li class="article-card reveal" style={`transition-delay:${(i % 3) * 0.08}s`}>
+              <a href={`/fr/actualites/${article.slug.replace(/^fr\//, "")}`}>
+                <div class="article-cover" style={article.data.image ? `background-image:url(${article.data.image})` : `background-image:${gradients[article.data.category ?? ""] ?? fallbackGradient}`}>
+                  {article.data.category && <span class="article-tag">{article.data.category}</span>}
+                </div>
+                <div class="article-body">
+                  <h2>{article.data.title}</h2>
+                  <p>{article.data.description}</p>
+                  <div class="article-meta">
+                    <time>{article.data.publishDate.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</time>
+                    <span class="article-read">Lire l'article →</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   </main>
   <Footer lang="fr" />
+  <ChatbotWidget lang="fr" />
 </BaseLayout>
 
 <style>
-  .article-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
-  .article-list a { display: block; padding: 1.5rem; border: 1px solid var(--color-border); border-radius: 12px; }
-  .article-list time { font-size: 0.85rem; color: var(--color-text-secondary); }
+  .actu-hero { position: relative; overflow: hidden; padding: 3.5rem 0 1rem; }
+  .actu-circle-1 { top: -50px; left: 6%; width: 200px; height: 200px; }
+  .actu-circle-2 { top: 20%; right: -60px; width: 180px; height: 180px; }
+  .actu-hero-text { position: relative; z-index: 1; max-width: 640px; }
+  .actu-subtitle { margin-top: 1rem; font-size: 1.1rem; }
+
+  .actu-list { padding: 1.5rem 0 4rem; }
+  .article-grid { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .article-card {
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--color-card-bg);
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  }
+  .article-card:hover { transform: translateY(-8px); box-shadow: 0 22px 40px rgba(2, 33, 121, 0.14); border-color: var(--color-accent); }
+  .article-card a { display: block; }
+
+  .article-cover {
+    position: relative;
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.85rem;
+  }
+  .article-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+  }
+
+  .article-body { padding: 1.5rem; }
+  .article-body h2 { font-size: 1.15rem; margin-bottom: 0.6rem; }
+  .article-body p { font-size: 0.92rem; }
+  .article-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 1.25rem; }
+  .article-meta time { font-size: 0.8rem; color: var(--color-text-secondary); }
+  .article-read { font-size: 0.85rem; font-weight: 600; color: var(--color-accent); }
+
+  @media (max-width: 900px) {
+    .article-grid { grid-template-columns: 1fr; }
+  }
 </style>
