@@ -1,0 +1,130 @@
+---
+import type { Lang } from "../i18n/utils";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+
+const labels = {
+  fr: {
+    text: "Nous utilisons des cookies analytiques (Google Analytics) pour mesurer l'audience de notre site et améliorer votre expérience.",
+    accept: "Accepter",
+    refuse: "Refuser",
+    policy: "Politique de confidentialité",
+  },
+  en: {
+    text: "We use analytical cookies (Google Analytics) to measure our site's audience and improve your experience.",
+    accept: "Accept",
+    refuse: "Decline",
+    policy: "Privacy policy",
+  },
+};
+const l = labels[lang];
+const GA_ID = "G-M19ZXM9MH9";
+---
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+  <p class="cookie-text">
+    {l.text}
+    <a href={`/${lang}/privacy`} class="cookie-link">{l.policy}</a>
+  </p>
+  <div class="cookie-actions">
+    <button id="cookie-refuse" class="btn-cookie btn-cookie-refuse">{l.refuse}</button>
+    <button id="cookie-accept" class="btn-cookie btn-cookie-accept">{l.accept}</button>
+  </div>
+</div>
+
+<!-- GA4 — injected only after explicit consent -->
+<script define:vars={{ GA_ID }}>
+  const CONSENT_KEY = "tt_cookie_consent";
+
+  function loadGA() {
+    if (document.getElementById("ga4-script")) return;
+    const s = document.createElement("script");
+    s.id = "ga4-script";
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", GA_ID, { anonymize_ip: true });
+    window.gtag = gtag;
+  }
+
+  function hideBanner() {
+    const banner = document.getElementById("cookie-banner");
+    if (banner) { banner.classList.add("hidden"); }
+  }
+
+  const stored = localStorage.getItem(CONSENT_KEY);
+  if (stored === "accepted") { loadGA(); hideBanner(); }
+  else if (stored === "refused") { hideBanner(); }
+
+  document.getElementById("cookie-accept")?.addEventListener("click", () => {
+    localStorage.setItem(CONSENT_KEY, "accepted");
+    loadGA();
+    hideBanner();
+  });
+
+  document.getElementById("cookie-refuse")?.addEventListener("click", () => {
+    localStorage.setItem(CONSENT_KEY, "refused");
+    hideBanner();
+  });
+</script>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(680px, calc(100vw - 2rem));
+    background: var(--color-footer-bg);
+    color: rgba(255,255,255,0.88);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    z-index: 9999;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    animation: banner-in 0.35s ease;
+  }
+  .cookie-banner.hidden { display: none; }
+
+  @keyframes banner-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  .cookie-text { font-size: 0.9rem; line-height: 1.55; flex: 1; min-width: 200px; }
+  .cookie-link { color: var(--color-accent-light); text-decoration: underline; margin-left: 0.3rem; }
+
+  .cookie-actions { display: flex; gap: 0.65rem; flex-shrink: 0; }
+  .btn-cookie {
+    padding: 0.55rem 1.2rem;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .btn-cookie:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-cookie-refuse {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.8);
+  }
+  .btn-cookie-accept {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  @media (max-width: 560px) {
+    .cookie-banner { flex-direction: column; bottom: 0; border-radius: 14px 14px 0 0; width: 100%; }
+    .cookie-actions { width: 100%; }
+    .btn-cookie { flex: 1; text-align: center; }
+  }
+</style>

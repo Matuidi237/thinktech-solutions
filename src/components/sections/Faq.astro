@@ -25,6 +25,16 @@ const t = useTranslations(lang);
   </div>
 </section>
 
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": t.faq.items.map((item: any) => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a }
+  }))
+})} />
+
 <style>
   .accordion { display: flex; flex-direction: column; gap: 0.75rem; max-width: 800px; margin: 0 auto; }
   details {

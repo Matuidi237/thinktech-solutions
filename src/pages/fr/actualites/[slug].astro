@@ -18,6 +18,19 @@ export async function getStaticPaths() {
 const { article } = Astro.props;
 const { Content } = await article.render();
 
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.data.title,
+  description: article.data.description,
+  datePublished: article.data.publishDate.toISOString(),
+  image: article.data.image ? `https://thinktech-solutions.com${article.data.image}` : "https://thinktech-solutions.com/images/og-cover.jpg",
+  author: { "@type": "Organization", name: "ThinkTech Solutions", url: "https://thinktech-solutions.com" },
+  publisher: { "@type": "Organization", name: "ThinkTech Solutions", logo: { "@type": "ImageObject", url: "https://thinktech-solutions.com/images/brand/logo-white.png" } },
+  inLanguage: "fr-FR",
+  url: `https://thinktech-solutions.com/fr/actualites/${article.slug.replace(/^fr\//, "")}`
+};
+
 const gradients: Record<string, string> = {
   "Conseils": "linear-gradient(135deg, #022179, #A42593)",
   "Sécurité": "linear-gradient(135deg, #0B0E2E, #022179)",
@@ -27,7 +40,7 @@ const fallbackGradient = "linear-gradient(135deg, #022179, #A42593)";
 const cover = article.data.image ? `background-image:url(${article.data.image})` : `background-image:${gradients[article.data.category ?? ""] ?? fallbackGradient}`;
 ---
 
-<BaseLayout lang="fr" title={`${article.data.title} ThinkTech Solutions`} description={article.data.description}>
+<BaseLayout lang="fr" title={`${article.data.title} — ThinkTech Solutions`} description={article.data.description}>
   <Header lang="fr" />
   <main id="main-content">
     <section class="article-hero" style={cover}>
@@ -52,6 +65,7 @@ const cover = article.data.image ? `background-image:url(${article.data.image})`
   </main>
   <Footer lang="fr" />
   <ChatbotWidget lang="fr" />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 </BaseLayout>
 
 <style>

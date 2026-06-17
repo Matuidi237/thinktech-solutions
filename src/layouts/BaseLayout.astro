@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import type { Lang } from "../i18n/utils";
+import CookieBanner from "../components/CookieBanner.astro";
 
 interface Props {
   lang: Lang;
@@ -11,21 +12,44 @@ interface Props {
 const { lang, title, description } = Astro.props;
 const canonical = `https://thinktech-solutions.com${Astro.url.pathname}`;
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "ThinkTech Solutions",
-  image: "https://thinktech-solutions.com/logo.svg",
-  url: "https://thinktech-solutions.com",
-  telephone: "+237689357969",
-  email: "contact@thinktech-solutions.com",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Douala",
-    addressCountry: "CM"
+const schemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://thinktech-solutions.com/#organization",
+    name: "ThinkTech Solutions",
+    legalName: "ThinkTech Solutions SARL",
+    url: "https://thinktech-solutions.com",
+    logo: "https://thinktech-solutions.com/images/brand/logo-white.png",
+    image: "https://thinktech-solutions.com/images/og-cover.jpg",
+    telephone: "+237689357969",
+    email: "contact@thinktech-solutions.com",
+    foundingDate: "2024",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Douala",
+      addressCountry: "CM"
+    },
+    sameAs: [
+      "https://www.linkedin.com/company/thinktech-solutions-sarl/",
+      "https://www.facebook.com/profile.php?id=61586212243812",
+      "https://www.instagram.com/thinktech_solutions_cmr/",
+      "https://www.tiktok.com/@thinktech.solutio"
+    ],
+    description: lang === "fr"
+      ? "ThinkTech Solutions conçoit et déploie des plateformes de formation Moodle sécurisées en Afrique."
+      : "ThinkTech Solutions designs and deploys secure Moodle training platforms in Africa."
   },
-  description: "ThinkTech Solutions conçoit et déploie des plateformes de formation Moodle sécurisées en Afrique."
-};
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://thinktech-solutions.com/#website",
+    url: "https://thinktech-solutions.com",
+    name: "ThinkTech Solutions",
+    publisher: { "@id": "https://thinktech-solutions.com/#organization" },
+    inLanguage: [lang === "fr" ? "fr-FR" : "en-US"]
+  }
+];
 ---
 
 <!DOCTYPE html>
@@ -58,11 +82,12 @@ const schema = {
   <link rel="icon" href="/favicon.svg" />
   <link rel="manifest" href="/manifest.webmanifest" />
 
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  {schemas.map(s => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
 </head>
 <body>
   <a href="#main-content" class="skip-link">Aller au contenu principal</a>
   <slot />
+  <CookieBanner lang={lang} />
   <script is:inline src="/scripts/reveal.js"></script>
 </body>
 </html>
