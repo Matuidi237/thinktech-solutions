@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+---
+
+<BaseLayout lang="fr" title="Politique de confidentialité — ThinkTech Solutions" description="Politique de confidentialité et de protection des données personnelles de ThinkTech Solutions SARL.">
+  <Header lang="fr" />
+  <main id="main-content" class="legal-page">
+    <div class="container">
+      <div class="legal-hero reveal">
+        <p class="eyebrow">Vos données</p>
+        <h1>Politique de confidentialité</h1>
+        <p class="legal-date">Dernière mise à jour : juin 2026</p>
+      </div>
+
+      <div class="legal-body reveal">
+
+        <h2>1. Responsable du traitement</h2>
+        <p>
+          Les données personnelles collectées sur le site <strong>thinktech-solutions.com</strong> sont traitées par :
+        </p>
+        <ul>
+          <li><strong>ThinkTech Solutions SARL</strong></li>
+          <li><strong>Siège :</strong> Douala, Cameroun</li>
+          <li><strong>Email :</strong> <a href="mailto:contact@thinktech-solutions.com">contact@thinktech-solutions.com</a></li>
+          <li><strong>Téléphone :</strong> <a href="tel:+237689357969">+237 689 35 79 69</a></li>
+        </ul>
+
+        <h2>2. Données collectées</h2>
+        <p>Nous collectons les données suivantes uniquement lorsque vous remplissez le formulaire de demande de démonstration :</p>
+        <ul>
+          <li>Nom complet</li>
+          <li>Nom de votre organisation</li>
+          <li>Adresse e-mail</li>
+          <li>Numéro de téléphone</li>
+          <li>Type d'organisation</li>
+          <li>Description de votre projet / besoin exprimé</li>
+        </ul>
+        <p>
+          Nous ne collectons aucune donnée de navigation à des fins publicitaires et n'utilisons aucun cookie de traçage tiers.
+        </p>
+
+        <h2>3. Finalités du traitement</h2>
+        <p>Les données collectées sont utilisées exclusivement pour :</p>
+        <ul>
+          <li>Traiter votre demande de démonstration et vous recontacter ;</li>
+          <li>Vous fournir des informations relatives à nos services ;</li>
+          <li>Établir un devis ou une proposition commerciale à votre demande.</li>
+        </ul>
+        <p>Vos données ne sont jamais revendues, partagées avec des tiers à des fins commerciales, ni utilisées à des fins de prospection automatisée.</p>
+
+        <h2>4. Base légale du traitement</h2>
+        <p>
+          Le traitement de vos données repose sur votre <strong>consentement explicite</strong>, matérialisé par l'envoi volontaire du formulaire de contact, conformément aux dispositions de la <strong>Loi n°2010/012 du 21 décembre 2010</strong> relative à la cybersécurité et à la cybercriminalité au Cameroun et de la <strong>Loi n°2010/021 du 21 décembre 2010</strong> régissant le commerce électronique.
+        </p>
+
+        <h2>5. Durée de conservation</h2>
+        <p>
+          Vos données sont conservées pendant une durée maximale de <strong>24 mois</strong> à compter de votre dernier contact avec ThinkTech Solutions, ou jusqu'à votre demande de suppression.
+        </p>
+
+        <h2>6. Sécurité des données</h2>
+        <p>
+          ThinkTech Solutions SARL met en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, altération, divulgation ou destruction : chiffrement des communications (HTTPS), accès restreint aux données, sauvegardes régulières.
+        </p>
+
+        <h2>7. Vos droits</h2>
+        <p>Conformément à la législation applicable, vous disposez des droits suivants :</p>
+        <ul>
+          <li><strong>Droit d'accès :</strong> obtenir la confirmation que vos données sont ou non traitées ;</li>
+          <li><strong>Droit de rectification :</strong> faire corriger toute donnée inexacte vous concernant ;</li>
+          <li><strong>Droit à l'effacement :</strong> demander la suppression de vos données personnelles ;</li>
+          <li><strong>Droit d'opposition :</strong> vous opposer au traitement de vos données pour des raisons légitimes.</li>
+        </ul>
+        <p>
+          Pour exercer ces droits, adressez votre demande à : <a href="mailto:contact@thinktech-solutions.com">contact@thinktech-solutions.com</a>. Nous nous engageons à répondre dans un délai de <strong>30 jours</strong>.
+        </p>
+
+        <h2>8. Cookies</h2>
+        <p>
+          Ce site n'utilise pas de cookies publicitaires ou de traçage. Des cookies techniques strictement nécessaires au fonctionnement du site peuvent être utilisés (préférence de langue, sécurité du formulaire). Ces cookies ne collectent aucune donnée personnelle identifiable.
+        </p>
+
+        <h2>9. Modifications de la politique</h2>
+        <p>
+          ThinkTech Solutions SARL se réserve le droit de modifier la présente politique à tout moment. La date de dernière mise à jour est indiquée en haut de cette page. Nous vous encourageons à la consulter régulièrement.
+        </p>
+
+        <h2>10. Contact</h2>
+        <p>
+          Pour toute question relative à la protection de vos données : <a href="mailto:contact@thinktech-solutions.com">contact@thinktech-solutions.com</a>
+        </p>
+
+      </div>
+    </div>
+  </main>
+  <Footer lang="fr" />
+</BaseLayout>
+
+<style>
+  .legal-page { padding: 3.5rem 0 5rem; }
+  .legal-hero { max-width: 720px; margin-bottom: 3rem; }
+  .legal-hero h1 { margin-bottom: 0.4rem; }
+  .legal-date { font-size: 0.9rem; color: var(--color-text-secondary); }
+  .legal-body { max-width: 720px; }
+  .legal-body h2 { font-size: 1.25rem; margin: 2.5rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--color-border); }
+  .legal-body p { margin-bottom: 1rem; line-height: 1.8; }
+  .legal-body ul { margin: 0.5rem 0 1rem 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .legal-body a { color: var(--color-accent); text-decoration: underline; }
+</style>

@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+---
+
+<BaseLayout lang="en" title="Privacy Policy — ThinkTech Solutions" description="Privacy and personal data protection policy for ThinkTech Solutions SARL.">
+  <Header lang="en" />
+  <main id="main-content" class="legal-page">
+    <div class="container">
+      <div class="legal-hero reveal">
+        <p class="eyebrow">Your data</p>
+        <h1>Privacy Policy</h1>
+        <p class="legal-date">Last updated: June 2026</p>
+      </div>
+
+      <div class="legal-body reveal">
+
+        <h2>1. Data controller</h2>
+        <p>Personal data collected on the website <strong>thinktech-solutions.com</strong> is processed by:</p>
+        <ul>
+          <li><strong>ThinkTech Solutions SARL</strong></li>
+          <li><strong>Registered office:</strong> Douala, Cameroon</li>
+          <li><strong>Email:</strong> <a href="mailto:contact@thinktech-solutions.com">contact@thinktech-solutions.com</a></li>
+          <li><strong>Phone:</strong> <a href="tel:+237689357969">+237 689 35 79 69</a></li>
+        </ul>
+
+        <h2>2. Data collected</h2>
+        <p>We only collect the following data when you submit the demo request form:</p>
+        <ul>
+          <li>Full name</li>
+          <li>Organization name</li>
+          <li>Email address</li>
+          <li>Phone number</li>
+          <li>Organization type</li>
+          <li>Project description / expressed need</li>
+        </ul>
+        <p>We do not collect any browsing data for advertising purposes and do not use any third-party tracking cookies.</p>
+
+        <h2>3. Purposes of processing</h2>
+        <p>The data collected is used exclusively to:</p>
+        <ul>
+          <li>Process your demo request and follow up with you;</li>
+          <li>Provide you with information about our services;</li>
+          <li>Prepare a quote or commercial proposal at your request.</li>
+        </ul>
+        <p>Your data is never sold, shared with third parties for commercial purposes, or used for automated prospecting.</p>
+
+        <h2>4. Legal basis for processing</h2>
+        <p>
+          The processing of your data is based on your <strong>explicit consent</strong>, evidenced by the voluntary submission of the contact form, in accordance with <strong>Law No. 2010/012 of 21 December 2010</strong> on cybersecurity and cybercrime in Cameroon and <strong>Law No. 2010/021 of 21 December 2010</strong> governing e-commerce.
+        </p>
+
+        <h2>5. Retention period</h2>
+        <p>
+          Your data is retained for a maximum period of <strong>24 months</strong> from your last contact with ThinkTech Solutions, or until your deletion request.
+        </p>
+
+        <h2>6. Data security</h2>
+        <p>
+          ThinkTech Solutions SARL implements appropriate technical and organizational measures to protect your data against unauthorized access, alteration, disclosure or destruction: encrypted communications (HTTPS), restricted data access, regular backups.
+        </p>
+
+        <h2>7. Your rights</h2>
+        <p>Under applicable law, you have the following rights:</p>
+        <ul>
+          <li><strong>Right of access:</strong> confirm whether your data is being processed;</li>
+          <li><strong>Right of rectification:</strong> have any inaccurate data corrected;</li>
+          <li><strong>Right to erasure:</strong> request deletion of your personal data;</li>
+          <li><strong>Right to object:</strong> object to the processing of your data on legitimate grounds.</li>
+        </ul>
+        <p>
+          To exercise these rights, send your request to: <a href="mailto:contact@thinktech-solutions.com">contact@thinktech-solutions.com</a>. We commit to responding within <strong>30 days</strong>.
+        </p>
+
+        <h2>8. Cookies</h2>
+        <p>
+          This website does not use advertising or tracking cookies. Strictly necessary technical cookies for the website to function may be used (language preference, form security). These cookies do not collect any personally identifiable information.
+        </p>
+
+        <h2>9. Policy updates</h2>
+        <p>
+          ThinkTech Solutions SARL reserves the right to update this policy at any time. The date of the last update is shown at the top of this page. We encourage you to check it regularly.
+        </p>
+
+        <h2>10. Contact</h2>
+        <p>
+          For any questions regarding data protection: <a href="mailto:contact@thinktech-solutions.com">contact@thinktech-solutions.com</a>
+        </p>
+
+      </div>
+    </div>
+  </main>
+  <Footer lang="en" />
+</BaseLayout>
+
+<style>
+  .legal-page { padding: 3.5rem 0 5rem; }
+  .legal-hero { max-width: 720px; margin-bottom: 3rem; }
+  .legal-hero h1 { margin-bottom: 0.4rem; }
+  .legal-date { font-size: 0.9rem; color: var(--color-text-secondary); }
+  .legal-body { max-width: 720px; }
+  .legal-body h2 { font-size: 1.25rem; margin: 2.5rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--color-border); }
+  .legal-body p { margin-bottom: 1rem; line-height: 1.8; }
+  .legal-body ul { margin: 0.5rem 0 1rem 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .legal-body a { color: var(--color-accent); text-decoration: underline; }
+</style>

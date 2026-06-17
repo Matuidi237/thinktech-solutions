@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+---
+
+<BaseLayout lang="en" title="Legal Notice — ThinkTech Solutions" description="Legal notice for ThinkTech Solutions SARL, a Cameroonian company specializing in online training platform deployment.">
+  <Header lang="en" />
+  <main id="main-content" class="legal-page">
+    <div class="container">
+      <div class="legal-hero reveal">
+        <p class="eyebrow">Transparency</p>
+        <h1>Legal Notice</h1>
+        <p class="legal-date">Last updated: June 2026</p>
+      </div>
+
+      <div class="legal-body reveal">
+
+        <h2>1. Website publisher</h2>
+        <p>The website <strong>thinktech-solutions.com</strong> is published by:</p>
+        <ul>
+          <li><strong>Company name:</strong> ThinkTech Solutions SARL</li>
+          <li><strong>Legal form:</strong> Limited Liability Company (SARL) under Cameroonian law</li>
+          <li><strong>Registered office:</strong> Douala, Cameroon</li>
+          <li><strong>Email:</strong> <a href="mailto:contact@thinktech-solutions.com">contact@thinktech-solutions.com</a></li>
+          <li><strong>Phone:</strong> <a href="tel:+237689357969">+237 689 35 79 69</a></li>
+          <li><strong>Publication director:</strong> Ignace MBOM ELOUGA, CEO and Founder</li>
+        </ul>
+
+        <h2>2. Hosting</h2>
+        <p>
+          This website is hosted on a private virtual server (VPS). For any hosting-related questions, please contact ThinkTech Solutions at the email address above.
+        </p>
+
+        <h2>3. Intellectual property</h2>
+        <p>
+          All content on this website — texts, images, graphics, logos, icons, videos, and any other elements — is the exclusive property of ThinkTech Solutions SARL or is used with permission, in accordance with applicable Cameroonian law, in particular <strong>Law No. 2000/011 of 19 December 2000 on copyright and related rights</strong>.
+        </p>
+        <p>
+          Any reproduction, representation, modification, publication or adaptation of any or all elements of this website, by any means or process, is prohibited without the prior written consent of ThinkTech Solutions SARL.
+        </p>
+
+        <h2>4. Liability</h2>
+        <p>
+          ThinkTech Solutions SARL endeavors to ensure the accuracy and currency of the information published on this website. However, it cannot guarantee the accuracy, precision or completeness of the information made available.
+        </p>
+        <p>
+          ThinkTech Solutions SARL accepts no liability for any errors or omissions in the website content, or for any direct or indirect damages resulting from access to or use of the website and its information.
+        </p>
+
+        <h2>5. Hyperlinks</h2>
+        <p>
+          This website may contain links to third-party sites. ThinkTech Solutions SARL has no control over these sites and accepts no responsibility for their content or privacy policies.
+        </p>
+
+        <h2>6. Applicable law</h2>
+        <p>This website and its legal notice are governed by Cameroonian law, in particular:</p>
+        <ul>
+          <li><strong>Law No. 2010/012 of 21 December 2010</strong> on cybersecurity and cybercrime in Cameroon;</li>
+          <li><strong>Law No. 2010/021 of 21 December 2010</strong> governing e-commerce in Cameroon;</li>
+          <li><strong>Law No. 2000/011 of 19 December 2000</strong> on copyright and related rights.</li>
+        </ul>
+        <p>Any dispute relating to the use of this website shall be subject to the exclusive jurisdiction of Cameroonian courts.</p>
+
+        <h2>7. Contact</h2>
+        <p>
+          For any questions regarding this legal notice, please contact us at: <a href="mailto:contact@thinktech-solutions.com">contact@thinktech-solutions.com</a>
+        </p>
+
+      </div>
+    </div>
+  </main>
+  <Footer lang="en" />
+</BaseLayout>
+
+<style>
+  .legal-page { padding: 3.5rem 0 5rem; }
+  .legal-hero { max-width: 720px; margin-bottom: 3rem; }
+  .legal-hero h1 { margin-bottom: 0.4rem; }
+  .legal-date { font-size: 0.9rem; color: var(--color-text-secondary); }
+  .legal-body { max-width: 720px; }
+  .legal-body h2 { font-size: 1.25rem; margin: 2.5rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--color-border); }
+  .legal-body p { margin-bottom: 1rem; line-height: 1.8; }
+  .legal-body ul { margin: 0.5rem 0 1rem 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .legal-body a { color: var(--color-accent); text-decoration: underline; }
+</style>
