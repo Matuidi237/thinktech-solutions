@@ -418,7 +418,7 @@ const successMsg = lang === "fr"
         // Show success modal
         if (modal) { modal.hidden = false; document.body.style.overflow = "hidden"; }
         demoForm.reset();
-        updateFlag();
+        updateCountry();
       } else {
         const data = await res.json().catch(() => ({}));
         if (feedback) {
