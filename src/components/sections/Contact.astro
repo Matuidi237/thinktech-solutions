@@ -6,6 +6,72 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const f = t.contact.form;
+
+const africaCountries = [
+  { flag: "🇿🇦", name: lang === "fr" ? "Afrique du Sud"        : "South Africa",             code: "+27"  },
+  { flag: "🇩🇿", name: lang === "fr" ? "Algérie"               : "Algeria",                  code: "+213" },
+  { flag: "🇦🇴", name: "Angola",                                                              code: "+244" },
+  { flag: "🇧🇯", name: lang === "fr" ? "Bénin"                 : "Benin",                    code: "+229" },
+  { flag: "🇧🇼", name: "Botswana",                                                            code: "+267" },
+  { flag: "🇧🇫", name: "Burkina Faso",                                                        code: "+226" },
+  { flag: "🇧🇮", name: "Burundi",                                                             code: "+257" },
+  { flag: "🇨🇲", name: lang === "fr" ? "Cameroun"              : "Cameroon",                 code: "+237" },
+  { flag: "🇨🇻", name: lang === "fr" ? "Cap-Vert"             : "Cape Verde",               code: "+238" },
+  { flag: "🇨🇫", name: lang === "fr" ? "Centrafrique"          : "Central African Republic", code: "+236" },
+  { flag: "🇰🇲", name: lang === "fr" ? "Comores"              : "Comoros",                  code: "+269" },
+  { flag: "🇨🇬", name: lang === "fr" ? "Congo (Brazzaville)"  : "Congo (Brazzaville)",      code: "+242" },
+  { flag: "🇨🇩", name: lang === "fr" ? "Congo (Kinshasa)"     : "Congo (Kinshasa)",         code: "+243" },
+  { flag: "🇨🇮", name: lang === "fr" ? "Côte d'Ivoire"        : "Ivory Coast",              code: "+225" },
+  { flag: "🇩🇯", name: "Djibouti",                                                            code: "+253" },
+  { flag: "🇪🇬", name: lang === "fr" ? "Égypte"               : "Egypt",                    code: "+20"  },
+  { flag: "🇪🇷", name: lang === "fr" ? "Érythrée"             : "Eritrea",                  code: "+291" },
+  { flag: "🇪🇹", name: lang === "fr" ? "Éthiopie"             : "Ethiopia",                 code: "+251" },
+  { flag: "🇬🇦", name: "Gabon",                                                              code: "+241" },
+  { flag: "🇬🇲", name: lang === "fr" ? "Gambie"               : "Gambia",                   code: "+220" },
+  { flag: "🇬🇭", name: "Ghana",                                                              code: "+233" },
+  { flag: "🇬🇳", name: lang === "fr" ? "Guinée"               : "Guinea",                   code: "+224" },
+  { flag: "🇬🇶", name: lang === "fr" ? "Guinée équatoriale"   : "Equatorial Guinea",         code: "+240" },
+  { flag: "🇬🇼", name: lang === "fr" ? "Guinée-Bissau"        : "Guinea-Bissau",            code: "+245" },
+  { flag: "🇰🇪", name: "Kenya",                                                              code: "+254" },
+  { flag: "🇱🇸", name: "Lesotho",                                                            code: "+266" },
+  { flag: "🇱🇷", name: "Liberia",                                                            code: "+231" },
+  { flag: "🇱🇾", name: lang === "fr" ? "Libye"                : "Libya",                    code: "+218" },
+  { flag: "🇲🇬", name: "Madagascar",                                                         code: "+261" },
+  { flag: "🇲🇼", name: "Malawi",                                                             code: "+265" },
+  { flag: "🇲🇱", name: "Mali",                                                               code: "+223" },
+  { flag: "🇲🇦", name: lang === "fr" ? "Maroc"                : "Morocco",                  code: "+212" },
+  { flag: "🇲🇺", name: lang === "fr" ? "Maurice"              : "Mauritius",                code: "+230" },
+  { flag: "🇲🇷", name: lang === "fr" ? "Mauritanie"           : "Mauritania",               code: "+222" },
+  { flag: "🇲🇿", name: "Mozambique",                                                         code: "+258" },
+  { flag: "🇳🇦", name: lang === "fr" ? "Namibie"              : "Namibia",                  code: "+264" },
+  { flag: "🇳🇪", name: "Niger",                                                              code: "+227" },
+  { flag: "🇳🇬", name: "Nigeria",                                                            code: "+234" },
+  { flag: "🇺🇬", name: "Ouganda",                                                            code: "+256" },
+  { flag: "🇷🇼", name: "Rwanda",                                                             code: "+250" },
+  { flag: "🇸🇹", name: lang === "fr" ? "São Tomé-et-Príncipe" : "São Tomé and Príncipe",    code: "+239" },
+  { flag: "🇸🇳", name: lang === "fr" ? "Sénégal"              : "Senegal",                  code: "+221" },
+  { flag: "🇸🇨", name: "Seychelles",                                                         code: "+248" },
+  { flag: "🇸🇱", name: "Sierra Leone",                                                       code: "+232" },
+  { flag: "🇸🇴", name: lang === "fr" ? "Somalie"              : "Somalia",                  code: "+252" },
+  { flag: "🇸🇩", name: lang === "fr" ? "Soudan"               : "Sudan",                    code: "+249" },
+  { flag: "🇸🇸", name: lang === "fr" ? "Soudan du Sud"        : "South Sudan",              code: "+211" },
+  { flag: "🇹🇿", name: lang === "fr" ? "Tanzanie"             : "Tanzania",                 code: "+255" },
+  { flag: "🇹🇩", name: lang === "fr" ? "Tchad"                : "Chad",                     code: "+235" },
+  { flag: "🇹🇬", name: "Togo",                                                              code: "+228" },
+  { flag: "🇹🇳", name: lang === "fr" ? "Tunisie"              : "Tunisia",                  code: "+216" },
+  { flag: "🇿🇲", name: lang === "fr" ? "Zambie"               : "Zambia",                   code: "+260" },
+  { flag: "🇿🇼", name: "Zimbabwe",                                                           code: "+263" },
+];
+
+const intlCountries = [
+  { flag: "🇩🇪", name: lang === "fr" ? "Allemagne"            : "Germany",                  code: "+49"  },
+  { flag: "🇧🇪", name: lang === "fr" ? "Belgique"             : "Belgium",                  code: "+32"  },
+  { flag: "🇨🇦", name: "Canada",                                                             code: "+1"   },
+  { flag: "🇫🇷", name: "France",                                                             code: "+33"  },
+  { flag: "🇬🇧", name: lang === "fr" ? "Royaume-Uni"          : "United Kingdom",           code: "+44"  },
+  { flag: "🇨🇭", name: lang === "fr" ? "Suisse"               : "Switzerland",              code: "+41"  },
+  { flag: "🇺🇸", name: lang === "fr" ? "États-Unis"           : "United States",            code: "+1"   },
+];
 ---
 
 <section id="contact" class="contact" aria-labelledby="contact-title">
@@ -37,7 +103,27 @@ const f = t.contact.form;
         </div>
         <div class="form-field">
           <label for="phone">{f.phone} *</label>
-          <input type="tel" id="phone" name="phone" required autocomplete="tel" pattern="^[+]?[0-9\s-]{8,15}$" />
+          <div class="phone-row">
+            <select id="country-code" name="countryCode" class="country-select" aria-label={lang === "fr" ? "Indicatif pays" : "Country code"}>
+              <optgroup label={lang === "fr" ? "── Afrique ──" : "── Africa ──"}>
+                {africaCountries.map(c => (
+                  <option value={c.code} selected={c.code === "+237" && c.name.includes("Cameroun") || c.code === "+237" && c.name.includes("Cameroon") ? true : undefined}>
+                    {c.flag} {c.name} ({c.code})
+                  </option>
+                ))}
+              </optgroup>
+              <optgroup label={lang === "fr" ? "── International ──" : "── International ──"}>
+                {intlCountries.map(c => (
+                  <option value={c.code}>{c.flag} {c.name} ({c.code})</option>
+                ))}
+              </optgroup>
+            </select>
+            <div class="phone-input-wrap">
+              <span class="phone-prefix" id="phone-prefix">+237</span>
+              <input type="tel" id="phone" name="phone" required autocomplete="tel"
+                placeholder="6XX XXX XXX" pattern="^[0-9\s\-]{5,15}$" />
+            </div>
+          </div>
         </div>
       </div>
 
@@ -104,6 +190,70 @@ const f = t.contact.form;
     box-shadow: 0 0 0 3px rgba(164, 37, 147, 0.15);
   }
 
+  /* Phone row */
+  .phone-row { display: flex; gap: 0; align-items: stretch; }
+  .country-select {
+    flex: 0 0 auto;
+    width: 210px;
+    border-radius: 8px 0 0 8px;
+    border-right: none !important;
+    font-size: 0.88rem;
+    padding: 0.75rem 0.6rem;
+    background: var(--color-bg-secondary);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    appearance: auto;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .country-select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(164, 37, 147, 0.15);
+    z-index: 1;
+  }
+  .phone-input-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-border);
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    background: var(--color-bg);
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .phone-input-wrap:focus-within {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(164, 37, 147, 0.15);
+  }
+  .phone-prefix {
+    padding: 0 0.6rem 0 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    white-space: nowrap;
+    border-right: 1px solid var(--color-border);
+    line-height: 1;
+    user-select: none;
+  }
+  .phone-input-wrap input[type="tel"] {
+    flex: 1;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0;
+    padding: 0.75rem 0.9rem;
+    background: transparent;
+    min-width: 0;
+  }
+  .phone-input-wrap input[type="tel"]:focus { outline: none; }
+
+  @media (max-width: 480px) {
+    .phone-row { flex-direction: column; gap: 0.5rem; }
+    .country-select { width: 100%; border-radius: 8px; border-right: 1px solid var(--color-border) !important; }
+    .phone-input-wrap { border-left: 1px solid var(--color-border); border-radius: 8px; }
+  }
+
   .honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 
   .form-submit-row { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin-top: 0.5rem; }
@@ -121,5 +271,28 @@ const f = t.contact.form;
 
 <script>
   document.getElementById("loadedAt")?.setAttribute("value", String(Date.now()));
+
+  const countrySelect = document.getElementById("country-code") as HTMLSelectElement | null;
+  const phonePrefix  = document.getElementById("phone-prefix");
+  const phoneInput   = document.getElementById("phone") as HTMLInputElement | null;
+  const demoForm     = document.getElementById("demo-form") as HTMLFormElement | null;
+
+  function updatePrefix() {
+    if (!countrySelect || !phonePrefix) return;
+    const selected = countrySelect.options[countrySelect.selectedIndex];
+    const label = (selected.textContent ?? "").trim();
+    const flag = [...label].slice(0, 2).join(""); // first 2 chars = flag emoji
+    phonePrefix.textContent = `${flag} ${countrySelect.value}`;
+  }
+
+  updatePrefix();
+  countrySelect?.addEventListener("change", updatePrefix);
+
+  demoForm?.addEventListener("submit", () => {
+    if (phoneInput && countrySelect) {
+      const raw = phoneInput.value.trim().replace(/^0+/, "");
+      phoneInput.value = countrySelect.value + raw;
+    }
+  });
 </script>
 <script is:inline src="/scripts/form-validation.js"></script>
