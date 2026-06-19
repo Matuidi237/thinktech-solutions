@@ -81,13 +81,39 @@
       { "icon": "headset", "title": "Support technique et maintenance", "benefit": "Une tranquillité d'esprit durable.", "points": ["Assistance technique continue", "Mises à jour de sécurité", "Suivi proactif des performances"] }
     ],
     "whyTitle": "Pourquoi choisir ThinkTech Solutions ?",
+    "whySubtitle": "Beaucoup d'organisations en Afrique centrale connaissent Moodle. La difficulté, c'est de le configurer correctement, de le faire tenir à l'échelle, et de l'adapter à vos apprenants. C'est exactement ce que nous faisons.",
+    "ctaTitle": "Prêt à lancer votre plateforme ?",
     "why": [
-      { "title": "Expertise du contexte africain", "text": "Nous concevons chaque plateforme en tenant compte des réalités locales." },
-      { "title": "Optimisation mobile", "text": "Nos plateformes sont pensées d'abord pour le smartphone." },
-      { "title": "Faible consommation de données", "text": "Des plateformes légères et rapides, même avec une connexion limitée." },
-      { "title": "Sécurité renforcée", "text": "Protection des données, des accès et des contenus." },
-      { "title": "Accompagnement de bout en bout", "text": "De l'analyse de vos besoins au support quotidien." },
-      { "title": "Support réactif", "text": "Une équipe disponible et à l'écoute." }
+      {
+        "icon": "check-circle",
+        "title": "Moodle sans les complications",
+        "text": "Rôles mal définis, parcours désorganisés, interface qui rebute les apprenants : c'est le quotidien de beaucoup de plateformes mal configurées. Nous livrons une solution prête à former dès le premier jour, pas un chantier à finir vous-même."
+      },
+      {
+        "icon": "smartphone",
+        "title": "Pensé pour la réalité du terrain",
+        "text": "Connexion instable, smartphone d'entrée de gamme, apprenants en zone semi-urbaine : nos plateformes sont optimisées pour ces contraintes dès la conception, pas ajustées en catastrophe après le lancement."
+      },
+      {
+        "icon": "palette",
+        "title": "Votre image, pas un template reconnaissable",
+        "text": "Fini la plateforme Moodle générique que tout le monde reconnaît. Chaque déploiement porte vos couleurs, votre logo et votre identité. Vos apprenants se connectent sur votre plateforme, pas sur « encore un Moodle »."
+      },
+      {
+        "icon": "shield",
+        "title": "Données protégées, accès maîtrisés",
+        "text": "Vos apprenants vous confient leurs données personnelles. Nous mettons en place les protections nécessaires : HTTPS, sauvegardes quotidiennes, gestion fine des droits par rôle et mises à jour de sécurité régulières."
+      },
+      {
+        "icon": "headset",
+        "title": "Un interlocuteur, pas un ticket",
+        "text": "Pas de support externalisé, pas de formulaire qui disparaît dans le vide. Quand quelque chose bloque, vous avez un contact direct qui connaît votre configuration et répond dans la journée."
+      },
+      {
+        "icon": "layers",
+        "title": "De A à Z, sans vous laisser seul",
+        "text": "Installation, configuration, formation de vos administrateurs et formateurs, suivi post-lancement : nous ne disparaissons pas à la livraison. Votre succès à long terme fait partie du contrat."
+      }
     ],
     "processTitle": "Notre processus en 4 étapes",
     "process": [

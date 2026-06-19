@@ -81,13 +81,39 @@
       { "icon": "headset", "title": "Technical support and maintenance", "benefit": "Lasting peace of mind.", "points": ["Ongoing technical assistance", "Security updates", "Proactive performance monitoring"] }
     ],
     "whyTitle": "Why choose ThinkTech Solutions?",
+    "whySubtitle": "Many organizations in Central Africa know Moodle exists. The challenge is configuring it properly, making it scale, and adapting it to your learners. That's exactly what we do.",
+    "ctaTitle": "Ready to launch your platform?",
     "why": [
-      { "title": "African context expertise", "text": "We design every platform with local realities in mind." },
-      { "title": "Mobile optimization", "text": "Our platforms are designed mobile-first." },
-      { "title": "Low data consumption", "text": "Lightweight, fast platforms, even on limited connections." },
-      { "title": "Enhanced security", "text": "Protection of data, access and content." },
-      { "title": "End-to-end support", "text": "From needs analysis to daily support." },
-      { "title": "Responsive support", "text": "A team available and attentive." }
+      {
+        "icon": "check-circle",
+        "title": "Moodle without the headaches",
+        "text": "Misconfigured roles, disorganized courses, an interface that puts learners off — that's the reality of most poorly set-up platforms. We deliver a solution ready to train from day one, not a project you have to finish yourself."
+      },
+      {
+        "icon": "smartphone",
+        "title": "Built for real-world conditions",
+        "text": "Unstable connections, entry-level smartphones, learners in semi-urban areas: our platforms are optimized for these constraints from the ground up, not patched after launch."
+      },
+      {
+        "icon": "palette",
+        "title": "Your brand, not a recognizable template",
+        "text": "No more generic Moodle that everyone recognizes. Every deployment carries your colors, your logo, and your identity. Your learners log into your platform, not just \"another Moodle\"."
+      },
+      {
+        "icon": "shield",
+        "title": "Protected data, controlled access",
+        "text": "Your learners trust you with their personal data. We put the right protections in place: HTTPS, daily backups, fine-grained role-based permissions, and regular security updates."
+      },
+      {
+        "icon": "headset",
+        "title": "A direct contact, not a ticket queue",
+        "text": "No outsourced support, no form that disappears into a void. When something breaks, you have a direct contact who knows your setup and responds the same day."
+      },
+      {
+        "icon": "layers",
+        "title": "End-to-end, without leaving you alone",
+        "text": "Installation, configuration, training your admins and instructors, post-launch follow-up: we don't vanish at delivery. Your long-term success is part of the deal."
+      }
     ],
     "processTitle": "Our 4-step process",
     "process": [

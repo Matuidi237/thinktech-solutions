@@ -19,22 +19,24 @@ const icons: Record<string, string> = {
     '<path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M6 11.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/><path d="M22 9v6"/>',
   headset:
     '<path d="M4 13a8 8 0 0 1 16 0"/><rect x="3" y="13" width="4" height="6" rx="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M20 19a4 4 0 0 1-4 3h-2"/>',
+  "check-circle":
+    '<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-5.5"/>',
+  smartphone:
+    '<rect x="6" y="2" width="12" height="20" rx="3"/><circle cx="12" cy="17.5" r="0.8" fill="currentColor" stroke="none"/>',
+  shield:
+    '<path d="M12 3 4 7v5c0 4.4 3.4 8.5 8 9.5 4.6-1 8-5.1 8-9.5V7l-8-4Z"/>',
+  layers:
+    '<polygon points="12 2 2 7 12 12 22 7"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
 };
 ---
 
-<section class="services-hero">
-  <div class="container services-hero-grid">
-    <div class="services-hero-text reveal">
-      <p class="eyebrow">{t.services.eyebrow ?? "Notre expertise"}</p>
-      <h1>{t.services.title}</h1>
-      <p class="services-subtitle">{t.services.subtitle}</p>
-      <div class="services-hero-cta">
-        <a href={`/${lang}/contact`} class="btn btn-primary">{t.services.cta}</a>
-      </div>
-    </div>
-    <figure class="services-hero-visual reveal">
-      <img src="/images/services/services-hero.jpg" alt="" loading="eager" width="640" height="486" />
-    </figure>
+<section class="services-hero" aria-labelledby="services-hero-title">
+  <div class="services-hero-bg" aria-hidden="true"></div>
+  <div class="container services-hero-inner reveal">
+    <p class="eyebrow eyebrow-light">{t.services.eyebrow ?? "Notre expertise"}</p>
+    <h1 id="services-hero-title">{t.services.title}</h1>
+    <p class="services-hero-subtitle">{t.services.subtitle}</p>
+    <a href={`/${lang}/contact`} class="btn btn-hero">{t.services.cta}</a>
   </div>
 </section>
 
@@ -56,12 +58,16 @@ const icons: Record<string, string> = {
     </ul>
 
     <div class="why-us">
-      <h3 class="reveal">{t.services.whyTitle}</h3>
+      <div class="why-header reveal">
+        <h2>{t.services.whyTitle}</h2>
+        <p class="why-subtitle">{t.services.whySubtitle}</p>
+      </div>
       <ul class="why-grid">
         {t.services.why.map((w: any, i: number) => (
-          <li class="why-item reveal" style={`transition-delay:${(i % 3) * 0.07}s`}>
-            <span class="why-check" aria-hidden="true">✓</span>
-            <h4>{w.title}</h4>
+          <li class="why-card" style={`--delay:${i * 0.1}s`}>
+            <div class="why-card-icon" aria-hidden="true" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${icons[w.icon] ?? icons["check-circle"]}</svg>`} />
+            <div class="why-card-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</div>
+            <h3>{w.title}</h3>
             <p>{w.text}</p>
           </li>
         ))}
@@ -80,7 +86,7 @@ const icons: Record<string, string> = {
     </ol>
 
     <div class="services-cta reveal">
-      <h3>{t.services.whyTitle}</h3>
+      <h3>{t.services.ctaTitle}</h3>
       <a href={`/${lang}/contact`} class="btn btn-primary">{t.services.cta}</a>
     </div>
   </div>
@@ -88,23 +94,66 @@ const icons: Record<string, string> = {
 
 <style>
   /* ---------- Hero banner ---------- */
-  .services-hero { position: relative; overflow: hidden; padding: 3rem 0 1rem; }
-  .services-hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3.5rem; align-items: center; }
-  .services-subtitle { max-width: 540px; margin: 1.25rem 0 1.75rem; font-size: 1.1rem; }
-  .services-hero-visual {
+  .services-hero {
     position: relative;
-    margin: 0;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 6rem 0 5rem;
+    color: #fff;
   }
-  .services-hero-visual img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: 10px;
-    transform: rotate(-1.5deg);
-    box-shadow: 0 24px 48px rgba(2, 33, 121, 0.22);
-    transition: transform 0.35s ease;
+  .services-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/services/services-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
   }
-  .services-hero-visual:hover img { transform: rotate(0deg) scale(1.02); }
+  .services-hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(2, 33, 121, 0.82) 0%,
+      rgba(164, 37, 147, 0.55) 100%
+    );
+  }
+  .services-hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+  }
+  .eyebrow-light {
+    color: rgba(255, 255, 255, 0.75);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  .services-hero h1 {
+    color: #fff;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0.75rem 0 1.25rem;
+  }
+  .services-hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    max-width: 580px;
+    margin-bottom: 2rem;
+  }
+  .btn-hero {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-hero:hover { background: #f0f0f0; transform: translateY(-2px); }
 
   /* ---------- Services grid ---------- */
   .services { position: relative; overflow: hidden; padding-top: 1rem; }
@@ -144,24 +193,142 @@ const icons: Record<string, string> = {
   .service-card ul { margin-top: 0.5rem; padding-left: 1.1rem; color: var(--color-text-secondary); font-size: 0.9rem; }
   .service-card ul li + li { margin-top: 0.2rem; }
 
+  /* ── Animated conic-gradient border ── */
+  @property --border-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+  @keyframes border-spin {
+    to { --border-angle: 360deg; }
+  }
+  @keyframes icon-pop {
+    0%   { transform: scale(1)    rotate(0deg);  }
+    30%  { transform: scale(1.4)  rotate(-14deg);}
+    65%  { transform: scale(1.15) rotate(7deg);  }
+    100% { transform: scale(1)    rotate(0deg);  }
+  }
+  @keyframes progress-run {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
   /* ---------- Why us ---------- */
-  .why-us { margin-bottom: 4rem; }
-  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem 2rem; list-style: none; margin-top: 1.5rem; }
-  .why-item { position: relative; padding-left: 2.4rem; }
-  .why-check {
+  .why-us {
+    margin-bottom: 4rem;
+    padding: 4rem 0;
+    background: linear-gradient(160deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+    border-radius: 20px;
+  }
+  .why-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 1.5rem;
+  }
+  .why-header h2 { margin-bottom: 1rem; }
+  .why-subtitle {
+    max-width: 640px;
+    margin: 0 auto;
+    color: var(--color-text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0 1.5rem;
+  }
+
+  .why-card {
+    position: relative;
+    border-radius: 16px;
+    padding: 2rem 1.75rem 1.75rem;
+    /* Two backgrounds: card fill inside, border outside */
+    background:
+      var(--color-card-bg) padding-box,
+      var(--color-border) border-box;
+    border: 2px solid transparent;
+    opacity: 0.62;
+    transform: scale(0.97);
+    transition:
+      transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity   0.45s ease,
+      box-shadow 0.45s ease;
+    cursor: default;
+  }
+  .why-card.active {
+    opacity: 1;
+    transform: scale(1.05) translateY(-10px);
+    background:
+      var(--color-card-bg) padding-box,
+      conic-gradient(from var(--border-angle), #A42593, #022179, #C94BB0, #022179, #A42593) border-box;
+    animation: border-spin 3s linear infinite;
+    box-shadow:
+      0 32px 64px rgba(164, 37, 147, 0.22),
+      0 8px 20px rgba(2, 33, 121, 0.14);
+  }
+
+  /* Progress bar at bottom */
+  .why-card::after {
+    content: "";
     position: absolute;
-    left: 0;
-    top: 0.1rem;
-    width: 1.6rem;
-    height: 1.6rem;
-    border-radius: 50%;
-    background: var(--color-accent);
+    bottom: 0; left: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg, #A42593, #022179);
+    border-radius: 0 0 14px 14px;
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .why-card.active::after {
+    opacity: 1;
+    animation: progress-run var(--why-duration, 2.5s) linear forwards;
+  }
+
+  .why-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
     color: #fff;
-    font-size: 0.85rem;
-    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .why-card-icon.popping { animation: icon-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+  .why-card-icon svg { width: 22px; height: 22px; }
+
+  .why-card-num {
+    position: absolute;
+    top: 1.4rem;
+    right: 1.5rem;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    opacity: 0.05;
+    line-height: 1;
+    user-select: none;
+    transition: opacity 0.4s;
+  }
+  .why-card.active .why-card-num { opacity: 0.1; }
+
+  .why-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.6rem;
+  }
+  .why-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    margin: 0;
   }
 
   /* ---------- Process timeline ---------- */
@@ -213,9 +380,72 @@ const icons: Record<string, string> = {
   .services-cta .btn-primary:hover { background: #f1f1f1; }
 
   @media (max-width: 900px) {
-    .services-hero-grid { grid-template-columns: 1fr; }
-    .services-hero-visual { order: -1; }
-    .services-grid, .why-grid, .process-steps { grid-template-columns: 1fr; }
+    .services-grid, .process-steps { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
     .process-steps::before { display: none; }
   }
+  @media (max-width: 600px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .services-hero { padding: 4rem 0 3.5rem; min-height: 360px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .why-card, .why-card.active { animation: none !important; transform: none !important; opacity: 1 !important; }
+    .why-card.active { border-color: var(--color-accent); box-shadow: none; }
+  }
 </style>
+
+<script>
+  (function () {
+    const DURATION = 2800;
+    const cards = Array.from(document.querySelectorAll(".why-card")) as HTMLElement[];
+    if (!cards.length) return;
+
+    cards.forEach(c => c.style.setProperty("--why-duration", DURATION + "ms"));
+
+    let current = 0;
+    let paused = false;
+    let timer = 0;
+
+    function activate(index: number) {
+      cards.forEach((card, i) => {
+        card.classList.toggle("active", i === index);
+        if (i === index) {
+          const icon = card.querySelector(".why-card-icon") as HTMLElement | null;
+          if (icon) {
+            icon.classList.remove("popping");
+            void icon.offsetWidth;
+            icon.classList.add("popping");
+          }
+        }
+      });
+    }
+
+    function next() {
+      if (!paused) {
+        current = (current + 1) % cards.length;
+        activate(current);
+      }
+    }
+
+    activate(0);
+    timer = window.setInterval(next, DURATION);
+
+    const section = document.querySelector(".why-us");
+    section?.addEventListener("mouseenter", () => { paused = true; });
+    section?.addEventListener("mouseleave", () => {
+      paused = false;
+      clearInterval(timer);
+      timer = window.setInterval(next, DURATION);
+    });
+
+    cards.forEach((card, i) => {
+      card.addEventListener("click", () => {
+        current = i;
+        activate(current);
+        clearInterval(timer);
+        timer = window.setInterval(next, DURATION);
+      });
+    });
+  })();
+</script>
+
