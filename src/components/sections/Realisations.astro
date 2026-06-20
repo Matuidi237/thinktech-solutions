@@ -1,4 +1,4 @@
----
+﻿---
 import type { Lang } from "../../i18n/utils";
 import { useTranslations } from "../../i18n/utils";
 
@@ -76,19 +76,36 @@ const projectScreens: Record<string, string[]> = {
         )}
       </div>
 
-      <div class="rl-carousel" data-carousel>
+      <div class="rl-carousel" data-carousel data-project={bouka.name}>
         <div class="rl-carousel-track">
           {projectScreens.bouka.map((src, i) => (
             <div class="rl-slide">
               <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-              <img src={src} alt={`${bouka.name} — vue ${i + 1}`} width="700" height="420" loading={i === 0 ? "eager" : "lazy"} />
+              <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
+                <img src={src} alt={`${bouka.name} — vue ${i + 1}`} width="700" height="420" loading={i === 0 ? "eager" : "lazy"} />
+                <span class="rl-zoom-hint" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+                </span>
+              </button>
             </div>
           ))}
         </div>
-        <div class="rl-dots" aria-hidden="true">
-          {projectScreens.bouka.map((_: string, i: number) => (
-            <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
-          ))}
+        <div class="rl-carousel-footer">
+          <div class="rl-dots" aria-hidden="true">
+            {projectScreens.bouka.map((_: string, i: number) => (
+              <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
+            ))}
+          </div>
+          {projectScreens.bouka.length > 1 && (
+            <div class="rl-arrows">
+              <button class="rl-arrow rl-arrow--prev" aria-label="Image précédente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button class="rl-arrow rl-arrow--next" aria-label="Image suivante">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </article>
@@ -110,12 +127,20 @@ const projectScreens: Record<string, string[]> = {
         </div>
       </div>
 
-      <div class="rl-carousel" data-carousel>
+      <div class="rl-carousel" data-carousel data-project={training.name}>
         <div class="rl-carousel-track">
           <div class="rl-slide">
             <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-            <img src={projectScreens.training[0]} alt={`${training.name} — aperçu`} width="700" height="420" loading="lazy" />
+            <button class="rl-zoom-btn" data-src={projectScreens.training[0]} data-idx="0" aria-label="Agrandir l'image">
+              <img src={projectScreens.training[0]} alt={`${training.name} — aperçu`} width="700" height="420" loading="lazy" />
+              <span class="rl-zoom-hint" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+              </span>
+            </button>
           </div>
+        </div>
+        <div class="rl-carousel-footer">
+          <div class="rl-dots" aria-hidden="true"></div>
         </div>
       </div>
     </article>
@@ -143,18 +168,45 @@ const projectScreens: Record<string, string[]> = {
         )}
       </div>
 
-      <div class="rl-carousel" data-carousel>
+      <div class="rl-carousel" data-carousel data-project={erfolg.name}>
         <div class="rl-carousel-track">
           <div class="rl-slide">
             <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-            <img src={projectScreens.erfolg[0]} alt={`${erfolg.name} — aperçu`} width="700" height="420" loading="lazy" />
+            <button class="rl-zoom-btn" data-src={projectScreens.erfolg[0]} data-idx="0" aria-label="Agrandir l'image">
+              <img src={projectScreens.erfolg[0]} alt={`${erfolg.name} — aperçu`} width="700" height="420" loading="lazy" />
+              <span class="rl-zoom-hint" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+              </span>
+            </button>
           </div>
+        </div>
+        <div class="rl-carousel-footer">
+          <div class="rl-dots" aria-hidden="true"></div>
         </div>
       </div>
     </article>
 
   </div>
 </section>
+
+<!-- ══ LIGHTBOX ══ -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Aperçu image" hidden>
+  <div class="lb-backdrop"></div>
+  <button class="lb-close" aria-label="Fermer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <button class="lb-nav lb-nav--prev" aria-label="Image précédente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <div class="lb-stage">
+    <div class="lb-frame-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+    <img class="lb-img" src="" alt="" />
+  </div>
+  <button class="lb-nav lb-nav--next" aria-label="Image suivante">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <div class="lb-counter" aria-live="polite"></div>
+</div>
 
 <!-- ══ CTA ══ -->
 <section class="rcta" aria-label="Contact">
@@ -418,13 +470,12 @@ const projectScreens: Record<string, string[]> = {
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  cursor: grab;
 }
 .rl-carousel-track::-webkit-scrollbar { display: none; }
-.rl-carousel-track.dragging { cursor: grabbing; scroll-snap-type: none; }
 .rl-slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
+  position: relative;
 }
 .rl-bar {
   height: 26px;
@@ -439,14 +490,51 @@ const projectScreens: Record<string, string[]> = {
 .rl-bar span:nth-child(1) { background: #ff5f57; }
 .rl-bar span:nth-child(2) { background: #febc2e; }
 .rl-bar span:nth-child(3) { background: #28c840; }
-.rl-slide img { width: 100%; height: auto; display: block; }
-.rl-dots {
+
+/* Zoom button */
+.rl-zoom-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+  position: relative;
+  overflow: hidden;
+}
+.rl-zoom-btn img { width: 100%; height: auto; display: block; transition: transform 0.45s cubic-bezier(0.22,1,0.36,1); }
+.rl-zoom-btn:hover img { transform: scale(1.04); }
+.rl-zoom-hint {
+  position: absolute;
+  inset: 0;
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 0.75rem 0;
+  background: rgba(2,33,121,0.0);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s, background 0.3s;
+  pointer-events: none;
+}
+.rl-zoom-hint svg { filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4)); transform: scale(0.8); transition: transform 0.3s; }
+.rl-zoom-btn:hover .rl-zoom-hint { opacity: 1; background: rgba(2,33,121,0.22); }
+.rl-zoom-btn:hover .rl-zoom-hint svg { transform: scale(1); }
+
+/* Footer : dots + arrows */
+.rl-carousel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.75rem;
   background: var(--color-bg-secondary);
   border-top: 1px solid var(--color-border);
+  min-height: 40px;
+}
+.rl-dots {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  justify-content: center;
 }
 .rl-dot {
   width: 6px; height: 6px;
@@ -455,11 +543,124 @@ const projectScreens: Record<string, string[]> = {
   background: var(--color-border);
   cursor: pointer;
   padding: 0;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.2s, transform 0.25s, width 0.25s;
 }
 .rl-dot--active {
   background: var(--color-accent);
-  transform: scale(1.4);
+  width: 18px;
+  border-radius: 3px;
+}
+.rl-arrows {
+  display: flex;
+  gap: 4px;
+}
+.rl-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.rl-arrow:hover { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+.rl-arrow:disabled { opacity: 0.3; cursor: default; }
+
+/* ══ LIGHTBOX ══ */
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.lb[hidden] { display: none; }
+.lb-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 5, 30, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+@keyframes lb-in {
+  from { opacity: 0; transform: scale(0.92) translateY(12px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+.lb-stage {
+  position: relative;
+  z-index: 2;
+  max-width: min(90vw, 1100px);
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  animation: lb-in 0.38s cubic-bezier(0.22,1,0.36,1) both;
+}
+.lb-frame-bar {
+  height: 28px;
+  background: #1e2030;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+}
+.lb-frame-bar span { width: 9px; height: 9px; border-radius: 50%; }
+.lb-frame-bar span:nth-child(1) { background: #ff5f57; }
+.lb-frame-bar span:nth-child(2) { background: #febc2e; }
+.lb-frame-bar span:nth-child(3) { background: #28c840; }
+.lb-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #0d1023;
+  transition: opacity 0.2s;
+}
+.lb-img.switching { opacity: 0; }
+.lb-close {
+  position: absolute;
+  top: 1.25rem; right: 1.25rem;
+  z-index: 3;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+.lb-close:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.5); }
+.lb-nav {
+  position: relative;
+  z-index: 2;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.lb-nav:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.45); transform: scale(1.08); }
+.lb-nav:disabled { opacity: 0.2; cursor: default; transform: none; }
+.lb-counter {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.05em;
+  pointer-events: none;
 }
 
 /* ══ CTA ══ */
@@ -553,83 +754,118 @@ const projectScreens: Record<string, string[]> = {
 <script is:inline>
 (function () {
 
-  /* ── Carousels ── */
+  /* ══ CAROUSELS ══ */
   document.querySelectorAll("[data-carousel]").forEach(function (carousel) {
-    var track = carousel.querySelector(".rl-carousel-track");
-    var dots = carousel.querySelectorAll(".rl-dot");
+    var track   = carousel.querySelector(".rl-carousel-track");
+    var dots    = Array.from(carousel.querySelectorAll(".rl-dot"));
+    var btnPrev = carousel.querySelector(".rl-arrow--prev");
+    var btnNext = carousel.querySelector(".rl-arrow--next");
+    var slides  = Array.from(carousel.querySelectorAll(".rl-slide"));
     if (!track) return;
 
-    track.addEventListener("scroll", function () {
-      var idx = Math.round(track.scrollLeft / track.offsetWidth);
-      dots.forEach(function (d, i) { d.classList.toggle("rl-dot--active", i === idx); });
+    function currentIdx() { return Math.round(track.scrollLeft / track.offsetWidth); }
+    function goTo(i) { track.scrollTo({ left: i * track.offsetWidth, behavior: "smooth" }); }
+    function syncUI() {
+      var i = currentIdx();
+      dots.forEach(function (d, j) { d.classList.toggle("rl-dot--active", j === i); });
+      if (btnPrev) btnPrev.disabled = i === 0;
+      if (btnNext) btnNext.disabled = i === slides.length - 1;
+    }
+
+    track.addEventListener("scroll", syncUI, { passive: true });
+    dots.forEach(function (dot, i) { dot.addEventListener("click", function () { goTo(i); }); });
+    if (btnPrev) btnPrev.addEventListener("click", function () { goTo(Math.max(0, currentIdx() - 1)); });
+    if (btnNext) btnNext.addEventListener("click", function () { goTo(Math.min(slides.length - 1, currentIdx() + 1)); });
+
+    var tx = 0;
+    track.addEventListener("touchstart", function (e) { tx = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener("touchend", function (e) {
+      var diff = tx - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? Math.min(slides.length-1, currentIdx()+1) : Math.max(0, currentIdx()-1));
     }, { passive: true });
 
-    dots.forEach(function (dot, i) {
-      dot.addEventListener("click", function () {
-        track.scrollTo({ left: i * track.offsetWidth, behavior: "smooth" });
-      });
-    });
+    syncUI();
 
-    var startX = 0, startScroll = 0, dragging = false;
-    track.addEventListener("mousedown", function (e) {
-      dragging = true; startX = e.pageX; startScroll = track.scrollLeft;
-      track.classList.add("dragging");
-    });
-    window.addEventListener("mousemove", function (e) {
-      if (!dragging) return;
-      track.scrollLeft = startScroll - (e.pageX - startX);
-    });
-    window.addEventListener("mouseup", function () {
-      if (!dragging) return;
-      dragging = false; track.classList.remove("dragging");
-      var idx = Math.round(track.scrollLeft / track.offsetWidth);
-      track.scrollTo({ left: idx * track.offsetWidth, behavior: "smooth" });
-    });
+    carousel._lb = slides.map(function (sl) {
+      var img = sl.querySelector("img"); return img ? img.src : "";
+    }).filter(Boolean);
   });
 
-  /* ── Compteurs stats hero ── */
-  function animateCount(el, target, duration) {
-    var start = null;
-    var formatted = target >= 1000;
-    function step(ts) {
-      if (!start) start = ts;
-      var prog = Math.min((ts - start) / duration, 1);
-      var ease = 1 - Math.pow(1 - prog, 3);
-      var val = Math.round(ease * target);
-      el.textContent = formatted
-        ? val.toLocaleString("fr-FR").replace(/\s/g, " ")
-        : String(val);
-      if (prog < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
+  /* ══ LIGHTBOX ══ */
+  var lb      = document.getElementById("lightbox");
+  var lbImg   = lb && lb.querySelector(".lb-img");
+  var lbCloseBtns = lb ? lb.querySelectorAll(".lb-close, .lb-backdrop") : [];
+  var lbPrev  = lb && lb.querySelector(".lb-nav--prev");
+  var lbNext  = lb && lb.querySelector(".lb-nav--next");
+  var lbCount = lb && lb.querySelector(".lb-counter");
+  var lbSrcs  = [], lbIdx = 0;
+
+  function lbShow() {
+    if (!lbImg) return;
+    lbImg.classList.add("switching");
+    setTimeout(function () {
+      lbImg.src = lbSrcs[lbIdx];
+      lbImg.classList.remove("switching");
+    }, 160);
+    if (lbCount) lbCount.textContent = lbSrcs.length > 1 ? (lbIdx + 1) + " / " + lbSrcs.length : "";
+    if (lbPrev) { lbPrev.disabled = lbIdx === 0; lbPrev.style.visibility = lbSrcs.length > 1 ? "" : "hidden"; }
+    if (lbNext) { lbNext.disabled = lbIdx === lbSrcs.length - 1; lbNext.style.visibility = lbSrcs.length > 1 ? "" : "hidden"; }
+  }
+  function lbOpen(srcs, idx) {
+    lbSrcs = srcs; lbIdx = idx;
+    lb.removeAttribute("hidden");
+    document.body.style.overflow = "hidden";
+    lbShow();
+  }
+  function lbCloseF() {
+    lb.setAttribute("hidden", "");
+    document.body.style.overflow = "";
   }
 
-  var statsObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      entry.target.querySelectorAll("[data-count]").forEach(function (el) {
-        var target = parseInt(el.getAttribute("data-count"), 10);
-        animateCount(el, target, 1200);
-      });
-      statsObserver.unobserve(entry.target);
+  lbCloseBtns.forEach(function (el) { el.addEventListener("click", lbCloseF); });
+  if (lbPrev) lbPrev.addEventListener("click", function () { if (lbIdx > 0) { lbIdx--; lbShow(); } });
+  if (lbNext) lbNext.addEventListener("click", function () { if (lbIdx < lbSrcs.length - 1) { lbIdx++; lbShow(); } });
+
+  document.addEventListener("keydown", function (e) {
+    if (!lb || lb.hasAttribute("hidden")) return;
+    if (e.key === "Escape") lbCloseF();
+    if (e.key === "ArrowLeft"  && lbIdx > 0)                  { lbIdx--; lbShow(); }
+    if (e.key === "ArrowRight" && lbIdx < lbSrcs.length - 1)  { lbIdx++; lbShow(); }
+  });
+
+  document.querySelectorAll(".rl-zoom-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var carousel = btn.closest("[data-carousel]");
+      var srcs = carousel && carousel._lb;
+      if (!srcs || !srcs.length) return;
+      lbOpen(srcs, parseInt(btn.getAttribute("data-idx") || "0", 10));
+    });
+  });
+
+  /* ══ COMPTEURS STATS ══ */
+  function animateCount(el, target, dur) {
+    var t0 = performance.now(), big = target >= 1000;
+    (function step(ts) {
+      var p = Math.min((ts - t0) / dur, 1), ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = big ? Math.round(ease * target).toLocaleString("fr-FR").replace(/ /g, " ") : String(Math.round(ease * target));
+      if (p < 1) requestAnimationFrame(step);
+    })(performance.now());
+  }
+  var statsObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.querySelectorAll("[data-count]").forEach(function (el) { animateCount(el, +el.getAttribute("data-count"), 1400); });
+      statsObs.unobserve(e.target);
     });
   }, { threshold: 0.4 });
+  var sl = document.querySelector(".rh-stats");
+  if (sl) statsObs.observe(sl);
 
-  var statsList = document.querySelector(".rh-stats");
-  if (statsList) statsObserver.observe(statsList);
-
-  /* ── Scroll reveal projets ── */
-  var revealObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("visible");
-      revealObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll(".rl-reveal").forEach(function (el) {
-    revealObserver.observe(el);
-  });
+  /* ══ SCROLL REVEAL ══ */
+  var revObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("visible"); revObs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll(".rl-reveal").forEach(function (el) { revObs.observe(el); });
 
 })();
 </script>
