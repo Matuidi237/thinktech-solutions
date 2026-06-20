@@ -42,7 +42,7 @@ const t = useTranslations(lang);
             return (
               <Tag class={`platform-card ${!p.url ? "is-disabled" : ""}`} {...linkProps}>
                 <div class="platform-thumb">
-                  <img src={p.image} alt={p.name} width="400" height="260" loading="lazy" />
+                  <img src={p.image} alt={p.name} width="400" height="260" loading="eager" />
                 </div>
                 <div class="platform-info">
                   <h3>{p.name}</h3>
