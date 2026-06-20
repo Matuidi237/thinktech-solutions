@@ -45,7 +45,7 @@
       },
       {
         "name": "Training To Rise",
-        "description": "En collaboration avec le cabinet d'audit et de conseil MAXIMMACS, nous avons déployé un LMS dédié aux formations certifiantes. Cette solution structure et digitalise l'apprentissage dans des domaines stratégiques tels que le management, la fiscalité, l'audit, la comptabilité et l'intelligence artificielle.",
+        "description": "En collaboration avec ThinkTech Academy, nous avons déployé un LMS dédié aux formations certifiantes. Cette solution structure et digitalise l'apprentissage dans des domaines stratégiques tels que le management, la fiscalité, l'audit, la comptabilité et l'intelligence artificielle.",
         "image": "/images/platforms/training-to-rise-home.png",
         "url": null
       },
@@ -54,6 +54,12 @@
         "description": "Nous avons conçu et mis en service cette plateforme pour un centre de formation basé en Allemagne. Entièrement opérationnelle, elle offre une expérience d'apprentissage fluide et intuitive, prête à accueillir les apprenants dès leur première connexion.",
         "image": "/images/platforms/plateforme-allemand-home.png",
         "url": "https://test.thinktech-academy.com/"
+      },
+      {
+        "name": "EST LaSalle Douala",
+        "description": "En collaboration avec l'École Supérieure Technique LaSalle de Douala, nous entamons une transformation numérique progressive : dématérialisation des contrôles continus, suivi pédagogique en ligne et structuration des parcours de formation.",
+        "image": "/images/platforms/Lasalle-Courses-Page%20(1).png",
+        "url": null
       }
     ],
     "partners": [
@@ -62,7 +68,7 @@
         "logo": "/images/partners/boukarou-logo.jpeg"
       },
       {
-        "name": "Cabinet Audit & Conseil MAXIMMACS",
+        "name": "ThinkTech Academy",
         "logo": "/images/partners/maximmacs-logo.png"
       },
       {
@@ -341,7 +347,7 @@
       },
       {
         "name": "Training To Rise",
-        "client": "MAXIMMACS — Cabinet d'audit & conseil",
+        "client": "ThinkTech Academy — Formation certifiante",
         "sector": "Formation professionnelle certifiante",
         "metric": {
           "value": "5",
@@ -352,7 +358,7 @@
           "Certifications",
           "Finance & Audit"
         ],
-        "description": "En collaboration avec le cabinet MAXIMMACS, nous avons déployé un LMS dédié aux formations certifiantes en management, fiscalité, audit, comptabilité et intelligence artificielle.",
+        "description": "En collaboration avec ThinkTech Academy, nous avons déployé un LMS dédié aux formations certifiantes en management, fiscalité, audit, comptabilité et intelligence artificielle.",
         "challenge": "Digitaliser un catalogue de formations certifiantes dans des domaines techniques exigeants, tout en préservant la rigueur et la crédibilité du cabinet.",
         "solution": "Parcours pédagogiques structurés par domaine, gestion fine des certifications et des accès, interface professionnelle alignée sur l'identité visuelle du cabinet.",
         "image": "/images/platforms/training-to-rise-home.png",
@@ -376,6 +382,25 @@
         "solution": "Déploiement structuré, configuration complète des espaces de cours, formation des administrateurs à distance et documentation fournie dès la livraison.",
         "image": "/images/platforms/plateforme-allemand-home.png",
         "url": "https://test.thinktech-academy.com/"
+      },
+      {
+        "name": "EST LaSalle Douala",
+        "client": "École Supérieure Technique LaSalle — Douala",
+        "sector": "Enseignement supérieur technique",
+        "metric": {
+          "value": "En cours",
+          "label": "transformation progressive"
+        },
+        "tags": [
+          "Moodle",
+          "Université",
+          "Dématérialisation"
+        ],
+        "description": "En collaboration avec l'EST LaSalle de Douala, nous pilotons une transformation numérique progressive de l'établissement : dématérialisation des contrôles continus, suivi pédagogique en ligne et structuration des parcours de formation.",
+        "challenge": "Accompagner un établissement d'enseignement supérieur dans la transition vers le numérique sans perturber le fonctionnement existant, en impliquant progressivement enseignants et étudiants.",
+        "solution": "Approche par phases : démarrage par la dématérialisation des contrôles continus, avec un LMS Moodle configuré sur mesure, des sessions de formation du corps enseignant et un support continu.",
+        "image": "/images/platforms/Lasalle-Courses-Page%20(1).png",
+        "url": null
       }
     ],
     "statProjects": "plateformes déployées",

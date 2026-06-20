@@ -6,7 +6,7 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const r = t.realisations;
-const [bouka, training, erfolg] = r.projects;
+const [bouka, training, erfolg, lasalle] = r.projects;
 
 const projectScreens: Record<string, string[]> = {
   "bouka": [
@@ -28,6 +28,16 @@ const projectScreens: Record<string, string[]> = {
     "/images/platforms/Erfolg6.png",
     "/images/platforms/Erfolg7.png",
     "/images/platforms/Erfolg8.png",
+  ],
+  "lasalle": [
+    "/images/platforms/Lasalle-Courses-Page%20(1).png",
+    "/images/platforms/Lasalle-Courses-Page%20(2).png",
+    "/images/platforms/Lasalle-Courses-Page%20(3).png",
+    "/images/platforms/Lasalle-Courses-Page%20(4).png",
+    "/images/platforms/Lasalle-Courses-Page%20(5).png",
+    "/images/platforms/Lasalle-Courses-Page%20(6).png",
+    "/images/platforms/Lasalle-Courses-Page%20(7).png",
+    "/images/platforms/Lasalle-Courses-Page%20(8).png",
   ],
 };
 ---
@@ -214,6 +224,63 @@ const projectScreens: Record<string, string[]> = {
             ))}
           </div>
           {projectScreens.erfolg.length > 1 && (
+            <div class="rl-arrows">
+              <button class="rl-arrow rl-arrow--prev" aria-label="Image précédente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button class="rl-arrow rl-arrow--next" aria-label="Image suivante">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </article>
+
+    <!-- Projet 4 — LaSalle -->
+    <article class="rl-item rl-item--reverse rl-reveal">
+      <div class="rl-info">
+        <span class="rl-num">04</span>
+        <p class="rl-sector">{lasalle.sector}</p>
+        <h2 class="rl-name">{lasalle.name}</h2>
+        <p class="rl-client">{lasalle.client}</p>
+        <p class="rl-desc">{lasalle.description}</p>
+        <ul class="rl-tags">
+          {lasalle.tags.map((tag: string) => <li>{tag}</li>)}
+        </ul>
+        <div class="rl-kpi">
+          <span class="rl-kpi-val">{lasalle.metric.value}</span>
+          <span class="rl-kpi-lbl">{lasalle.metric.label}</span>
+        </div>
+        {lasalle.url && (
+          <a href={lasalle.url} target="_blank" rel="noopener noreferrer" class="rl-link">
+            {r.visitLabel}
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        )}
+      </div>
+
+      <div class="rl-carousel" data-carousel data-project={lasalle.name}>
+        <div class="rl-carousel-track">
+          {projectScreens.lasalle.map((src, i) => (
+            <div class="rl-slide">
+              <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+              <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
+                <img src={src} alt={`${lasalle.name} — vue ${i + 1}`} width="700" height="420" loading="lazy" />
+                <span class="rl-zoom-hint" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+                </span>
+              </button>
+            </div>
+          ))}
+        </div>
+        <div class="rl-carousel-footer">
+          <div class="rl-dots" aria-hidden="true">
+            {projectScreens.lasalle.map((_: string, i: number) => (
+              <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
+            ))}
+          </div>
+          {projectScreens.lasalle.length > 1 && (
             <div class="rl-arrows">
               <button class="rl-arrow rl-arrow--prev" aria-label="Image précédente">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>

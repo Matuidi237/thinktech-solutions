@@ -45,7 +45,7 @@
       },
       {
         "name": "Training To Rise",
-        "description": "In collaboration with the audit and consulting firm MAXIMMACS, we deployed an LMS dedicated to certified training. This solution structures and digitizes learning in strategic fields such as management, tax, audit, accounting and artificial intelligence.",
+        "description": "In collaboration with ThinkTech Academy, we deployed an LMS dedicated to certified training. This solution structures and digitizes learning in strategic fields such as management, tax, audit, accounting and artificial intelligence.",
         "image": "/images/platforms/training-to-rise-home.png",
         "url": null
       },
@@ -54,6 +54,12 @@
         "description": "We designed and launched this platform for a training center based in Germany. Fully operational, it offers a smooth, intuitive learning experience, ready to welcome learners from their very first login.",
         "image": "/images/platforms/plateforme-allemand-home.png",
         "url": "https://test.thinktech-academy.com/"
+      },
+      {
+        "name": "EST LaSalle Douala",
+        "description": "In collaboration with the École Supérieure Technique LaSalle in Douala, we are leading a progressive digital transformation: dematerialization of continuous assessments, online academic tracking, and structured learning pathways.",
+        "image": "/images/platforms/Lasalle-Courses-Page%20(1).png",
+        "url": null
       }
     ],
     "partners": [
@@ -62,7 +68,7 @@
         "logo": "/images/partners/boukarou-logo.jpeg"
       },
       {
-        "name": "Cabinet Audit & Conseil MAXIMMACS",
+        "name": "ThinkTech Academy",
         "logo": "/images/partners/maximmacs-logo.png"
       },
       {
@@ -341,7 +347,7 @@
       },
       {
         "name": "Training To Rise",
-        "client": "MAXIMMACS — Audit & consulting firm",
+        "client": "ThinkTech Academy — Certified training",
         "sector": "Professional certified training",
         "metric": {
           "value": "5",
@@ -352,7 +358,7 @@
           "Certifications",
           "Finance & Audit"
         ],
-        "description": "In collaboration with the MAXIMMACS firm, we deployed an LMS dedicated to certified training in management, tax, audit, accounting and artificial intelligence.",
+        "description": "In collaboration with ThinkTech Academy, we deployed an LMS dedicated to certified training in management, tax, audit, accounting and artificial intelligence.",
         "challenge": "Digitize a catalogue of certified training in demanding technical fields, while preserving the rigor and credibility of the firm.",
         "solution": "Domain-structured learning paths, fine-grained certification and access management, professional interface aligned with the firm's visual identity.",
         "image": "/images/platforms/training-to-rise-home.png",
@@ -376,6 +382,25 @@
         "solution": "Structured deployment, complete course space configuration, remote admin training and documentation delivered at handover.",
         "image": "/images/platforms/plateforme-allemand-home.png",
         "url": "https://test.thinktech-academy.com/"
+      },
+      {
+        "name": "EST LaSalle Douala",
+        "client": "École Supérieure Technique LaSalle — Douala",
+        "sector": "Higher technical education",
+        "metric": {
+          "value": "In progress",
+          "label": "progressive transformation"
+        },
+        "tags": [
+          "Moodle",
+          "University",
+          "Dematerialization"
+        ],
+        "description": "In collaboration with EST LaSalle in Douala, we are driving a progressive digital transformation: dematerialization of continuous assessments, online academic tracking, and structured learning pathways.",
+        "challenge": "Guide a higher education institution through digital transition without disrupting existing operations, progressively involving teachers and students.",
+        "solution": "Phased approach: starting with the dematerialization of continuous assessments, with a custom-configured Moodle LMS, faculty training sessions, and ongoing support.",
+        "image": "/images/platforms/Lasalle-Courses-Page%20(1).png",
+        "url": null
       }
     ],
     "statProjects": "platforms deployed",

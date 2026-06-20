@@ -30,24 +30,35 @@ const t = useTranslations(lang);
   <div class="container hero-platforms" style="position: relative;">
     <div class="circle-deco circle-fill hero-circle-3" aria-hidden="true"></div>
     <h2 class="carousel-title">{t.hero.platformsTitle}</h2>
-    <div class="platforms-grid">
-      {t.hero.platforms.map((p: any) => {
-        const Tag = p.url ? "a" : "div";
-        const linkProps = p.url ? { href: p.url, target: "_blank", rel: "noopener noreferrer" } : {};
-        return (
-          <Tag class={`platform-card ${!p.url ? "is-disabled" : ""}`} {...linkProps}>
-            <div class="platform-thumb">
-              <img src={p.image} alt={p.name} width="400" height="260" loading="lazy" />
-            </div>
-            <div class="platform-info">
-              <h3>{p.name}</h3>
-              <p>{p.description}</p>
-              {!p.url && <span class="platform-soon">{t.hero.comingSoon}</span>}
-            </div>
-          </Tag>
-        );
-      })}
+    <div class="pc-outer">
+      <button class="pc-arrow pc-arrow--prev" aria-label="Précédent" id="pcPrev">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="pc-viewport" id="pcViewport">
+        <div class="platforms-grid" id="platformsGrid">
+          {t.hero.platforms.map((p: any) => {
+            const Tag = p.url ? "a" : "div";
+            const linkProps = p.url ? { href: p.url, target: "_blank", rel: "noopener noreferrer" } : {};
+            return (
+              <Tag class={`platform-card ${!p.url ? "is-disabled" : ""}`} {...linkProps}>
+                <div class="platform-thumb">
+                  <img src={p.image} alt={p.name} width="400" height="260" loading="lazy" />
+                </div>
+                <div class="platform-info">
+                  <h3>{p.name}</h3>
+                  <p>{p.description}</p>
+                  {!p.url && <span class="platform-soon">{t.hero.comingSoon}</span>}
+                </div>
+              </Tag>
+            );
+          })}
+        </div>
+      </div>
+      <button class="pc-arrow pc-arrow--next" aria-label="Suivant" id="pcNext">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
+    <div class="pc-dots" id="pcDots"></div>
 
     <h2 class="carousel-title">{t.hero.partnersTitle}</h2>
     <div class="carousel" aria-label={t.hero.partnersTitle}>
@@ -98,7 +109,10 @@ const t = useTranslations(lang);
   .hero-circle-3 { top: -30px; right: 12%; width: 150px; height: 150px; }
   .carousel-title { position: relative; z-index: 1; font-size: 1.1rem; margin: 2rem 0 1rem; color: var(--color-text-secondary); font-weight: 600; }
 
-  .platforms-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+  .pc-outer { position: relative; z-index: 1; display: flex; align-items: center; gap: 0.75rem; }
+  .pc-viewport { overflow: hidden; flex: 1; }
+  .platforms-grid { display: flex; gap: 1.5rem; transition: transform 0.45s cubic-bezier(0.22,1,0.36,1); will-change: transform; }
+  .platform-card { flex: 0 0 calc((100% - 3rem) / 3); min-width: 0; }
   .platform-card {
     display: flex;
     flex-direction: column;
@@ -151,19 +165,93 @@ const t = useTranslations(lang);
   .trust-metrics strong { display: block; font-size: 2.25rem; font-weight: 800; color: var(--color-accent); }
   .trust-metrics span { color: var(--color-text-secondary); font-size: 0.9rem; }
 
+  .pc-arrow {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid var(--color-border);
+    background: var(--color-bg-secondary);
+    color: var(--color-text);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    z-index: 2;
+  }
+  .pc-arrow:hover { border-color: var(--color-accent); background: var(--color-accent); color: #fff; transform: scale(1.08); }
+  .pc-arrow:disabled { opacity: 0.3; pointer-events: none; }
+
+  .pc-dots { display: flex; gap: 6px; justify-content: center; margin-top: 1.25rem; }
+  .pc-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--color-border);
+    border: none; cursor: pointer; padding: 0;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .pc-dot.active { background: var(--color-accent); transform: scale(1.3); }
+
   @media (max-width: 900px) {
     .hero-content { grid-template-columns: 1fr; }
     .hero-visual { order: -1; margin-bottom: 1rem; border-radius: 20px 60px 20px 20px; }
-    .platforms-grid { grid-template-columns: 1fr; }
+    .platform-card { flex: 0 0 calc((100% - 1.5rem) / 2); }
     .trust-metrics { grid-template-columns: repeat(2, 1fr); }
     .trust-metrics li { border-left: none; border-top: 1px solid var(--color-border); padding: 1.25rem 0 0; }
     .trust-metrics li:nth-child(odd) { border-left: none; }
   }
 
   @media (max-width: 640px) {
-    .platforms-grid { grid-template-columns: 1fr; }
+    .platform-card { flex: 0 0 85%; }
   }
 </style>
 
 <script is:inline src="/scripts/carousel.js"></script>
 <script is:inline src="/scripts/counter.js"></script>
+<script is:inline>
+(function() {
+  var grid = document.getElementById('platformsGrid');
+  var prev = document.getElementById('pcPrev');
+  var next = document.getElementById('pcNext');
+  var dotsEl = document.getElementById('pcDots');
+  if (!grid || !prev || !next) return;
+
+  var cards = grid.querySelectorAll('.platform-card');
+  var total = cards.length;
+  var visible = window.innerWidth <= 640 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+  var maxIndex = Math.max(0, total - visible);
+  var idx = 0;
+
+  // Build dots
+  for (var i = 0; i <= maxIndex; i++) {
+    var d = document.createElement('button');
+    d.className = 'pc-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Projet ' + (i + 1));
+    d.dataset.i = i;
+    dotsEl.appendChild(d);
+  }
+
+  function update() {
+    var cardW = cards[0].getBoundingClientRect().width;
+    var gap = 24;
+    grid.style.transform = 'translateX(-' + (idx * (cardW + gap)) + 'px)';
+    prev.disabled = idx === 0;
+    next.disabled = idx >= maxIndex;
+    dotsEl.querySelectorAll('.pc-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === idx);
+    });
+  }
+
+  prev.addEventListener('click', function() { if (idx > 0) { idx--; update(); } });
+  next.addEventListener('click', function() { if (idx < maxIndex) { idx++; update(); } });
+  dotsEl.addEventListener('click', function(e) {
+    var d = e.target.closest('.pc-dot');
+    if (d) { idx = +d.dataset.i; update(); }
+  });
+
+  update();
+  window.addEventListener('resize', function() {
+    visible = window.innerWidth <= 640 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+    maxIndex = Math.max(0, total - visible);
+    idx = Math.min(idx, maxIndex);
+    update();
+  });
+})();
+</script>
