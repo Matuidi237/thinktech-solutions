@@ -6,310 +6,630 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const r = t.realisations;
+const [bouka, training, erfolg] = r.projects;
+
+const projectScreens: Record<string, string[]> = {
+  "bouka": [
+    "/images/platforms/bouka-creativ-home.png",
+    "/images/platforms/bouka-creativ-course.png",
+    "/images/platforms/bouka-creativ-login.png",
+  ],
+  "training": [
+    "/images/platforms/training-to-rise-home.png",
+  ],
+  "erfolg": [
+    "/images/platforms/plateforme-allemand-home.png",
+  ],
+};
 ---
 
-<!-- Hero -->
-<section class="real-hero" aria-labelledby="real-hero-title">
-  <div class="container real-hero-inner">
-    <p class="eyebrow">{r.eyebrow}</p>
-    <h1 id="real-hero-title">{r.title}</h1>
-    <p class="real-hero-subtitle">{r.subtitle}</p>
-  </div>
-</section>
-
-<!-- Projects -->
-<section class="real-projects" aria-label={r.eyebrow}>
+<!-- ══ HERO ══ -->
+<section class="rh" aria-labelledby="rh-title">
+  <div class="rh-bg" aria-hidden="true"></div>
   <div class="container">
-    {r.projects.map((p: any, i: number) => (
-      <article class={`project-card reveal ${i % 2 === 1 ? "project-card--reverse" : ""}`}>
-
-        <!-- Screenshot -->
-        <div class="project-visual">
-          <div class="project-screen">
-            <div class="project-screen-bar" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-            <img
-              src={p.image}
-              alt={`Capture d'écran de la plateforme ${p.name}`}
-              width="700"
-              height="420"
-              loading="lazy"
-            />
-          </div>
-          {p.url && (
-            <a href={p.url} target="_blank" rel="noopener noreferrer" class="project-visit-btn">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="16" height="16"><path d="M11 3h6v6M17 3l-8 8M8 5H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-4"/></svg>
-              {r.visitLabel}
-            </a>
-          )}
-        </div>
-
-        <!-- Info -->
-        <div class="project-info">
-          <!-- Meta -->
-          <div class="project-meta">
-            <span class="project-sector">{p.sector}</span>
-            <div class="project-metric">
-              <span class="metric-value">{p.metric.value}</span>
-              <span class="metric-label">{p.metric.label}</span>
-            </div>
-          </div>
-
-          <h2 class="project-name">{p.name}</h2>
-          <p class="project-client">
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" width="14" height="14"><path d="M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM3 18a7 7 0 0 1 14 0"/></svg>
-            {p.client}
-          </p>
-
-          <p class="project-description">{p.description}</p>
-
-          <!-- Tags -->
-          <ul class="project-tags">
-            {p.tags.map((tag: string) => (
-              <li class="project-tag">{tag}</li>
-            ))}
-          </ul>
-
-          <!-- Challenge / Solution -->
-          <div class="project-details">
-            <div class="detail-block">
-              <div class="detail-icon detail-icon--challenge" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
-              </div>
-              <div>
-                <p class="detail-label">{r.challengeLabel}</p>
-                <p class="detail-text">{p.challenge}</p>
-              </div>
-            </div>
-            <div class="detail-block">
-              <div class="detail-icon detail-icon--solution" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-5.5"/></svg>
-              </div>
-              <div>
-                <p class="detail-label">{r.solutionLabel}</p>
-                <p class="detail-text">{p.solution}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </article>
-    ))}
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="real-cta reveal">
-  <div class="container">
-    <div class="real-cta-inner">
-      <div class="real-cta-deco" aria-hidden="true"></div>
-      <h2>{r.ctaTitle}</h2>
-      <a href={`/${lang}/contact`} class="btn btn-primary">{r.cta}</a>
+    <div class="rh-inner">
+      <span class="rh-eyebrow rh-anim" style="--d:0s">{r.eyebrow}</span>
+      <h1 id="rh-title" class="rh-title rh-anim" style="--d:.1s">{r.heroTitle}</h1>
+      <p class="rh-sub rh-anim" style="--d:.2s">{r.heroSub}</p>
+      <ul class="rh-stats rh-anim" style="--d:.32s">
+        <li>
+          <span class="rh-stat-val" data-count="3">3</span>
+          <span class="rh-stat-lbl">{r.statProjects}</span>
+        </li>
+        <li>
+          <span class="rh-stat-val" data-count="42000">42 000</span>
+          <span class="rh-stat-lbl">{r.statLearners}</span>
+        </li>
+        <li>
+          <span class="rh-stat-val" data-count="50">50</span>
+          <span class="rh-stat-lbl">{r.statHours}</span>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
 
+<!-- ══ PROJETS ══ -->
+<section class="rl-projects">
+  <div class="container">
+
+    <!-- Projet 1 — Bouka -->
+    <article class="rl-item rl-reveal">
+      <div class="rl-info">
+        <span class="rl-num">01</span>
+        <p class="rl-sector">{bouka.sector}</p>
+        <h2 class="rl-name">{bouka.name}</h2>
+        <p class="rl-client">{bouka.client}</p>
+        <p class="rl-desc">{bouka.description}</p>
+        <ul class="rl-tags">
+          {bouka.tags.map((tag: string) => <li>{tag}</li>)}
+        </ul>
+        <div class="rl-kpi">
+          <span class="rl-kpi-val">{bouka.metric.value}</span>
+          <span class="rl-kpi-lbl">{bouka.metric.label}</span>
+        </div>
+        {bouka.url && (
+          <a href={bouka.url} target="_blank" rel="noopener noreferrer" class="rl-link">
+            {r.visitLabel}
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        )}
+      </div>
+
+      <div class="rl-carousel" data-carousel>
+        <div class="rl-carousel-track">
+          {projectScreens.bouka.map((src, i) => (
+            <div class="rl-slide">
+              <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+              <img src={src} alt={`${bouka.name} — vue ${i + 1}`} width="700" height="420" loading={i === 0 ? "eager" : "lazy"} />
+            </div>
+          ))}
+        </div>
+        <div class="rl-dots" aria-hidden="true">
+          {projectScreens.bouka.map((_: string, i: number) => (
+            <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
+          ))}
+        </div>
+      </div>
+    </article>
+
+    <!-- Projet 2 — Training To Rise (inversé) -->
+    <article class="rl-item rl-item--reverse rl-reveal">
+      <div class="rl-info">
+        <span class="rl-num">02</span>
+        <p class="rl-sector">{training.sector}</p>
+        <h2 class="rl-name">{training.name}</h2>
+        <p class="rl-client">{training.client}</p>
+        <p class="rl-desc">{training.description}</p>
+        <ul class="rl-tags">
+          {training.tags.map((tag: string) => <li>{tag}</li>)}
+        </ul>
+        <div class="rl-kpi">
+          <span class="rl-kpi-val">{training.metric.value}</span>
+          <span class="rl-kpi-lbl">{training.metric.label}</span>
+        </div>
+      </div>
+
+      <div class="rl-carousel" data-carousel>
+        <div class="rl-carousel-track">
+          <div class="rl-slide">
+            <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+            <img src={projectScreens.training[0]} alt={`${training.name} — aperçu`} width="700" height="420" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Projet 3 — Erfolg -->
+    <article class="rl-item rl-reveal">
+      <div class="rl-info">
+        <span class="rl-num">03</span>
+        <p class="rl-sector">{erfolg.sector}</p>
+        <h2 class="rl-name">{erfolg.name}</h2>
+        <p class="rl-client">{erfolg.client}</p>
+        <p class="rl-desc">{erfolg.description}</p>
+        <ul class="rl-tags">
+          {erfolg.tags.map((tag: string) => <li>{tag}</li>)}
+        </ul>
+        <div class="rl-kpi">
+          <span class="rl-kpi-val">{erfolg.metric.value}</span>
+          <span class="rl-kpi-lbl">{erfolg.metric.label}</span>
+        </div>
+        {erfolg.url && (
+          <a href={erfolg.url} target="_blank" rel="noopener noreferrer" class="rl-link">
+            {r.visitLabel}
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        )}
+      </div>
+
+      <div class="rl-carousel" data-carousel>
+        <div class="rl-carousel-track">
+          <div class="rl-slide">
+            <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+            <img src={projectScreens.erfolg[0]} alt={`${erfolg.name} — aperçu`} width="700" height="420" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="rcta" aria-label="Contact">
+  <div class="rcta-img" aria-hidden="true"></div>
+  <div class="rcta-overlay" aria-hidden="true"></div>
+  <div class="container rcta-inner">
+    <p class="rcta-eyebrow">{r.ctaEyebrow}</p>
+    <h2 class="rcta-title">{r.ctaTitle}</h2>
+    <p class="rcta-sub">{r.ctaSub}</p>
+    <a href={`/${lang}/contact`} class="btn-hero">
+      {r.cta}
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+    </a>
+  </div>
+</section>
+
 <style>
-  /* ══ HERO ══ */
-  .real-hero {
-    padding: 5rem 0 3.5rem;
-    background: linear-gradient(160deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
-    border-bottom: 1px solid var(--color-border);
-  }
-  .real-hero-inner { max-width: 680px; }
-  .real-hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); margin: 0.75rem 0 1.25rem; line-height: 1.15; }
-  .real-hero-subtitle { font-size: 1.1rem; color: var(--color-text-secondary); line-height: 1.75; margin: 0; }
+/* ══ ANIMATIONS ══ */
+@keyframes rh-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.rh-anim {
+  opacity: 0;
+  animation: rh-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes rl-in {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.rl-reveal {
+  opacity: 0;
+  transition: none;
+}
+.rl-reveal.visible {
+  animation: rl-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
 
-  /* ══ PROJECTS ══ */
-  .real-projects { padding: 4rem 0 2rem; }
-  .real-projects .container { display: flex; flex-direction: column; gap: 5rem; }
+/* Ligne décorative animée sous le titre du projet */
+.rl-name {
+  position: relative;
+  display: inline-block;
+}
+.rl-name::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rl-reveal.visible .rl-name::after {
+  width: 100%;
+  transition-delay: 0.35s;
+}
 
-  .project-card {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 3.5rem;
-    align-items: center;
-  }
-  .project-card--reverse { direction: rtl; }
-  .project-card--reverse > * { direction: ltr; }
+/* ══ HERO ══ */
+.rh {
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 0 5rem;
+  color: #fff;
+}
+.rh-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/services/services-hero.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  z-index: 0;
+}
+.rh-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    rgba(2, 33, 121, 0.93) 0%,
+    rgba(2, 33, 121, 0.78) 55%,
+    rgba(164, 37, 147, 0.28) 100%
+  );
+}
+.rh-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+.rh-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 1.1rem;
+}
+.rh-title {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0 0 1.25rem;
+}
+.rh-sub {
+  font-size: clamp(0.97rem, 2vw, 1.1rem);
+  color: rgba(255,255,255,0.82);
+  line-height: 1.75;
+  margin: 0 0 2.5rem;
+}
+.rh-stats {
+  list-style: none;
+  display: flex;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  padding-top: 0;
+}
+.rh-stats li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1.5rem 2.5rem 0 0;
+  margin-right: 2.5rem;
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+.rh-stats li:last-child { border-right: none; margin-right: 0; }
+.rh-stat-val {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.rh-stat-lbl {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.62);
+}
 
-  /* Screenshot frame */
-  .project-visual { position: relative; }
-  .project-screen {
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    background: var(--color-bg-secondary);
-    box-shadow: 0 24px 56px rgba(2, 33, 121, 0.10), 0 4px 12px rgba(0,0,0,0.06);
-  }
-  .project-screen-bar {
-    height: 28px;
-    background: var(--color-bg-secondary);
-    border-bottom: 1px solid var(--color-border);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 0 10px;
-  }
-  .project-screen-bar span {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--color-border);
-  }
-  .project-screen-bar span:nth-child(1) { background: #ff5f57; }
-  .project-screen-bar span:nth-child(2) { background: #febc2e; }
-  .project-screen-bar span:nth-child(3) { background: #28c840; }
-  .project-screen img { width: 100%; height: auto; display: block; }
+/* ══ PROJETS ══ */
+.rl-projects {
+  padding: 5rem 0 2rem;
+}
+.rl-item {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 4.5rem;
+  align-items: start;
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.rl-item:first-child { padding-top: 0; }
+.rl-item:last-child { border-bottom: none; }
+.rl-item--reverse {
+  grid-template-columns: 1fr 380px;
+}
+.rl-item--reverse .rl-info { order: 2; }
+.rl-item--reverse .rl-carousel { order: 1; }
 
-  .project-visit-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: 1rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--color-accent);
-    text-decoration: none;
-    transition: gap 0.2s;
-  }
-  .project-visit-btn:hover { gap: 0.65rem; text-decoration: underline; }
+/* Info */
+.rl-num {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  opacity: 0.4;
+  margin-bottom: 1.25rem;
+}
+.rl-sector {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--color-accent);
+  margin-bottom: 0.6rem;
+}
+.rl-name {
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.35rem;
+  color: var(--color-text);
+}
+.rl-client {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.25rem;
+}
+.rl-desc {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+.rl-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1.75rem;
+}
+.rl-tags li {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.28rem 0.75rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-secondary);
+}
+.rl-kpi {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  padding: 0.9rem 1.25rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+.rl-kpi-val {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.rl-kpi-lbl {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+.rl-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 0.1rem;
+  transition: gap 0.2s;
+}
+.rl-link:hover { gap: 0.7rem; }
 
-  /* Info column */
-  .project-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-  }
-  .project-sector {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-  }
-  .project-metric {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-  .metric-value {
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--color-primary);
-    line-height: 1;
-  }
-  .metric-label {
-    font-size: 0.72rem;
-    color: var(--color-text-secondary);
-    margin-top: 0.1rem;
-  }
+/* Carousel */
+.rl-carousel {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  box-shadow: 0 12px 40px rgba(2,33,121,0.09);
+}
+.rl-carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+}
+.rl-carousel-track::-webkit-scrollbar { display: none; }
+.rl-carousel-track.dragging { cursor: grabbing; scroll-snap-type: none; }
+.rl-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+.rl-bar {
+  height: 26px;
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 10px;
+}
+.rl-bar span { width: 8px; height: 8px; border-radius: 50%; }
+.rl-bar span:nth-child(1) { background: #ff5f57; }
+.rl-bar span:nth-child(2) { background: #febc2e; }
+.rl-bar span:nth-child(3) { background: #28c840; }
+.rl-slide img { width: 100%; height: auto; display: block; }
+.rl-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 0.75rem 0;
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+}
+.rl-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-border);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+.rl-dot--active {
+  background: var(--color-accent);
+  transform: scale(1.4);
+}
 
-  .project-name {
-    font-size: 1.65rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
-    color: var(--color-text);
-  }
-  .project-client {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.88rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 1rem;
-  }
-  .project-client svg { flex-shrink: 0; opacity: 0.6; }
-  .project-description {
-    font-size: 0.97rem;
-    line-height: 1.75;
-    color: var(--color-text-secondary);
-    margin-bottom: 1.25rem;
-  }
+/* ══ CTA ══ */
+.rcta {
+  position: relative;
+  overflow: hidden;
+  padding: 5.5rem 0;
+  color: #fff;
+  margin-top: 1rem;
+}
+.rcta-img {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/cta/image-bloc.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.rcta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    rgba(2, 33, 121, 0.95) 0%,
+    rgba(2, 33, 121, 0.80) 60%,
+    rgba(164, 37, 147, 0.50) 100%
+  );
+  z-index: 1;
+}
+.rcta-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+}
+.rcta-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1rem;
+}
+.rcta-title {
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.rcta-sub {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 2.25rem;
+}
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.75rem;
+  border-radius: 50px;
+  background: #fff;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  white-space: nowrap;
+}
+.btn-hero:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,0.28); }
+.btn-hero svg { transition: transform 0.22s ease; }
+.btn-hero:hover svg { transform: translateX(4px); }
 
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    list-style: none;
-    margin-bottom: 1.75rem;
-  }
-  .project-tag {
-    font-size: 0.78rem;
-    font-weight: 600;
-    padding: 0.3rem 0.75rem;
-    border-radius: 20px;
-    border: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
-    background: var(--color-bg-secondary);
-  }
-
-  /* Challenge / Solution */
-  .project-details { display: flex; flex-direction: column; gap: 1rem; }
-  .detail-block {
-    display: flex;
-    gap: 0.85rem;
-    align-items: flex-start;
-    padding: 1rem 1.1rem;
-    border-radius: 10px;
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-  }
-  .detail-icon {
-    flex-shrink: 0;
-    width: 36px; height: 36px;
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .detail-icon--challenge { background: rgba(234, 88, 12, 0.08); color: #ea580c; }
-  .detail-icon--solution  { background: rgba(22, 163, 74, 0.08); color: #16a34a; }
-  .detail-label {
-    font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.06em; color: var(--color-text-secondary); margin-bottom: 0.25rem;
-  }
-  .detail-text { font-size: 0.88rem; color: var(--color-text-secondary); line-height: 1.65; margin: 0; }
-
-  /* Separator between projects */
-  .project-card + .project-card {
-    padding-top: 5rem;
-    border-top: 1px solid var(--color-border);
-  }
-
-  /* ══ CTA ══ */
-  .real-cta { padding: 3rem 0 4rem; }
-  .real-cta-inner {
-    position: relative;
-    text-align: center;
-    padding: 3.5rem 2rem;
-    border-radius: 20px;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    overflow: hidden;
-    color: #fff;
-  }
-  .real-cta-deco {
-    position: absolute;
-    width: 320px; height: 320px;
-    border-radius: 50%;
-    border: 60px solid rgba(255,255,255,0.06);
-    top: -100px; right: -80px;
-    pointer-events: none;
-  }
-  .real-cta-inner h2 { color: #fff; font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 1.75rem; position: relative; z-index: 1; }
-  .real-cta-inner .btn-primary { background: #fff; color: var(--color-primary); position: relative; z-index: 1; }
-  .real-cta-inner .btn-primary:hover { background: #f1f1f1; }
-
-  /* ══ RESPONSIVE ══ */
-  @media (max-width: 900px) {
-    .project-card { grid-template-columns: 1fr; gap: 2rem; }
-    .project-card--reverse { direction: ltr; }
-    .project-metric { align-items: flex-start; }
-    .project-meta { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-  }
-  @media (max-width: 600px) {
-    .real-hero { padding: 3.5rem 0 2.5rem; }
-    .real-projects .container { gap: 3.5rem; }
-    .project-card + .project-card { padding-top: 3.5rem; }
-    .project-name { font-size: 1.35rem; }
-  }
+/* ══ RESPONSIVE ══ */
+@media (max-width: 900px) {
+  .rl-item { grid-template-columns: 1fr; gap: 2.5rem; }
+  .rl-item--reverse .rl-info { order: 1; }
+  .rl-item--reverse .rl-carousel { order: 2; }
+}
+@media (max-width: 600px) {
+  .rh { padding: 4rem 0 3.5rem; }
+  .rh-bg { background-position: 70% center; }
+  .rh-stats { flex-wrap: wrap; gap: 0; }
+  .rh-stats li { padding: 1.25rem 1.5rem 0 0; margin-right: 1.5rem; }
+  .rcta { padding: 4rem 0; }
+}
 </style>
+
+<script is:inline>
+(function () {
+
+  /* ── Carousels ── */
+  document.querySelectorAll("[data-carousel]").forEach(function (carousel) {
+    var track = carousel.querySelector(".rl-carousel-track");
+    var dots = carousel.querySelectorAll(".rl-dot");
+    if (!track) return;
+
+    track.addEventListener("scroll", function () {
+      var idx = Math.round(track.scrollLeft / track.offsetWidth);
+      dots.forEach(function (d, i) { d.classList.toggle("rl-dot--active", i === idx); });
+    }, { passive: true });
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener("click", function () {
+        track.scrollTo({ left: i * track.offsetWidth, behavior: "smooth" });
+      });
+    });
+
+    var startX = 0, startScroll = 0, dragging = false;
+    track.addEventListener("mousedown", function (e) {
+      dragging = true; startX = e.pageX; startScroll = track.scrollLeft;
+      track.classList.add("dragging");
+    });
+    window.addEventListener("mousemove", function (e) {
+      if (!dragging) return;
+      track.scrollLeft = startScroll - (e.pageX - startX);
+    });
+    window.addEventListener("mouseup", function () {
+      if (!dragging) return;
+      dragging = false; track.classList.remove("dragging");
+      var idx = Math.round(track.scrollLeft / track.offsetWidth);
+      track.scrollTo({ left: idx * track.offsetWidth, behavior: "smooth" });
+    });
+  });
+
+  /* ── Compteurs stats hero ── */
+  function animateCount(el, target, duration) {
+    var start = null;
+    var formatted = target >= 1000;
+    function step(ts) {
+      if (!start) start = ts;
+      var prog = Math.min((ts - start) / duration, 1);
+      var ease = 1 - Math.pow(1 - prog, 3);
+      var val = Math.round(ease * target);
+      el.textContent = formatted
+        ? val.toLocaleString("fr-FR").replace(/\s/g, " ")
+        : String(val);
+      if (prog < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var statsObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll("[data-count]").forEach(function (el) {
+        var target = parseInt(el.getAttribute("data-count"), 10);
+        animateCount(el, target, 1200);
+      });
+      statsObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+
+  var statsList = document.querySelector(".rh-stats");
+  if (statsList) statsObserver.observe(statsList);
+
+  /* ── Scroll reveal projets ── */
+  var revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("visible");
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".rl-reveal").forEach(function (el) {
+    revealObserver.observe(el);
+  });
+
+})();
+</script>

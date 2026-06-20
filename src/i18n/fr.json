@@ -19,10 +19,22 @@
     "comingSoon": "Lien bientôt disponible",
     "partnersTitle": "Ils nous font confiance",
     "metrics": [
-      { "value": "2024", "label": "Année de création" },
-      { "value": "5", "label": "Experts dédiés" },
-      { "value": "42 000", "label": "Jeunes visés (programme en cours)" },
-      { "value": "100%", "label": "Support en français et anglais" }
+      {
+        "value": "2024",
+        "label": "Année de création"
+      },
+      {
+        "value": "5",
+        "label": "Experts dédiés"
+      },
+      {
+        "value": "42 000",
+        "label": "Jeunes visés (programme en cours)"
+      },
+      {
+        "value": "100%",
+        "label": "Support en français et anglais"
+      }
     ],
     "platforms": [
       {
@@ -45,12 +57,30 @@
       }
     ],
     "partners": [
-      { "name": "Boukarou", "logo": "/images/partners/boukarou-logo.jpeg" },
-      { "name": "Cabinet Audit & Conseil MAXIMMACS", "logo": "/images/partners/maximmacs-logo.png" },
-      { "name": "Centres de formation en allemand", "logo": "/images/partners/centres-allemand-logo.jpg" },
-      { "name": "Erfolg Zentrum", "logo": "/images/partners/erfolg-zentrum-logo.png" },
-      { "name": "Institut Français", "logo": "/images/partners/institut-francais-logo.png" },
-      { "name": "Lasalle", "logo": "/images/partners/lasalle-logo.png" }
+      {
+        "name": "Boukarou",
+        "logo": "/images/partners/boukarou-logo.jpeg"
+      },
+      {
+        "name": "Cabinet Audit & Conseil MAXIMMACS",
+        "logo": "/images/partners/maximmacs-logo.png"
+      },
+      {
+        "name": "Centres de formation en allemand",
+        "logo": "/images/partners/centres-allemand-logo.jpg"
+      },
+      {
+        "name": "Erfolg Zentrum",
+        "logo": "/images/partners/erfolg-zentrum-logo.png"
+      },
+      {
+        "name": "Institut Français",
+        "logo": "/images/partners/institut-francais-logo.png"
+      },
+      {
+        "name": "Lasalle",
+        "logo": "/images/partners/lasalle-logo.png"
+      }
     ]
   },
   "about": {
@@ -58,15 +88,40 @@
     "intro": "Fondée en 2024 à Douala, ThinkTech Solutions est née d'une conviction simple : la qualité de la formation est l'un des leviers les plus puissants pour bâtir une nation meilleure. Notre équipe de 5 experts accompagne aujourd'hui des universités, entreprises, ONG et centres de formation à travers le Cameroun et l'Afrique centrale dans la création de plateformes e-learning performantes, sécurisées et adaptées aux réalités du terrain.",
     "intro2": "Sous l'impulsion de son fondateur Ignace MBOM ELOUGA, ThinkTech Solutions place l'accessibilité et l'accompagnement humain au cœur de chaque projet de transformation digitale.",
     "teamImageAlt": "Équipe ThinkTech Solutions",
-    "mission": { "title": "Mission", "text": "Rendre la formation accessible à tous et pour tous." },
-    "visionMid": { "title": "Vision (moyen terme)", "text": "Familiariser durablement les jeunes africains à l'apprentissage grâce au numérique." },
-    "visionLong": { "title": "Vision (long terme)", "text": "Former une génération compétente et outillée pour relever les défis contemporains." },
+    "mission": {
+      "title": "Mission",
+      "text": "Rendre la formation accessible à tous et pour tous."
+    },
+    "visionMid": {
+      "title": "Vision (moyen terme)",
+      "text": "Familiariser durablement les jeunes africains à l'apprentissage grâce au numérique."
+    },
+    "visionLong": {
+      "title": "Vision (long terme)",
+      "text": "Former une génération compétente et outillée pour relever les défis contemporains."
+    },
     "valuesTitle": "Nos valeurs",
     "values": [
-      { "icon": "lightbulb", "title": "Innovation", "text": "Nous explorons sans cesse de nouvelles façons de rendre la formation plus engageante et plus efficace." },
-      { "icon": "handshake", "title": "Proximité", "text": "Nous restons à l'écoute de chaque organisation, avec un accompagnement humain à chaque étape." },
-      { "icon": "shield", "title": "Sécurité", "text": "Vos données et celles de vos apprenants sont protégées selon les meilleurs standards." },
-      { "icon": "award", "title": "Excellence", "text": "Nous visons la qualité dans chaque déploiement, chaque ligne de code, chaque interaction." }
+      {
+        "icon": "lightbulb",
+        "title": "Innovation",
+        "text": "Nous explorons sans cesse de nouvelles façons de rendre la formation plus engageante et plus efficace."
+      },
+      {
+        "icon": "handshake",
+        "title": "Proximité",
+        "text": "Nous restons à l'écoute de chaque organisation, avec un accompagnement humain à chaque étape."
+      },
+      {
+        "icon": "shield",
+        "title": "Sécurité",
+        "text": "Vos données et celles de vos apprenants sont protégées selon les meilleurs standards."
+      },
+      {
+        "icon": "award",
+        "title": "Excellence",
+        "text": "Nous visons la qualité dans chaque déploiement, chaque ligne de code, chaque interaction."
+      }
     ]
   },
   "services": {
@@ -74,12 +129,66 @@
     "title": "Notre expertise Moodle, à votre service",
     "subtitle": "De la conception au support quotidien, nous prenons en charge l'ensemble du cycle de vie de votre plateforme de formation.",
     "cards": [
-      { "icon": "rocket", "title": "Déploiement de plateformes Moodle", "benefit": "Une plateforme opérationnelle rapidement, configurée selon vos besoins.", "points": ["Installation et configuration sur mesure", "Structuration des espaces de cours", "Mise en ligne accompagnée"] },
-      { "icon": "server", "title": "Hébergement sécurisé", "benefit": "Une disponibilité constante et des données protégées.", "points": ["Hébergement performant et surveillé", "Sauvegardes régulières", "Certificat HTTPS"] },
-      { "icon": "palette", "title": "Personnalisation graphique et fonctionnelle", "benefit": "Une plateforme qui porte votre image.", "points": ["Habillage selon votre charte graphique", "Ajout de fonctionnalités spécifiques", "Parcours pédagogiques adaptés"] },
-      { "icon": "plug", "title": "Intégration de systèmes tiers", "benefit": "Une plateforme connectée à vos outils existants.", "points": ["Connexion à vos outils RH ou de paiement", "Synchronisation des annuaires utilisateurs", "API et intégrations sur mesure"] },
-      { "icon": "graduation-cap", "title": "Formation des administrateurs et formateurs", "benefit": "Une équipe autonome sur la durée.", "points": ["Prise en main guidée de l'interface", "Bonnes pratiques pédagogiques en ligne", "Support documentaire fourni"] },
-      { "icon": "headset", "title": "Support technique et maintenance", "benefit": "Une tranquillité d'esprit durable.", "points": ["Assistance technique continue", "Mises à jour de sécurité", "Suivi proactif des performances"] }
+      {
+        "icon": "rocket",
+        "title": "Déploiement de plateformes Moodle",
+        "benefit": "Une plateforme opérationnelle rapidement, configurée selon vos besoins.",
+        "points": [
+          "Installation et configuration sur mesure",
+          "Structuration des espaces de cours",
+          "Mise en ligne accompagnée"
+        ]
+      },
+      {
+        "icon": "server",
+        "title": "Hébergement sécurisé",
+        "benefit": "Une disponibilité constante et des données protégées.",
+        "points": [
+          "Hébergement performant et surveillé",
+          "Sauvegardes régulières",
+          "Certificat HTTPS"
+        ]
+      },
+      {
+        "icon": "palette",
+        "title": "Personnalisation graphique et fonctionnelle",
+        "benefit": "Une plateforme qui porte votre image.",
+        "points": [
+          "Habillage selon votre charte graphique",
+          "Ajout de fonctionnalités spécifiques",
+          "Parcours pédagogiques adaptés"
+        ]
+      },
+      {
+        "icon": "plug",
+        "title": "Intégration de systèmes tiers",
+        "benefit": "Une plateforme connectée à vos outils existants.",
+        "points": [
+          "Connexion à vos outils RH ou de paiement",
+          "Synchronisation des annuaires utilisateurs",
+          "API et intégrations sur mesure"
+        ]
+      },
+      {
+        "icon": "graduation-cap",
+        "title": "Formation des administrateurs et formateurs",
+        "benefit": "Une équipe autonome sur la durée.",
+        "points": [
+          "Prise en main guidée de l'interface",
+          "Bonnes pratiques pédagogiques en ligne",
+          "Support documentaire fourni"
+        ]
+      },
+      {
+        "icon": "headset",
+        "title": "Support technique et maintenance",
+        "benefit": "Une tranquillité d'esprit durable.",
+        "points": [
+          "Assistance technique continue",
+          "Mises à jour de sécurité",
+          "Suivi proactif des performances"
+        ]
+      }
     ],
     "whyTitle": "Pourquoi choisir ThinkTech Solutions ?",
     "whySubtitle": "Beaucoup d'organisations en Afrique centrale connaissent Moodle. La difficulté, c'est de le configurer correctement, de le faire tenir à l'échelle, et de l'adapter à vos apprenants. C'est exactement ce que nous faisons.",
@@ -118,10 +227,22 @@
     ],
     "processTitle": "Notre processus en 4 étapes",
     "process": [
-      { "title": "Analyse des besoins", "text": "Nous échangeons avec vous pour comprendre vos objectifs et contraintes." },
-      { "title": "Déploiement", "text": "Nous configurons et mettons en ligne votre plateforme." },
-      { "title": "Formation", "text": "Nous formons vos administrateurs et formateurs." },
-      { "title": "Accompagnement continu", "text": "Nous restons disponibles pour le support et les évolutions." }
+      {
+        "title": "Analyse des besoins",
+        "text": "Nous échangeons avec vous pour comprendre vos objectifs et contraintes."
+      },
+      {
+        "title": "Déploiement",
+        "text": "Nous configurons et mettons en ligne votre plateforme."
+      },
+      {
+        "title": "Formation",
+        "text": "Nous formons vos administrateurs et formateurs."
+      },
+      {
+        "title": "Accompagnement continu",
+        "text": "Nous restons disponibles pour le support et les évolutions."
+      }
     ],
     "cta": "Demander une démo"
   },
@@ -136,7 +257,14 @@
       "email": "Adresse e-mail",
       "phone": "Numéro de téléphone",
       "orgType": "Type d'organisation",
-      "orgTypeOptions": ["Université / Établissement scolaire", "Centre de formation", "Entreprise", "ONG", "Institution publique", "Autre"],
+      "orgTypeOptions": [
+        "Université / Établissement scolaire",
+        "Centre de formation",
+        "Entreprise",
+        "ONG",
+        "Institution publique",
+        "Autre"
+      ],
       "need": "Besoin exprimé",
       "needPlaceholder": "Décrivez votre projet : nombre d'apprenants estimé, type de formations, délai souhaité...",
       "submit": "Réserver une démonstration",
@@ -150,13 +278,34 @@
   "faq": {
     "title": "Questions fréquentes",
     "items": [
-      { "q": "Combien de temps faut-il pour déployer une plateforme Moodle ?", "a": "Comptez généralement entre 2 et 6 semaines, selon la complexité de votre projet et le niveau de personnalisation souhaité. Nous démarrons toujours par une analyse de vos besoins pour vous donner un calendrier précis avant de nous engager sur quoi que ce soit." },
-      { "q": "Quel est le coût d'une plateforme Moodle sur mesure ?", "a": "Le tarif dépend du nombre d'apprenants visés, des fonctionnalités souhaitées et du niveau d'accompagnement. Plutôt que des forfaits standardisés, nous établissons un devis adapté à votre réalité après un premier échange gratuit, sans engagement de votre part." },
-      { "q": "La plateforme fonctionne-t-elle bien avec une connexion internet limitée ?", "a": "Oui, c'est l'un de nos points forts : chaque plateforme est conçue mobile-first et optimisée pour une faible consommation de données, pensée pour les réalités de connexion en Afrique, y compris en zones rurales." },
-      { "q": "Pouvez-vous intégrer nos outils existants (paiement, RH, visioconférence) ?", "a": "Oui. Nous connectons votre plateforme à vos outils déjà en place via des API ou des intégrations sur mesure, pour éviter les doubles saisies et fluidifier vos processus internes." },
-      { "q": "Formez-vous nos équipes à l'utilisation de la plateforme ?", "a": "Systématiquement. Chaque déploiement inclut une prise en main guidée pour vos administrateurs et formateurs, accompagnée d'une documentation claire, pour que votre équipe soit autonome dès le lancement." },
-      { "q": "Que se passe-t-il après la mise en ligne ? Proposez-vous un support continu ?", "a": "Oui, notre accompagnement ne s'arrête pas à la mise en ligne. Nous restons disponibles pour le support technique, les mises à jour de sécurité et les évolutions futures de votre plateforme." },
-      { "q": "Comment garantissez-vous la sécurité de nos données et de celles de nos apprenants ?", "a": "Hébergement surveillé, certificat HTTPS, sauvegardes régulières et testées, et gestion stricte des rôles et accès : la sécurité est intégrée dès la conception de chaque plateforme, pas ajoutée après coup." }
+      {
+        "q": "Combien de temps faut-il pour déployer une plateforme Moodle ?",
+        "a": "Comptez généralement entre 2 et 6 semaines, selon la complexité de votre projet et le niveau de personnalisation souhaité. Nous démarrons toujours par une analyse de vos besoins pour vous donner un calendrier précis avant de nous engager sur quoi que ce soit."
+      },
+      {
+        "q": "Quel est le coût d'une plateforme Moodle sur mesure ?",
+        "a": "Le tarif dépend du nombre d'apprenants visés, des fonctionnalités souhaitées et du niveau d'accompagnement. Plutôt que des forfaits standardisés, nous établissons un devis adapté à votre réalité après un premier échange gratuit, sans engagement de votre part."
+      },
+      {
+        "q": "La plateforme fonctionne-t-elle bien avec une connexion internet limitée ?",
+        "a": "Oui, c'est l'un de nos points forts : chaque plateforme est conçue mobile-first et optimisée pour une faible consommation de données, pensée pour les réalités de connexion en Afrique, y compris en zones rurales."
+      },
+      {
+        "q": "Pouvez-vous intégrer nos outils existants (paiement, RH, visioconférence) ?",
+        "a": "Oui. Nous connectons votre plateforme à vos outils déjà en place via des API ou des intégrations sur mesure, pour éviter les doubles saisies et fluidifier vos processus internes."
+      },
+      {
+        "q": "Formez-vous nos équipes à l'utilisation de la plateforme ?",
+        "a": "Systématiquement. Chaque déploiement inclut une prise en main guidée pour vos administrateurs et formateurs, accompagnée d'une documentation claire, pour que votre équipe soit autonome dès le lancement."
+      },
+      {
+        "q": "Que se passe-t-il après la mise en ligne ? Proposez-vous un support continu ?",
+        "a": "Oui, notre accompagnement ne s'arrête pas à la mise en ligne. Nous restons disponibles pour le support technique, les mises à jour de sécurité et les évolutions futures de votre plateforme."
+      },
+      {
+        "q": "Comment garantissez-vous la sécurité de nos données et de celles de nos apprenants ?",
+        "a": "Hébergement surveillé, certificat HTTPS, sauvegardes régulières et testées, et gestion stricte des rôles et accès : la sécurité est intégrée dès la conception de chaque plateforme, pas ajoutée après coup."
+      }
     ],
     "ctaText": "Une autre question ?",
     "cta": "Demander une démo"
@@ -175,8 +324,15 @@
         "name": "Bouka Creativ' Learning",
         "client": "Boukarou — Incubateur",
         "sector": "Inclusion numérique",
-        "metric": { "value": "42 000", "label": "jeunes ciblés" },
-        "tags": ["Moodle", "Mobile-first", "Formation jeunesse"],
+        "metric": {
+          "value": "42 000",
+          "label": "jeunes ciblés"
+        },
+        "tags": [
+          "Moodle",
+          "Mobile-first",
+          "Formation jeunesse"
+        ],
         "description": "En partenariat avec l'incubateur Boukarou, nous avons conçu et déployé cette plateforme pour accompagner la montée en compétences de 42 000 jeunes à travers les 10 régions du Cameroun.",
         "challenge": "Créer une plateforme accessible en zone rurale et semi-urbaine, optimisée pour les smartphones d'entrée de gamme et capable d'absorber des milliers d'inscriptions simultanées.",
         "solution": "Architecture légère, contenus optimisés pour faible débit, UX simplifiée pensée pour des apprenants sans expérience préalable du e-learning.",
@@ -187,8 +343,15 @@
         "name": "Training To Rise",
         "client": "MAXIMMACS — Cabinet d'audit & conseil",
         "sector": "Formation professionnelle certifiante",
-        "metric": { "value": "5", "label": "domaines certifiants" },
-        "tags": ["LMS", "Certifications", "Finance & Audit"],
+        "metric": {
+          "value": "5",
+          "label": "domaines certifiants"
+        },
+        "tags": [
+          "LMS",
+          "Certifications",
+          "Finance & Audit"
+        ],
         "description": "En collaboration avec le cabinet MAXIMMACS, nous avons déployé un LMS dédié aux formations certifiantes en management, fiscalité, audit, comptabilité et intelligence artificielle.",
         "challenge": "Digitaliser un catalogue de formations certifiantes dans des domaines techniques exigeants, tout en préservant la rigueur et la crédibilité du cabinet.",
         "solution": "Parcours pédagogiques structurés par domaine, gestion fine des certifications et des accès, interface professionnelle alignée sur l'identité visuelle du cabinet.",
@@ -199,15 +362,48 @@
         "name": "Erfolg Zentrum Online",
         "client": "Erfolg Zentrum — Centre de formation (Allemagne)",
         "sector": "Formation en langue allemande",
-        "metric": { "value": "100%", "label": "opérationnel dès J+1" },
-        "tags": ["Moodle", "International", "Clé en main"],
+        "metric": {
+          "value": "100%",
+          "label": "opérationnel dès J+1"
+        },
+        "tags": [
+          "Moodle",
+          "International",
+          "Clé en main"
+        ],
         "description": "Nous avons conçu et mis en service cette plateforme pour un centre de formation basé en Allemagne, entièrement opérationnelle et prête à accueillir les apprenants dès le premier jour.",
         "challenge": "Livrer une solution complète et clé en main pour un client international, avec des standards de qualité élevés et un accompagnement entièrement à distance.",
         "solution": "Déploiement structuré, configuration complète des espaces de cours, formation des administrateurs à distance et documentation fournie dès la livraison.",
         "image": "/images/platforms/plateforme-allemand-home.png",
         "url": "https://test.thinktech-academy.com/"
       }
-    ]
+    ],
+    "statProjects": "plateformes déployées",
+    "statLearners": "apprenants ciblés",
+    "statCountries": "pays",
+    "ctaSub": "Chaque projet commence par une conversation. Dites-nous ce que vous souhaitez construire.",
+    "approachIntro": "Notre méthode, en trois temps.",
+    "approachSteps": [
+      {
+        "num": "01",
+        "title": "Comprendre",
+        "text": "On prend le temps d'analyser votre contexte, vos apprenants et vos contraintes techniques avant d'écrire la moindre ligne de code."
+      },
+      {
+        "num": "02",
+        "title": "Construire",
+        "text": "Déploiement, configuration, identité visuelle, contenus de démonstration — on livre une plateforme prête à l'emploi, pas un squelette."
+      },
+      {
+        "num": "03",
+        "title": "Accompagner",
+        "text": "Formation des administrateurs, documentation, support post-lancement. On reste présents bien après la mise en ligne."
+      }
+    ],
+    "heroTitle": "Nos réalisations",
+    "heroSub": "Chaque projet livré est une plateforme qui tourne, des apprenants qui progressent, et un client qui nous fait confiance pour la suite.",
+    "ctaEyebrow": "Travaillons ensemble",
+    "statHours": "heures de formation"
   },
   "footer": {
     "tagline": "Basés à Douala, nous concevons et déployons des plateformes e-learning Moodle pour les universités, entreprises et ONG au Cameroun et en Afrique centrale.",
@@ -218,5 +414,8 @@
     "privacy": "Politique de confidentialité",
     "copyright": "© 2026 ThinkTech Solutions SARL. Tous droits réservés."
   },
-  "theme": { "toggleLight": "Activer le mode clair", "toggleDark": "Activer le mode sombre" }
+  "theme": {
+    "toggleLight": "Activer le mode clair",
+    "toggleDark": "Activer le mode sombre"
+  }
 }
