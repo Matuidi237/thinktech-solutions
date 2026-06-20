@@ -16,9 +16,18 @@ const projectScreens: Record<string, string[]> = {
   ],
   "training": [
     "/images/platforms/training-to-rise-home.png",
+    "/images/platforms/training-to-rise-courses.png",
+    "/images/platforms/training-to-rise-course1.png",
   ],
   "erfolg": [
-    "/images/platforms/plateforme-allemand-home.png",
+    "/images/platforms/Erfolg1.png",
+    "/images/platforms/Erfolg2.png",
+    "/images/platforms/Erfolg3.png",
+    "/images/platforms/Erfolg4.png",
+    "/images/platforms/Erfolg5.png",
+    "/images/platforms/Erfolg6.png",
+    "/images/platforms/Erfolg7.png",
+    "/images/platforms/Erfolg8.png",
   ],
 };
 ---
@@ -129,18 +138,34 @@ const projectScreens: Record<string, string[]> = {
 
       <div class="rl-carousel" data-carousel data-project={training.name}>
         <div class="rl-carousel-track">
-          <div class="rl-slide">
-            <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-            <button class="rl-zoom-btn" data-src={projectScreens.training[0]} data-idx="0" aria-label="Agrandir l'image">
-              <img src={projectScreens.training[0]} alt={`${training.name} — aperçu`} width="700" height="420" loading="lazy" />
-              <span class="rl-zoom-hint" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-              </span>
-            </button>
-          </div>
+          {projectScreens.training.map((src, i) => (
+            <div class="rl-slide">
+              <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+              <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
+                <img src={src} alt={`${training.name} — vue ${i + 1}`} width="700" height="420" loading={i === 0 ? "eager" : "lazy"} />
+                <span class="rl-zoom-hint" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+                </span>
+              </button>
+            </div>
+          ))}
         </div>
         <div class="rl-carousel-footer">
-          <div class="rl-dots" aria-hidden="true"></div>
+          <div class="rl-dots" aria-hidden="true">
+            {projectScreens.training.map((_: string, i: number) => (
+              <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
+            ))}
+          </div>
+          {projectScreens.training.length > 1 && (
+            <div class="rl-arrows">
+              <button class="rl-arrow rl-arrow--prev" aria-label="Image précédente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button class="rl-arrow rl-arrow--next" aria-label="Image suivante">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </article>
@@ -170,18 +195,34 @@ const projectScreens: Record<string, string[]> = {
 
       <div class="rl-carousel" data-carousel data-project={erfolg.name}>
         <div class="rl-carousel-track">
-          <div class="rl-slide">
-            <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-            <button class="rl-zoom-btn" data-src={projectScreens.erfolg[0]} data-idx="0" aria-label="Agrandir l'image">
-              <img src={projectScreens.erfolg[0]} alt={`${erfolg.name} — aperçu`} width="700" height="420" loading="lazy" />
-              <span class="rl-zoom-hint" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-              </span>
-            </button>
-          </div>
+          {projectScreens.erfolg.map((src, i) => (
+            <div class="rl-slide">
+              <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+              <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
+                <img src={src} alt={`${erfolg.name} — vue ${i + 1}`} width="700" height="420" loading={i === 0 ? "eager" : "lazy"} />
+                <span class="rl-zoom-hint" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+                </span>
+              </button>
+            </div>
+          ))}
         </div>
         <div class="rl-carousel-footer">
-          <div class="rl-dots" aria-hidden="true"></div>
+          <div class="rl-dots" aria-hidden="true">
+            {projectScreens.erfolg.map((_: string, i: number) => (
+              <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
+            ))}
+          </div>
+          {projectScreens.erfolg.length > 1 && (
+            <div class="rl-arrows">
+              <button class="rl-arrow rl-arrow--prev" aria-label="Image précédente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button class="rl-arrow rl-arrow--next" aria-label="Image suivante">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </article>
@@ -275,7 +316,7 @@ const projectScreens: Record<string, string[]> = {
 .rh-bg {
   position: absolute;
   inset: 0;
-  background-image: url('/images/services/services-hero.jpg');
+  background-image: url('/images/hero/Testimony%203.jpg');
   background-size: cover;
   background-position: center 30%;
   z-index: 0;
@@ -674,7 +715,7 @@ const projectScreens: Record<string, string[]> = {
 .rcta-img {
   position: absolute;
   inset: 0;
-  background-image: url('/images/cta/image-bloc.jpg');
+  background-image: url('/images/hero/Testimony%201.jpg');
   background-size: cover;
   background-position: center;
   z-index: 0;
@@ -694,6 +735,8 @@ const projectScreens: Record<string, string[]> = {
   position: relative;
   z-index: 2;
   max-width: 640px;
+  margin-left: 0;
+  text-align: left;
 }
 .rcta-eyebrow {
   font-size: 0.75rem;
