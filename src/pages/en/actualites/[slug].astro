@@ -76,7 +76,7 @@ const cover = article.data.image ? `background-image:url(${article.data.image})`
     padding: 5rem 0 3.5rem;
     color: #fff;
   }
-  .article-hero::before { content: ""; position: absolute; inset: 0; background: rgba(11, 14, 46, 0.35); }
+  .article-hero::before { content: ""; position: absolute; inset: 0; background: rgba(11, 14, 46, 0.55); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
   .article-hero-inner { position: relative; z-index: 1; max-width: 720px; }
   .article-hero h1 { color: #fff; margin: 0.75rem 0 0.5rem; }
   .article-hero time { color: rgba(255, 255, 255, 0.85); font-size: 0.9rem; }
