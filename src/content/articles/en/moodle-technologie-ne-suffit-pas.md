@@ -4,7 +4,7 @@ description: "Installing Moodle is not enough. Without the right architecture, p
 publishDate: 2026-06-25
 lang: en
 category: "Tips"
-image: "/images/actualites/moodle-technologie-ne-suffit-pas.png"
+image: "/images/actualites/moodle-image.webp"
 ---
 
 E-learning is no longer optional — it's a necessity. Among all the solutions available, Moodle naturally stands out as the global standard: robust, open-source and highly customisable. Yet many institutions and companies find themselves hitting a wall after the initial installation.
@@ -31,7 +31,5 @@ Technology is a lever, not an end in itself. We train your teams to take ownersh
 ## A Local Partner by Your Side
 
 You no longer need to search for experts on the other side of the world. ThinkTech Solutions is your local partner. We understand the realities on the ground and have built a comprehensive service offering — from consulting to maintenance — to unlock the full potential of your Moodle project.
-
----
 
 Do you have an e-learning project waiting to be launched, or a Moodle instance that isn't meeting your expectations? Don't let technical constraints hold back your educational ambitions. [Let's talk](/en/contact) about how we can turn your platform into a genuine engine for success.
