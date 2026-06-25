@@ -20,7 +20,7 @@ Le véritable défi n'est pas technique au sens strict : il est **opérationnel*
 Chez ThinkTech Solutions, nous ne nous contentons pas de déployer des instances. Nous bâtissons des **écosystèmes d'apprentissage durables**. Notre approche repose sur trois piliers fondamentaux :
 
 **1. Le déploiement optimisé**
-Nous configurons Moodle en tenant compte de vos contraintes locales — connectivité, infrastructures, profils d'apprenants — pour garantir une expérience utilisateur fluide, même en mobilité.
+Nous configurons Moodle en tenant compte de vos contraintes locales (connectivité, infrastructures, profils d'apprenants) pour garantir une expérience utilisateur fluide, même en mobilité.
 
 **2. La maintenance et la pérennité**
 Nous assurons le suivi technique pour que votre plateforme évolue avec vos besoins. Votre LMS n'est pas une dépense ponctuelle, c'est un actif qui doit performer sur le long terme.
@@ -30,6 +30,6 @@ La technologie est un levier, pas une fin. Nous formons vos équipes pour qu'ell
 
 ## Un acteur local à vos côtés
 
-Vous n'avez plus besoin de chercher des experts à l'autre bout du monde. ThinkTech Solutions est votre partenaire de proximité. Nous connaissons les réalités du terrain et nous avons conçu une offre de services complète — du conseil à la maintenance — pour libérer le potentiel de votre projet Moodle.
+Vous n'avez plus besoin de chercher des experts à l'autre bout du monde. ThinkTech Solutions est votre partenaire de proximité. Nous connaissons les réalités du terrain et nous avons conçu une offre de services complète, du conseil à la maintenance, pour libérer le potentiel de votre projet Moodle.
 
 Vous avez un projet e-learning en attente ou une instance Moodle qui ne répond pas à vos attentes ? Ne laissez pas les contraintes techniques freiner votre ambition pédagogique. [Discutons ensemble](/fr/contact) de la manière dont nous pouvons transformer votre plateforme en un véritable moteur de réussite.
