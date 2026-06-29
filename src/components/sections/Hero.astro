@@ -11,7 +11,7 @@ const t = useTranslations(lang);
   <div class="hero-fullbg">
     <img src="/images/hero/hero-accueil.jpg" alt={t.hero.heroImageAlt} loading="eager" width="1440" height="810" class="hero-bg-img" />
     <div class="hero-overlay" aria-hidden="true"></div>
-    <div class="container hero-top">
+    <div class="hero-top">
       <div class="hero-text reveal">
         <h1 id="hero-title">{t.hero.title}</h1>
         <p class="hero-subtitle">{t.hero.subtitle}</p>
@@ -101,8 +101,7 @@ const t = useTranslations(lang);
   .hero-top {
     position: relative;
     z-index: 2;
-    padding-top: 8rem;
-    padding-bottom: 5rem;
+    padding: 8rem 2rem 5rem 1.5rem;
   }
   .hero-text { max-width: 42%; }
   .hero-text h1 { color: #fff; margin-bottom: 1.5rem; font-size: clamp(2.4rem, 4.5vw, 4rem); line-height: 1.05; }

@@ -19,7 +19,7 @@ const navItems = [
 ---
 
 <header class="site-header" role="banner">
-  <nav class="navbar container" aria-label="Navigation principale">
+  <nav class="navbar" aria-label="Navigation principale">
     <a href={`/${lang}/`} class="logo" aria-label="ThinkTech Solutions, retour à l'accueil">
       <img src="/logo.svg" alt="ThinkTech Solutions" width="44" height="44" />
       <span class="wordmark">ThinkTech<span class="wordmark-accent">Solutions</span></span>
@@ -45,7 +45,7 @@ const navItems = [
 </header>
 
 <style>
-  .navbar { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem 1rem 0.5rem; gap: 1.5rem; }
+  .navbar { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem 1rem 1.5rem; gap: 1.5rem; max-width: 100%; }
 
   .logo { display: flex; align-items: center; gap: 0.65rem; flex-shrink: 0; }
   .logo img { width: 60px; height: 60px; }
