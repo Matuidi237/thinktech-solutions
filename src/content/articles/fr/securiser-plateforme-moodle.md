@@ -4,7 +4,7 @@ description: "HTTPS, sauvegardes, gestion des accès : les bonnes pratiques esse
 publishDate: 2026-06-09
 lang: fr
 category: "Sécurité"
-image: "/images/actualites/securiser-plateforme-moodle.jpg"
+image: "/images/actualites/securiser-plateforme-moodle.webp"
 ---
 
 La sécurité d'une plateforme de formation en ligne est souvent perçue comme un sujet réservé aux grandes structures disposant d'une équipe IT dédiée. En réalité, l'essentiel des bonnes pratiques est accessible à toute organisation, à condition de structurer la démarche. Voici les fondamentaux que nous mettons en place sur chaque plateforme Moodle que nous déployons.

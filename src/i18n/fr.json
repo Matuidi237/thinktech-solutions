@@ -40,66 +40,66 @@
       {
         "name": "Bouka Creativ' Learning",
         "description": "En partenariat avec l'incubateur Boukarou, nous avons conçu cette plateforme pour accompagner la montée en compétences de 42 000 jeunes à travers les 10 régions du Cameroun, favorisant ainsi l'inclusion numérique et l'accès à une formation de qualité.",
-        "image": "/images/platforms/bouka-creativ-home.png",
+        "image": "/images/platforms/bouka-creativ-home.webp",
         "url": "https://boukacreativ-learning.com/"
       },
       {
         "name": "Training To Rise",
         "description": "En collaboration avec ThinkTech Academy, nous avons déployé un LMS dédié aux formations certifiantes. Cette solution structure et digitalise l'apprentissage dans des domaines stratégiques tels que le management, la fiscalité, l'audit, la comptabilité et l'intelligence artificielle.",
-        "image": "/images/platforms/training-to-rise-home.png",
+        "image": "/images/platforms/training-to-rise-home.webp",
         "url": null
       },
       {
         "name": "Erfolg Zentrum Online",
         "description": "Nous avons conçu et mis en service cette plateforme pour un centre de formation basé en Allemagne. Entièrement opérationnelle, elle offre une expérience d'apprentissage fluide et intuitive, prête à accueillir les apprenants dès leur première connexion.",
-        "image": "/images/platforms/plateforme-allemand-home.png",
+        "image": "/images/platforms/plateforme-allemand-home.webp",
         "url": "https://test.thinktech-academy.com/"
       },
       {
         "name": "EST LaSalle Douala",
         "description": "En collaboration avec l'École Supérieure Technique LaSalle de Douala, nous entamons une transformation numérique progressive : dématérialisation des contrôles continus, suivi pédagogique en ligne et structuration des parcours de formation.",
-        "image": "/images/platforms/lasalle-1.png",
+        "image": "/images/platforms/lasalle-1.webp",
         "url": null
       },
       {
         "name": "Owendo Mineral Port",
         "description": "Pour le port minier d'Owendo au Gabon, nous avons conçu un parcours d'induction QHSE complet sur Moodle : vidéos de sensibilisation, quiz chronométrés, barre de progression gamifiée et classement en temps réel pour impliquer chaque collaborateur.",
-        "image": "/images/platforms/omp-1.png",
+        "image": "/images/platforms/omp-1.webp",
         "url": null
       }
     ],
     "partners": [
       {
         "name": "Boukarou",
-        "logo": "/images/partners/boukarou-logo.jpeg"
+        "logo": "/images/partners/boukarou-logo.webp"
       },
       {
         "name": "ThinkTech Academy",
-        "logo": "/images/partners/maximmacs-logo.png"
+        "logo": "/images/partners/maximmacs-logo.webp"
       },
       {
         "name": "Centres de formation en allemand",
-        "logo": "/images/partners/centres-allemand-logo.jpg"
+        "logo": "/images/partners/centres-allemand-logo.webp"
       },
       {
         "name": "Erfolg Zentrum",
-        "logo": "/images/partners/erfolg-zentrum-logo.png"
+        "logo": "/images/partners/erfolg-zentrum-logo.webp"
       },
       {
         "name": "Owendo Mineral Port",
-        "logo": "/images/partners/omp-logo.png"
+        "logo": "/images/partners/omp-logo.webp"
       },
       {
         "name": "EasyTech",
-        "logo": "/images/partners/easytech-logo.png"
+        "logo": "/images/partners/easytech-logo.webp"
       },
       {
         "name": "Institut Français",
-        "logo": "/images/partners/institut-francais-logo.png"
+        "logo": "/images/partners/institut-francais-logo.webp"
       },
       {
         "name": "Lasalle",
-        "logo": "/images/partners/lasalle-logo.png"
+        "logo": "/images/partners/lasalle-logo.webp"
       }
     ]
   },
@@ -360,7 +360,7 @@
         "description": "En partenariat avec l'incubateur Boukarou, nous avons conçu et déployé une plateforme e-learning pour accompagner la montée en compétences de 42 000 jeunes répartis dans les 10 régions du Cameroun. Le projet répond à un double enjeu : rendre la formation accessible sur smartphone en zone rurale, et structurer un catalogue de contenus adapté à des apprenants peu familiers avec le numérique.",
         "challenge": "Créer une plateforme accessible en zone rurale et semi-urbaine, optimisée pour les smartphones d'entrée de gamme et capable d'absorber des milliers d'inscriptions simultanées, sans exclure les territoires à faible débit.",
         "solution": "Architecture Moodle légère, médias compressés, UX épurée pensée pour une première expérience e-learning, et tests de charge réalisés avant le lancement pour garantir la stabilité à grande échelle.",
-        "image": "/images/platforms/bouka-creativ-home.png",
+        "image": "/images/platforms/bouka-creativ-home.webp",
         "url": "https://boukacreativ-learning.com/"
       },
       {
@@ -383,7 +383,7 @@
         "description": "En collaboration avec ThinkTech Academy, nous avons déployé un LMS dédié aux formations certifiantes couvrant 5 domaines stratégiques : management, fiscalité, audit, comptabilité et intelligence artificielle. La plateforme permet une gestion fine des parcours, des certifications et des accès, avec une interface alignée sur l'identité visuelle du cabinet.",
         "challenge": "Digitaliser un catalogue de formations certifiantes dans des domaines techniques exigeants, tout en préservant la rigueur, la traçabilité et la crédibilité attendues dans le secteur de l'audit et du conseil.",
         "solution": "Parcours pédagogiques structurés par domaine avec progression verrouillée, gestion des certifications, des délais et des résultats, interface professionnelle et accompagnement des formateurs à la prise en main.",
-        "image": "/images/platforms/training-to-rise-home.png",
+        "image": "/images/platforms/training-to-rise-home.webp",
         "url": null
       },
       {
@@ -406,7 +406,7 @@
         "description": "Pour ce centre de formation basé en Allemagne, nous avons livré une plateforme Moodle entièrement clé en main : configuration complète, espaces de cours prêts à l'emploi, formation des administrateurs à distance et documentation fournie dès la livraison. La plateforme était opérationnelle dès le lendemain du lancement, sans aucune intervention sur site.",
         "challenge": "Livrer une solution complète et opérationnelle pour un client international situé à plusieurs milliers de kilomètres, avec des standards de qualité élevés et un accompagnement entièrement à distance.",
         "solution": "Méthodologie de déploiement structurée en phases, sessions de formation en visioconférence, documentation technique et pédagogique exhaustive remise à la livraison, et support post-lancement inclus.",
-        "image": "/images/platforms/plateforme-allemand-home.png",
+        "image": "/images/platforms/plateforme-allemand-home.webp",
         "url": "https://test.thinktech-academy.com/"
       },
       {
@@ -429,7 +429,7 @@
         "description": "En collaboration avec l'EST LaSalle de Douala, nous pilotons une transformation numérique progressive de l'établissement. La première phase porte sur la dématérialisation des contrôles continus : les enseignants créent et soumettent leurs évaluations en ligne, les étudiants y répondent depuis n'importe quel appareil, et les résultats sont centralisés automatiquement.",
         "challenge": "Accompagner un établissement d'enseignement supérieur dans sa transition numérique sans perturber le calendrier pédagogique, tout en impliquant progressivement un corps enseignant peu familier avec les outils e-learning.",
         "solution": "Approche par phases : démarrage ciblé sur les contrôles continus avec un Moodle configuré sur mesure, sessions de formation pratiques pour les enseignants, support réactif et feuille de route d'expansion validée avec la direction.",
-        "image": "/images/platforms/lasalle-1.png",
+        "image": "/images/platforms/lasalle-1.webp",
         "url": null
       },
       {
@@ -452,7 +452,7 @@
         "description": "Pour le port minéralier d'Owendo au Gabon, nous avons conçu un parcours d'induction QHSE complet à destination des collaborateurs et prestataires externes. Le programme couvre les règles d'accès et de comportement sur site, l'utilisation des équipements de protection individuelle (EPIs) et la procédure de signalement des dangers — avec vidéos animées, quiz chronométrés, barre de progression et classement en temps réel.",
         "challenge": "Former rapidement et de manière traçable des centaines de collaborateurs et prestataires aux exigences QHSE d'un site industriel portuaire à hauts risques, tout en maintenant un niveau d'engagement élevé tout au long du parcours.",
         "solution": "Parcours Moodle en 3 sections avec contenus vidéo Powtoon, quiz à temps limité (10 questions par section), système de gamification avec points et classement, et tableau de bord administrateur pour le suivi des résultats.",
-        "image": "/images/platforms/omp-1.png",
+        "image": "/images/platforms/omp-1.webp",
         "url": null
       }
     ],

@@ -4,7 +4,7 @@ description: "HTTPS, backups, access management: the essential best practices to
 publishDate: 2026-06-09
 lang: en
 category: "Security"
-image: "/images/actualites/securiser-plateforme-moodle.jpg"
+image: "/images/actualites/securiser-plateforme-moodle.webp"
 ---
 
 Security for an online training platform is often seen as a topic reserved for large organizations with a dedicated IT team. In reality, most of the best practices are within reach of any organization, as long as the approach is structured. Here are the fundamentals we put in place on every Moodle platform we deploy.

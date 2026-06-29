@@ -4,7 +4,7 @@ description: "Slow load times, an outdated interface, support nowhere to be foun
 publishDate: 2026-06-16
 lang: en
 category: "Tips"
-image: "/images/actualites/5-signes-moderniser-plateforme-formation.jpg"
+image: "/images/actualites/5-signes-moderniser-plateforme-formation.webp"
 ---
 
 Many organizations wait for their training platform to "break down" before considering modernizing it. The problem is that the decline is usually gradual, largely invisible to the teams using it every day. Here are 5 concrete signals that should trigger a real conversation.

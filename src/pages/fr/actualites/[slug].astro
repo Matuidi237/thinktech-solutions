@@ -24,9 +24,9 @@ const articleSchema = {
   headline: article.data.title,
   description: article.data.description,
   datePublished: article.data.publishDate.toISOString(),
-  image: article.data.image ? `https://thinktech-solutions.com${article.data.image}` : "https://thinktech-solutions.com/images/og-cover.jpg",
+  image: article.data.image ? `https://thinktech-solutions.com${article.data.image}` : "https://thinktech-solutions.com/images/og-cover.webp",
   author: { "@type": "Organization", name: "ThinkTech Solutions", url: "https://thinktech-solutions.com" },
-  publisher: { "@type": "Organization", name: "ThinkTech Solutions", logo: { "@type": "ImageObject", url: "https://thinktech-solutions.com/images/brand/logo-white.png" } },
+  publisher: { "@type": "Organization", name: "ThinkTech Solutions", logo: { "@type": "ImageObject", url: "https://thinktech-solutions.com/images/brand/logo-white.webp" } },
   inLanguage: "fr-FR",
   url: `https://thinktech-solutions.com/fr/actualites/${article.slug.replace(/^fr\//, "")}`
 };
@@ -69,9 +69,9 @@ const cover = article.data.image ? `background-image:url(${article.data.image})`
 <div class="sidebar-card">
           <p class="sidebar-eyebrow">Nos certifications</p>
           <div class="sidebar-badges">
-            <img src="/images/badges/badge-moodle-admin.png" alt="Moodle Administration" width="52" height="52" loading="lazy" />
-            <img src="/images/badges/badge-moodle-dev.png" alt="Moodle Development" width="52" height="52" loading="lazy" />
-            <img src="/images/badges/badge-moodle-teacher.png" alt="Moodle Teacher" width="52" height="52" loading="lazy" />
+            <img src="/images/badges/badge-moodle-admin.webp" alt="Moodle Administration" width="52" height="52" loading="lazy" />
+            <img src="/images/badges/badge-moodle-dev.webp" alt="Moodle Development" width="52" height="52" loading="lazy" />
+            <img src="/images/badges/badge-moodle-teacher.webp" alt="Moodle Teacher" width="52" height="52" loading="lazy" />
           </div>
           <p class="sidebar-badges-label">Certifiés Moodle Academy</p>
         </div>

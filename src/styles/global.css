@@ -98,6 +98,13 @@ section { padding: 4rem 0; position: relative; }
 
 .hero-cta, .form-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
+@media (max-width: 640px) {
+  section { padding: 2.5rem 0; }
+  .container { padding: 0 1rem; }
+  h2 { font-size: clamp(1.5rem, 6vw, 2rem); margin-bottom: 1rem; }
+  .btn { padding: 0.85rem 1.5rem; font-size: 0.9rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }

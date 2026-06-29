@@ -4,7 +4,7 @@ description: "Lenteur, interface vieillissante, support introuvable... voici les
 publishDate: 2026-06-16
 lang: fr
 category: "Conseils"
-image: "/images/actualites/5-signes-moderniser-plateforme-formation.jpg"
+image: "/images/actualites/5-signes-moderniser-plateforme-formation.webp"
 ---
 
 Beaucoup d'organisations attendent qu'une plateforme de formation « tombe en panne » avant d'envisager de la moderniser. Le problème, c'est que la dégradation est souvent progressive, largement invisible pour les équipes qui l'utilisent au quotidien. Voici 5 signaux concrets qui doivent déclencher une vraie réflexion.

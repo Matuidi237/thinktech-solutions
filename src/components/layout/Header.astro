@@ -20,53 +20,55 @@ const navItems = [
 
 <header class="site-header" role="banner">
   <nav class="navbar" aria-label="Navigation principale">
-    <a href={`/${lang}/`} class="logo" aria-label="ThinkTech Solutions, retour à l'accueil">
-      <img src="/logo.svg" alt="ThinkTech Solutions" width="44" height="44" />
-      <span class="wordmark">ThinkTech<span class="wordmark-accent">Solutions</span></span>
-    </a>
-
-    <ul class="nav-links">
-      {navItems.map((item) => (
-        <li>
-          <a href={item.href} aria-current={currentPath === item.href.replace(/\/$/, "") ? "page" : undefined}>
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div class="nav-left">
+      <a href={`/${lang}/`} class="logo" aria-label="ThinkTech Solutions, retour à l'accueil">
+        <img src="/logo.svg" alt="ThinkTech Solutions" width="44" height="44" />
+        <span class="wordmark">ThinkTech<span class="wordmark-accent">Solutions</span></span>
+      </a>
+      <ul class="nav-links">
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} aria-current={currentPath === item.href.replace(/\/$/, "") ? "page" : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
 
     <div class="nav-controls">
       <a href={`/${otherLang}/`} class="lang-switch" aria-label="Changer de langue">{otherLang.toUpperCase()}</a>
       <a href={`/${lang}/contact`} class="btn btn-primary">{t.nav.cta}</a>
+      <button id="burger" class="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
     </div>
-
-    <button id="burger" class="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
   </nav>
 </header>
 
 <style>
-  .navbar { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2.5rem 1rem 3rem; gap: 1.5rem; max-width: 100%; }
+  .site-header { position: sticky; top: 0; z-index: 100; }
+  .navbar { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2.5rem 1rem 3rem; max-width: 100%; }
 
-  .logo { display: flex; align-items: center; gap: 0.65rem; flex-shrink: 0; }
-  .logo img { width: 60px; height: 60px; }
+  .nav-left { display: flex; align-items: center; gap: 2rem; }
+  .logo { display: flex; align-items: center; gap: 0.65rem; flex-shrink: 0; text-decoration: none; }
+  .logo img { width: 44px; height: 44px; }
   .wordmark { font-size: 1.15rem; font-weight: 600; color: var(--color-text); line-height: 1; white-space: nowrap; }
   .wordmark-accent { color: var(--color-accent); display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.1rem; }
 
-  .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+  .nav-links { display: flex; gap: 1.75rem; list-style: none; margin: 0; padding: 0; }
   .nav-links a { font-weight: 500; font-size: 0.95rem; padding-bottom: 0.3rem; border-bottom: 2px solid transparent; }
   .nav-links a:hover { color: var(--color-accent); }
   .nav-links a[aria-current="page"] { color: var(--color-accent); border-bottom-color: var(--color-accent); }
 
   .nav-controls { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
-  .lang-switch { background: none; border: 1px solid var(--color-border); border-radius: 6px; padding: 0.35rem 0.6rem; cursor: pointer; color: var(--color-text); font-size: 0.85rem; }
+  .lang-switch { background: none; border: 1px solid var(--color-border); border-radius: 6px; padding: 0.35rem 0.6rem; cursor: pointer; color: var(--color-text); font-size: 0.85rem; text-decoration: none; }
   .burger { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-text); }
-  .site-header { position: sticky; top: 0; z-index: 100; }
 
-  @media (max-width: 900px) {
-    .wordmark { display: none; }
+  @media (max-width: 1024px) {
+    .navbar { padding: 1rem 1.5rem; }
   }
 
   @media (max-width: 768px) {
+    .navbar { padding: 0.85rem 1.25rem; }
     .nav-links, .nav-controls .btn-primary { display: none; }
     .burger { display: block; }
     .navbar.menu-open .nav-links {
@@ -77,10 +79,13 @@ const navItems = [
       left: 0;
       right: 0;
       background: var(--color-bg);
-      padding: 1.25rem;
-      gap: 1rem;
+      padding: 1.5rem 1.25rem;
+      gap: 1.25rem;
       border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      z-index: 99;
     }
+    .navbar.menu-open .nav-links a { font-size: 1.05rem; }
   }
 </style>
 

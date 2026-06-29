@@ -4,7 +4,7 @@ description: "A look back at the Bouka Creativ' Learning platform, built with th
 publishDate: 2026-06-02
 lang: en
 category: "Case study"
-image: "/images/actualites/etude-de-cas-bouka-creativ-learning.png"
+image: "/images/actualites/etude-de-cas-bouka-creativ-learning.webp"
 ---
 
 Among the projects closest to our hearts, the **Bouka Creativ' Learning** platform holds a special place. Built in partnership with the Boukarou incubator, it pursues an ambitious goal: supporting the upskilling of 42,000 young people across Cameroon's 10 regions.

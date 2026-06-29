@@ -40,66 +40,66 @@
       {
         "name": "Bouka Creativ' Learning",
         "description": "In partnership with the Boukarou incubator, we designed this platform to support the upskilling of 42,000 young people across Cameroon's 10 regions, fostering digital inclusion and access to quality training.",
-        "image": "/images/platforms/bouka-creativ-home.png",
+        "image": "/images/platforms/bouka-creativ-home.webp",
         "url": "https://boukacreativ-learning.com/"
       },
       {
         "name": "Training To Rise",
         "description": "In collaboration with ThinkTech Academy, we deployed an LMS dedicated to certified training. This solution structures and digitizes learning in strategic fields such as management, tax, audit, accounting and artificial intelligence.",
-        "image": "/images/platforms/training-to-rise-home.png",
+        "image": "/images/platforms/training-to-rise-home.webp",
         "url": null
       },
       {
         "name": "Erfolg Zentrum Online",
         "description": "We designed and launched this platform for a training center based in Germany. Fully operational, it offers a smooth, intuitive learning experience, ready to welcome learners from their very first login.",
-        "image": "/images/platforms/plateforme-allemand-home.png",
+        "image": "/images/platforms/plateforme-allemand-home.webp",
         "url": "https://test.thinktech-academy.com/"
       },
       {
         "name": "EST LaSalle Douala",
         "description": "In collaboration with the École Supérieure Technique LaSalle in Douala, we are leading a progressive digital transformation: dematerialization of continuous assessments, online academic tracking, and structured learning pathways.",
-        "image": "/images/platforms/lasalle-1.png",
+        "image": "/images/platforms/lasalle-1.webp",
         "url": null
       },
       {
         "name": "Owendo Mineral Port",
         "description": "For the Owendo Mineral Port in Gabon, we designed a complete QHSE induction program on Moodle: awareness videos, timed quizzes, gamified progress bar and real-time leaderboard to engage every employee and contractor.",
-        "image": "/images/platforms/omp-1.png",
+        "image": "/images/platforms/omp-1.webp",
         "url": null
       }
     ],
     "partners": [
       {
         "name": "Boukarou",
-        "logo": "/images/partners/boukarou-logo.jpeg"
+        "logo": "/images/partners/boukarou-logo.webp"
       },
       {
         "name": "ThinkTech Academy",
-        "logo": "/images/partners/maximmacs-logo.png"
+        "logo": "/images/partners/maximmacs-logo.webp"
       },
       {
         "name": "German training centers",
-        "logo": "/images/partners/centres-allemand-logo.jpg"
+        "logo": "/images/partners/centres-allemand-logo.webp"
       },
       {
         "name": "Erfolg Zentrum",
-        "logo": "/images/partners/erfolg-zentrum-logo.png"
+        "logo": "/images/partners/erfolg-zentrum-logo.webp"
       },
       {
         "name": "Owendo Mineral Port",
-        "logo": "/images/partners/omp-logo.png"
+        "logo": "/images/partners/omp-logo.webp"
       },
       {
         "name": "EasyTech",
-        "logo": "/images/partners/easytech-logo.png"
+        "logo": "/images/partners/easytech-logo.webp"
       },
       {
         "name": "Institut Français",
-        "logo": "/images/partners/institut-francais-logo.png"
+        "logo": "/images/partners/institut-francais-logo.webp"
       },
       {
         "name": "Lasalle",
-        "logo": "/images/partners/lasalle-logo.png"
+        "logo": "/images/partners/lasalle-logo.webp"
       }
     ]
   },
@@ -360,7 +360,7 @@
         "description": "In partnership with the Boukarou incubator, we designed and deployed an e-learning platform to support the upskilling of 42,000 young people across all 10 regions of Cameroon. The project addresses a dual challenge: making training accessible on smartphones in rural areas, and structuring a content catalogue suited to learners new to digital tools.",
         "challenge": "Build a platform accessible in rural and semi-urban areas, optimized for entry-level smartphones, and able to handle thousands of simultaneous registrations without excluding low-bandwidth territories.",
         "solution": "Lightweight Moodle architecture, compressed media, streamlined UX designed for a first e-learning experience, and load testing before launch to guarantee stability at scale.",
-        "image": "/images/platforms/bouka-creativ-home.png",
+        "image": "/images/platforms/bouka-creativ-home.webp",
         "url": "https://boukacreativ-learning.com/"
       },
       {
@@ -383,7 +383,7 @@
         "description": "In collaboration with ThinkTech Academy, we deployed an LMS covering 5 strategic certified domains: management, tax, audit, accounting and artificial intelligence. The platform enables fine-grained management of pathways, certifications and access rights, with an interface aligned with the organisation's visual identity.",
         "challenge": "Digitize a catalogue of certified training in technically demanding fields while preserving the rigour, traceability and credibility expected in the audit and consulting sector.",
         "solution": "Domain-structured learning paths with locked progression, certification and deadline management, professional interface, and hands-on trainer onboarding.",
-        "image": "/images/platforms/training-to-rise-home.png",
+        "image": "/images/platforms/training-to-rise-home.webp",
         "url": null
       },
       {
@@ -406,7 +406,7 @@
         "description": "For this training centre based in Germany, we delivered a fully turnkey Moodle platform: complete configuration, ready-to-use course spaces, remote admin training and documentation handed over at delivery. The platform was live and fully operational the day after launch — with no on-site intervention required.",
         "challenge": "Deliver a complete, operational solution for an international client thousands of kilometres away, meeting high quality standards with fully remote support.",
         "solution": "Phased deployment methodology, training sessions via video call, comprehensive technical and pedagogical documentation delivered at handover, and post-launch support included.",
-        "image": "/images/platforms/plateforme-allemand-home.png",
+        "image": "/images/platforms/plateforme-allemand-home.webp",
         "url": "https://test.thinktech-academy.com/"
       },
       {
@@ -429,7 +429,7 @@
         "description": "In collaboration with EST LaSalle in Douala, we are driving a progressive digital transformation of the institution. Phase 1 focuses on the dematerialization of continuous assessments: lecturers create and publish their evaluations online, students complete them from any device, and results are automatically centralised.",
         "challenge": "Guide a higher education institution through digital transition without disrupting the academic calendar, while progressively engaging a teaching staff unfamiliar with e-learning tools.",
         "solution": "Phased rollout starting with continuous assessments on a custom Moodle LMS, practical training workshops for lecturers, responsive support, and a validated expansion roadmap agreed with management.",
-        "image": "/images/platforms/lasalle-1.png",
+        "image": "/images/platforms/lasalle-1.webp",
         "url": null
       },
       {
@@ -452,7 +452,7 @@
         "description": "For the Owendo Mineral Port in Gabon, we designed a complete QHSE induction program on Moodle: awareness videos, timed quizzes, a gamified progress bar and real-time leaderboard to actively engage every employee and external contractor.",
         "challenge": "Rapidly and effectively train hundreds of employees and contractors on the QHSE requirements of an industrial port site, with result tracking and active learner engagement.",
         "solution": "Moodle course structured in 3 sections (access & behavior, PPE, hazard reporting), with Powtoon videos, timed quizzes, a points system and live leaderboard.",
-        "image": "/images/platforms/omp-1.png",
+        "image": "/images/platforms/omp-1.webp",
         "url": null
       }
     ],

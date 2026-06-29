@@ -4,7 +4,7 @@ description: "Retour sur le déploiement de la plateforme Bouka Creativ' Learnin
 publishDate: 2026-06-02
 lang: fr
 category: "Étude de cas"
-image: "/images/actualites/etude-de-cas-bouka-creativ-learning.png"
+image: "/images/actualites/etude-de-cas-bouka-creativ-learning.webp"
 ---
 
 Parmi les projets qui nous tiennent le plus à cœur, la plateforme **Bouka Creativ' Learning** occupe une place particulière. Conçue en partenariat avec l'incubateur Boukarou, elle vise un objectif ambitieux : accompagner la montée en compétences de 42 000 jeunes à travers les 10 régions du Cameroun.

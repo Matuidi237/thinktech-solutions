@@ -33,15 +33,15 @@ const t = useTranslations(lang);
             <p class="badges-label">Moodle Academy certified</p>
             <div class="badges-row">
               <div class="badge-item">
-                <img src="/images/badges/badge-moodle-dev.png" alt="Moodle Development Environment — Moodle Academy" width="80" height="80" loading="lazy" />
+                <img src="/images/badges/badge-moodle-dev.webp" alt="Moodle Development Environment — Moodle Academy" width="80" height="80" loading="lazy" />
                 <span>Development<br/>Environment</span>
               </div>
               <div class="badge-item">
-                <img src="/images/badges/badge-moodle-admin.png" alt="Moodle Administration Settings — Moodle Academy" width="80" height="80" loading="lazy" />
+                <img src="/images/badges/badge-moodle-admin.webp" alt="Moodle Administration Settings — Moodle Academy" width="80" height="80" loading="lazy" />
                 <span>Administration<br/>Settings</span>
               </div>
               <div class="badge-item">
-                <img src="/images/badges/badge-moodle-teacher.png" alt="Start Teaching with Moodle — Moodle Academy" width="80" height="80" loading="lazy" />
+                <img src="/images/badges/badge-moodle-teacher.webp" alt="Start Teaching with Moodle — Moodle Academy" width="80" height="80" loading="lazy" />
                 <span>Start Teaching<br/>with Moodle</span>
               </div>
             </div>
@@ -108,7 +108,7 @@ const t = useTranslations(lang);
 
     <div class="home-cta-wrap">
       <div class="home-cta-visual reveal" aria-hidden="true">
-        <img src="/images/cta/image-bloc-3.png" alt="" width="300" height="300" loading="lazy" />
+        <img src="/images/cta/image-bloc-3.webp" alt="" width="300" height="300" loading="lazy" />
       </div>
       <section class="home-cta" aria-labelledby="home-cta-title">
         <div class="circle-deco home-cta-circle-1" aria-hidden="true"></div>
@@ -202,5 +202,15 @@ const t = useTranslations(lang);
     .home-values { border-left: none; padding-left: 0; border-top: 2px solid var(--color-border); padding-top: 1.5rem; }
     .home-services-inner { grid-template-columns: 1fr; }
     .tools-orbit { margin-top: 1rem; }
+  }
+
+  @media (max-width: 640px) {
+    .home-about-grid { gap: 1.5rem; }
+    .home-values { gap: 1rem; }
+    .home-services-list { gap: 1rem; }
+    .moodle-badges { margin-top: 1.5rem; }
+    .badges-row { gap: 0.75rem; }
+    .badge-item img { width: 56px; height: 56px; }
+    .badge-item span { font-size: 0.65rem; }
   }
 </style>
