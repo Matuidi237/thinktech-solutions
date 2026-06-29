@@ -7,6 +7,9 @@ export default defineConfig({
   output: "server",
   adapter: node({ mode: "standalone" }),
   integrations: [sitemap()],
+  image: {
+    service: { entrypoint: "astro/assets/services/sharp" }
+  },
   i18n: {
     defaultLocale: "fr",
     locales: ["fr", "en"],
