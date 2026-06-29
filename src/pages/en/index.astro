@@ -28,6 +28,24 @@ const t = useTranslations(lang);
           <h2 id="home-about-title">{t.about.title}</h2>
           <p>{t.about.intro}</p>
           <a href={`/${lang}/about`} class="link-arrow">More about ThinkTech →</a>
+
+          <div class="moodle-badges">
+            <p class="badges-label">Moodle Academy certified</p>
+            <div class="badges-row">
+              <div class="badge-item">
+                <img src="/images/badges/badge-moodle-dev.png" alt="Moodle Development Environment — Moodle Academy" width="80" height="80" loading="lazy" />
+                <span>Development<br/>Environment</span>
+              </div>
+              <div class="badge-item">
+                <img src="/images/badges/badge-moodle-admin.png" alt="Moodle Administration Settings — Moodle Academy" width="80" height="80" loading="lazy" />
+                <span>Administration<br/>Settings</span>
+              </div>
+              <div class="badge-item">
+                <img src="/images/badges/badge-moodle-teacher.png" alt="Start Teaching with Moodle — Moodle Academy" width="80" height="80" loading="lazy" />
+                <span>Start Teaching<br/>with Moodle</span>
+              </div>
+            </div>
+          </div>
         </div>
         <ul class="home-values">
           {t.about.values.slice(0, 4).map((v: any) => (
@@ -129,6 +147,14 @@ const t = useTranslations(lang);
 
   .link-arrow { font-weight: 600; color: var(--color-accent); display: inline-block; margin-top: 1rem; }
   .link-arrow:hover { text-decoration: underline; }
+
+  .moodle-badges { margin-top: 2rem; }
+  .badges-label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
+  .badges-row { display: flex; gap: 1.25rem; align-items: flex-start; }
+  .badge-item { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; text-align: center; }
+  .badge-item img { width: 72px; height: 72px; object-fit: contain; transition: transform 0.25s ease; }
+  .badge-item img:hover { transform: scale(1.08); }
+  .badge-item span { font-size: 0.72rem; color: var(--color-text-secondary); line-height: 1.3; }
 
   .tools-orbit { position: relative; width: 220px; height: 220px; margin: 0 auto; }
   .orbit-hub { position: absolute; top: 50%; left: 50%; width: 54px; height: 54px; margin: -27px 0 0 -27px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); box-shadow: 0 14px 28px -10px rgba(2, 33, 121, 0.4); }
