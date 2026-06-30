@@ -205,6 +205,12 @@ const t = useTranslations(lang);
   .btn-hero svg { transition: transform 0.22s ease; }
   .btn-hero:hover svg { transform: translateX(4px); }
 
+  @media (max-width: 640px) {
+    .home-cta { padding: 3.5rem 0; }
+    .home-cta-inner { margin-left: 0; max-width: 100%; }
+    .home-cta-title { font-size: clamp(1.5rem, 7vw, 2rem); }
+  }
+
   @media (max-width: 900px) {
     .home-about-grid { grid-template-columns: 1fr; }
     .home-values { border-left: none; padding-left: 0; border-top: 2px solid var(--color-border); padding-top: 1.5rem; }
