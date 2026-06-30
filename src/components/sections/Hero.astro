@@ -9,8 +9,9 @@ const t = useTranslations(lang);
 
 <section id="accueil" class="hero" aria-labelledby="hero-title">
   <div class="hero-fullbg">
-    <img src="/images/hero/hero-accueil.webp" alt={t.hero.heroImageAlt} loading="eager" fetchpriority="high" decoding="async" width="1440" height="810" class="hero-bg-img" />
+    <img src="/images/hero/hero-accueil-3.webp" alt={t.hero.heroImageAlt} loading="eager" fetchpriority="high" decoding="async" width="1440" height="810" class="hero-bg-img" />
     <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-circle-deco" aria-hidden="true"></div>
     <div class="hero-top">
       <div class="hero-text reveal">
         <h1 id="hero-title">{t.hero.title}</h1>
@@ -114,6 +115,30 @@ const t = useTranslations(lang);
     backdrop-filter: blur(4px);
   }
   .btn-secondary--light:hover { background: rgba(255,255,255,0.22); border-color: #fff; }
+
+  .hero-circle-deco {
+    position: absolute;
+    top: 60px;
+    right: 80px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 2.5px solid rgba(255,255,255,0.25);
+    z-index: 2;
+    animation: hero-float 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .hero-circle-deco::after {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.12);
+  }
+  @keyframes hero-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-18px); }
+  }
 
   .hero-circle-3 { top: -30px; right: 12%; width: 150px; height: 150px; }
   .carousel-title { position: relative; z-index: 1; font-size: 1.1rem; margin: 2rem 0 1rem; color: var(--color-text-secondary); font-weight: 600; }
