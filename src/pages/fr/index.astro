@@ -185,10 +185,11 @@ const t = useTranslations(lang);
   .home-cta h2 { color: var(--color-primary); }
   .home-cta p { color: var(--color-text-secondary); margin-bottom: 1.75rem; }
 
-  .home-cta-visual { position: absolute; right: -28px; top: 0; bottom: 0; z-index: 2; pointer-events: none; }
+  .home-cta-visual { position: absolute; right: 0; top: 0; bottom: 0; z-index: 2; pointer-events: none; }
   .home-cta-visual img {
     height: 100%;
     width: auto;
+    max-height: 280px;
     display: block;
     filter: drop-shadow(0 18px 26px rgba(2, 33, 121, 0.22));
   }
