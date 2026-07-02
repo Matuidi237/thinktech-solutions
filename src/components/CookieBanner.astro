@@ -78,8 +78,8 @@ const GA_ID = "G-M19ZXM9MH9";
     left: 50%;
     transform: translateX(-50%);
     width: min(680px, calc(100vw - 2rem));
-    background: var(--color-footer-bg);
-    color: rgba(255,255,255,0.88);
+    background: #ffffff;
+    color: #1a1a2e;
     border-radius: 14px;
     padding: 1.25rem 1.5rem;
     display: flex;
@@ -88,7 +88,8 @@ const GA_ID = "G-M19ZXM9MH9";
     gap: 1.5rem;
     flex-wrap: wrap;
     z-index: 9999;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+    border: 1px solid #e5e7ef;
     animation: banner-in 0.35s ease;
   }
   .cookie-banner.hidden { display: none; }
@@ -98,8 +99,8 @@ const GA_ID = "G-M19ZXM9MH9";
     to   { opacity: 1; transform: translateX(-50%) translateY(0); }
   }
 
-  .cookie-text { font-size: 0.9rem; line-height: 1.55; flex: 1; min-width: 200px; }
-  .cookie-link { color: var(--color-accent-light); text-decoration: underline; margin-left: 0.3rem; }
+  .cookie-text { font-size: 0.9rem; line-height: 1.55; flex: 1; min-width: 200px; color: #3a3a5c; }
+  .cookie-link { color: var(--color-accent); text-decoration: underline; margin-left: 0.3rem; }
 
   .cookie-actions { display: flex; gap: 0.65rem; flex-shrink: 0; }
   .btn-cookie {
@@ -112,10 +113,11 @@ const GA_ID = "G-M19ZXM9MH9";
     border: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
   }
-  .btn-cookie:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-cookie:hover { opacity: 0.85; transform: translateY(-1px); }
   .btn-cookie-refuse {
-    background: rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.8);
+    background: transparent;
+    color: var(--color-primary);
+    border: 1.5px solid var(--color-primary);
   }
   .btn-cookie-accept {
     background: var(--color-accent);
