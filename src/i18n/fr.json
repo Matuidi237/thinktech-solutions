@@ -44,8 +44,8 @@
         "url": "https://boukacreativ-learning.com/"
       },
       {
-        "name": "Training To Rise",
-        "description": "En collaboration avec ThinkTech Academy, nous avons déployé un LMS dédié aux formations certifiantes. Cette solution structure et digitalise l'apprentissage dans des domaines stratégiques tels que le management, la fiscalité, l'audit, la comptabilité et l'intelligence artificielle.",
+        "name": "ThinkTech Academy",
+        "description": "Notre propre LMS dédié à l'apprentissage des compétences numériques. ThinkTech Academy propose des parcours certifiants en ligne dans des domaines clés : management, fiscalité, audit, comptabilité et intelligence artificielle.",
         "image": "/images/platforms/training-to-rise-home.webp",
         "url": null
       },
@@ -75,7 +75,7 @@
       },
       {
         "name": "ThinkTech Academy",
-        "logo": "/images/partners/maximmacs-logo.webp"
+        "logo": "/images/brand/logo-white.webp"
       },
       {
         "name": "Centres de formation en allemand",
@@ -364,12 +364,12 @@
         "url": "https://boukacreativ-learning.com/"
       },
       {
-        "name": "Training To Rise",
-        "client": "ThinkTech Academy — Formation certifiante",
-        "sector": "Formation professionnelle certifiante",
+        "name": "ThinkTech Academy",
+        "client": "ThinkTech Solutions — LMS propriétaire",
+        "sector": "Digital skills & Formation certifiante",
         "metric": {
           "value": "5",
-          "label": "domaines certifiants"
+          "label": "domaines de compétences"
         },
         "metric2": {
           "value": "100%",
@@ -377,12 +377,12 @@
         },
         "tags": [
           "LMS",
-          "Certifications",
-          "Finance & Audit"
+          "Digital Skills",
+          "Certifications"
         ],
-        "description": "En collaboration avec ThinkTech Academy, nous avons déployé un LMS dédié aux formations certifiantes couvrant 5 domaines stratégiques : management, fiscalité, audit, comptabilité et intelligence artificielle. La plateforme permet une gestion fine des parcours, des certifications et des accès, avec une interface alignée sur l'identité visuelle du cabinet.",
-        "challenge": "Digitaliser un catalogue de formations certifiantes dans des domaines techniques exigeants, tout en préservant la rigueur, la traçabilité et la crédibilité attendues dans le secteur de l'audit et du conseil.",
-        "solution": "Parcours pédagogiques structurés par domaine avec progression verrouillée, gestion des certifications, des délais et des résultats, interface professionnelle et accompagnement des formateurs à la prise en main.",
+        "description": "ThinkTech Academy est le LMS propriétaire de ThinkTech Solutions, conçu pour développer les compétences numériques. La plateforme couvre 5 domaines clés — management, fiscalité, audit, comptabilité et intelligence artificielle — avec des parcours certifiants, une gestion fine des accès et une interface pensée pour l'apprenant africain.",
+        "challenge": "Créer un LMS propriétaire capable de structurer et de certifier des apprentissages en digital skills, adapté aux réalités du marché africain, avec une expérience apprenant fluide et engageante.",
+        "solution": "Parcours pédagogiques modulaires avec progression verrouillée, système de certification intégré, tableau de bord apprenant et formateur, interface responsive et entièrement personnalisée aux couleurs de ThinkTech.",
         "image": "/images/platforms/training-to-rise-home.webp",
         "url": null
       },
