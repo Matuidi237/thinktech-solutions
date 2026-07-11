@@ -1,50 +1,171 @@
 ---
 import type { Lang } from "../../i18n/utils";
-import { useTranslations, highlightBrand } from "../../i18n/utils";
+import { useTranslations } from "../../i18n/utils";
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+const isFr = lang === "fr";
 ---
 
-<section id="about" class="about" aria-labelledby="about-title">
-  <div class="circle-deco about-circle-1" aria-hidden="true"></div>
-  <div class="circle-deco circle-delay circle-fill about-circle-2" aria-hidden="true"></div>
-  <div class="container">
-    <p class="eyebrow reveal">Depuis 2024 à Douala</p>
-    <h2 id="about-title" class="reveal">{t.about.title}</h2>
+<!-- ══ 1. HERO NARRATIF ══ -->
+<section class="about-hero" aria-labelledby="about-title">
+  <div class="about-hero-inner">
+    <p class="about-eyebrow">
+      {isFr ? "Notre histoire · Depuis 2024 · Douala, Cameroun" : "Our story · Since 2024 · Douala, Cameroon"}
+    </p>
+    <h1 id="about-title" class="about-hero-title reveal">
+      {isFr
+        ? <>Nous croyons que la <em>formation change les nations.</em></>
+        : <>We believe <em>training changes nations.</em></>}
+    </h1>
+    <blockquote class="about-hero-quote reveal">
+      {isFr
+        ? "En Afrique, la question n'est pas de savoir si le numérique va transformer la formation — c'est déjà en train de se produire. La vraie question, c'est qui va accompagner cette transition avec rigueur, expertise et ancrage local."
+        : "In Africa, the question is not whether digital will transform training — it's already happening. The real question is who will guide this transition with rigour, expertise and local roots."}
+    </blockquote>
+  </div>
+</section>
 
-    <div class="about-content">
-      <div class="about-text reveal">
-        <p set:html={highlightBrand(t.about.intro)} />
-        <blockquote class="about-quote" set:html={highlightBrand(t.about.intro2)} />
-
-        <ul class="about-stats">
-          {t.hero.metrics.slice(0, 3).map((m: any) => (
-            <li>
-              <strong>{m.value}</strong>
-              <span>{m.label}</span>
-            </li>
-          ))}
-        </ul>
+<!-- ══ 2. POURQUOI MOODLE ══ -->
+<section class="why-moodle" aria-labelledby="moodle-title">
+  <div class="why-moodle-grid">
+    <div class="why-left reveal">
+      <p class="wm-eyebrow">{isFr ? "Pourquoi Moodle" : "Why Moodle"}</p>
+      <h2 id="moodle-title" class="wm-title">
+        {isFr
+          ? "La plateforme la plus déployée au monde n'est pas un hasard."
+          : "The world's most deployed LMS is no coincidence."}
+      </h2>
+      <div class="wm-stats">
+        <div class="wm-stat"><strong>450M</strong><span>{isFr ? "apprenants actifs" : "active learners"}</span></div>
+        <div class="wm-stat"><strong>43k+</strong><span>{isFr ? "sites déployés" : "deployed sites"}</span></div>
+        <div class="wm-stat"><strong>100%</strong><span>Open Source</span></div>
       </div>
-      <figure class="about-photo reveal">
-        <img src="/images/about/team-photo.webp" alt={t.about.teamImageAlt} width="480" height="360" loading="lazy" />
-        <span class="about-photo-badge">2024 — Douala 🇨🇲</span>
-      </figure>
     </div>
-
-    <div class="about-pillars">
-      <article class="reveal"><span class="pillar-label">{t.about.mission.title}</span><p>{t.about.mission.text}</p></article>
-      <article class="reveal"><span class="pillar-label">{t.about.visionMid.title}</span><p>{t.about.visionMid.text}</p></article>
-      <article class="reveal"><span class="pillar-label">{t.about.visionLong.title}</span><p>{t.about.visionLong.text}</p></article>
+    <div class="why-right reveal">
+      <p class="wm-eyebrow">{isFr ? "Le contexte africain" : "The African context"}</p>
+      <div class="why-reasons">
+        <div class="why-reason">
+          <div class="wr-icon">◎</div>
+          <div>
+            <strong>{isFr ? "Souveraineté & coût zéro" : "Sovereignty & zero cost"}</strong>
+            <p>{isFr
+              ? "Aucune licence propriétaire. Vos données restent sur votre infrastructure. Moodle élimine la dépendance aux éditeurs étrangers."
+              : "No proprietary licence. Your data stays on your infrastructure. Moodle eliminates dependency on foreign publishers."}</p>
+          </div>
+        </div>
+        <div class="why-reason">
+          <div class="wr-icon">◎</div>
+          <div>
+            <strong>{isFr ? "Résilient sur faible bande passante" : "Resilient on low bandwidth"}</strong>
+            <p>{isFr
+              ? "Conçu pour fonctionner dans des environnements à connectivité variable — une nécessité sur le terrain africain."
+              : "Built to work in variable connectivity environments — a necessity on the African ground."}</p>
+          </div>
+        </div>
+        <div class="why-reason">
+          <div class="wr-icon">◎</div>
+          <div>
+            <strong>{isFr ? "Communauté mondiale, expertise locale" : "Global community, local expertise"}</strong>
+            <p>{isFr
+              ? "Un écosystème mondial actif, une certification reconnue, et une équipe basée à Douala qui connaît vos réalités."
+              : "An active global ecosystem, recognised certification, and a team based in Douala who knows your reality."}</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <h3 class="values-title reveal">{t.about.valuesTitle}</h3>
+<!-- ══ 3. FONDATEUR ══ -->
+<section class="founder-section" aria-labelledby="founder-title">
+  <div class="founder-grid">
+    <div class="founder-photo-col reveal">
+      <div class="founder-photo-wrap">
+        <!-- Remplacer par la vraie photo : <img src="/images/team/ignace-elouga.webp" alt="Ignace ELOUGA" /> -->
+        <div class="founder-photo-placeholder" aria-label="Photo Ignace ELOUGA">
+          <span>Photo</span>
+        </div>
+      </div>
+      <div class="founder-badges">
+        <span class="fbadge">Moodle Admin</span>
+        <span class="fbadge">Moodle Dev</span>
+        <span class="fbadge">Moodle Teacher</span>
+      </div>
+    </div>
+    <div class="founder-bio-col reveal">
+      <p class="about-eyebrow" style="color: var(--color-accent);">
+        {isFr ? "Le fondateur" : "The founder"}
+      </p>
+      <h2 id="founder-title" class="founder-name">Ignace ELOUGA</h2>
+      <p class="founder-role">CEO & Founder · {isFr ? "Ingénieur en Réseaux et Sécurité Informatique" : "Network & Information Security Engineer"}</p>
+      <p class="founder-bio">
+        {isFr
+          ? "Ingénieur en Réseaux et Sécurité Informatique, Ignace conçoit et déploie des plateformes Moodle depuis 2023. Passionné par l'éducation numérique, il fonde ThinkTech Solutions avec une ambition claire : innover la manière d'enseigner et d'apprendre en Afrique grâce au numérique, en rendant des solutions de classe mondiale accessibles aux organisations du continent."
+          : "A Network and Information Security Engineer, Ignace has been designing and deploying Moodle platforms since 2023. Passionate about digital education, he founded ThinkTech Solutions with a clear ambition: to innovate the way Africa teaches and learns through digital technology, making world-class solutions accessible to organisations across the continent."}
+      </p>
+      <div class="founder-exp">
+        <p class="exp-title">{isFr ? "Parcours" : "Experience"}</p>
+        <!-- Ajouter les expériences professionnelles -->
+        <div class="exp-placeholder">
+          <p>{isFr ? "→ Expériences professionnelles à compléter" : "→ Professional experience to be added"}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4. ÉQUIPE ══ -->
+<section class="team-section" aria-labelledby="team-title">
+  <div class="container">
+    <div class="team-header reveal">
+      <p class="about-eyebrow">{isFr ? "L'équipe" : "The team"}</p>
+      <h2 id="team-title">{isFr ? "5 experts à votre service" : "5 experts at your service"}</h2>
+    </div>
+    <div class="team-grid">
+      {[1,2,3,4].map((i) => (
+        <div class="team-card reveal">
+          <div class="team-avatar">
+            <!-- Remplacer par photo -->
+            <span>{isFr ? "Photo" : "Photo"}</span>
+          </div>
+          <div class="team-info">
+            <p class="team-name">{isFr ? `[Prénom NOM ${i}]` : `[First Last ${i}]`}</p>
+            <p class="team-role">{isFr ? "[Poste à définir]" : "[Role to define]"}</p>
+            <p class="team-skill">{isFr ? "[Compétence clé]" : "[Key skill]"}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ══ 5. MISSION / VALEURS ══ -->
+<section class="about-values" aria-labelledby="values-title">
+  <div class="container">
+    <div class="values-header reveal">
+      <p class="about-eyebrow">{isFr ? "Ce qui nous guide" : "What guides us"}</p>
+      <h2 id="values-title">{isFr ? "Notre raison d'être" : "Our purpose"}</h2>
+    </div>
+    <div class="pillars-row">
+      <div class="pillar reveal">
+        <span class="pillar-label">{t.about.mission.title}</span>
+        <p>{t.about.mission.text}</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="pillar-label">{t.about.visionMid.title}</span>
+        <p>{t.about.visionMid.text}</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="pillar-label">{t.about.visionLong.title}</span>
+        <p>{t.about.visionLong.text}</p>
+      </div>
+    </div>
     <ul class="values-grid">
-      {t.about.values.map((v: any, i: number) => (
-        <li class="value-item reveal">
-          <span class="value-num">{String(i + 1).padStart(2, "0")}</span>
+      {t.about.values.map((v: any) => (
+        <li class="value-card reveal">
           <h4>{v.title}</h4>
           <p>{v.text}</p>
         </li>
@@ -54,95 +175,271 @@ const t = useTranslations(lang);
 </section>
 
 <style>
-  .about { position: relative; overflow: hidden; }
-  .about-circle-1 { top: -60px; right: 8%; width: 200px; height: 200px; }
-  .about-circle-2 { bottom: 10%; left: -70px; width: 260px; height: 260px; }
-  .about .container { position: relative; z-index: 1; }
-
-  .about-content { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3.5rem; align-items: center; margin-bottom: 3.5rem; }
-  .about-text p { font-size: 1.05rem; }
-  .about-text p + p { margin-top: 1rem; }
-
-  .about-quote {
-    margin: 1.5rem 0 0;
-    padding-left: 1.25rem;
-    border-left: 3px solid var(--color-accent);
-    font-style: italic;
-    color: var(--color-text-secondary);
+  /* ── SHARED ── */
+  .about-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(164, 37, 147, 0.85);
+    margin-bottom: 1rem;
   }
 
-  .about-stats { display: flex; gap: 2rem; list-style: none; margin: 2rem 0 0; padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
-  .about-stats strong { display: block; font-size: 1.9rem; font-weight: 800; color: var(--color-accent); }
-  .about-stats span { color: var(--color-text-secondary); font-size: 0.85rem; }
-
-  .about-photo { position: relative; margin: 0; }
-  .about-photo img {
-    border-radius: 10px;
-    width: 100%;
-    display: block;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    transform: rotate(-1.5deg);
-    box-shadow: 0 24px 48px rgba(2, 33, 121, 0.18);
-    transition: transform 0.35s ease;
+  /* ── 1. HERO ── */
+  .about-hero {
+    background: var(--color-primary);
+    padding: 6rem 2rem 5rem;
+    position: relative;
+    overflow: hidden;
   }
-  .about-photo:hover img { transform: rotate(0deg) scale(1.02); }
-  .about-photo-badge {
+  .about-hero::after {
+    content: "";
     position: absolute;
-    bottom: -16px;
-    left: -16px;
-    background: var(--color-accent);
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(164,37,147,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .about-hero-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .about-hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 800;
     color: #fff;
-    font-size: 0.8rem;
+    line-height: 1.07;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    text-wrap: balance;
+  }
+  .about-hero-title em {
+    color: var(--color-accent-light);
+    font-style: normal;
+  }
+  .about-hero-quote {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: rgba(255,255,255,0.65);
+    line-height: 1.75;
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1.25rem;
+    max-width: 620px;
+    margin: 0;
+  }
+
+  /* ── 2. POURQUOI MOODLE ── */
+  .why-moodle {
+    background: #0B0E2E;
+    padding: 5rem 0;
+  }
+  .why-moodle-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .wm-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 1rem; }
+  .wm-title {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+  }
+  .wm-stats { display: flex; gap: 2.5rem; }
+  .wm-stat strong { display: block; font-size: 2.5rem; font-weight: 800; color: var(--color-accent); line-height: 1; margin-bottom: 0.3rem; }
+  .wm-stat span { font-size: 0.72rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .why-reasons { display: flex; flex-direction: column; gap: 0; }
+  .why-reason {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .why-reason:last-child { border-bottom: none; }
+  .wr-icon { color: var(--color-accent); font-size: 1rem; margin-top: 0.25rem; flex-shrink: 0; }
+  .why-reason strong { display: block; color: #fff; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .why-reason p { color: rgba(255,255,255,0.55); font-size: 0.85rem; line-height: 1.65; margin: 0; }
+
+  /* ── 3. FONDATEUR ── */
+  .founder-section {
+    background: var(--color-bg);
+    padding: 5rem 0;
+  }
+  .founder-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .founder-photo-col { display: flex; flex-direction: column; gap: 1rem; }
+  .founder-photo-wrap {
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(135deg, #022179, #A42593);
+  }
+  .founder-photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .founder-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
     font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 999px;
-    box-shadow: 0 10px 20px rgba(2, 33, 121, 0.25);
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
-
-  .about-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 4rem; }
-  .about-pillars article {
-    padding: 1.75rem 1.5rem;
+  .founder-badges { display: flex; flex-direction: column; gap: 0.4rem; }
+  .fbadge {
+    padding: 0.4rem 0.75rem;
+    background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
-    border-radius: 10px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
   }
-  .about-pillars article:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 32px rgba(2, 33, 121, 0.1);
-    border-color: var(--color-accent);
+  .founder-name {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
   }
-  .pillar-label { display: block; font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--color-accent); }
+  .founder-role {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+  }
+  .founder-bio {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+    max-width: 580px;
+  }
+  .founder-exp { border-top: 1px solid var(--color-border); padding-top: 1.5rem; }
+  .exp-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 1rem; }
+  .exp-placeholder {
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-secondary);
+    border-radius: 8px;
+    border: 1px dashed var(--color-border);
+  }
+  .exp-placeholder p { font-size: 0.82rem; color: var(--color-text-secondary); margin: 0; font-style: italic; }
 
-  .values-title { margin-bottom: 1.5rem; }
-  .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; list-style: none; }
-  .value-item {
+  /* ── 4. ÉQUIPE ── */
+  .team-section {
+    background: var(--color-bg-secondary);
+    padding: 5rem 0;
+  }
+  .team-header { margin-bottom: 2.5rem; }
+  .team-header h2 { margin: 0; }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .team-card {
+    background: var(--color-card-bg);
     padding: 1.75rem 1.5rem;
-    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .team-avatar {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #022179 0%, #A42593 100%);
     border-radius: 10px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    max-height: 140px;
   }
-  .value-item:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 32px rgba(2, 33, 121, 0.1);
-    border-color: var(--color-accent);
+  .team-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+  .team-name { font-size: 0.9rem; font-weight: 700; color: var(--color-primary); margin: 0; }
+  .team-role { font-size: 0.75rem; color: var(--color-text-secondary); margin: 0; }
+  .team-skill { font-size: 0.72rem; font-weight: 600; color: var(--color-accent); margin: 0; }
+  .team-info { display: flex; flex-direction: column; gap: 0.3rem; }
+
+  /* ── 5. VALEURS ── */
+  .about-values { background: var(--color-bg); padding: 5rem 0; }
+  .values-header { margin-bottom: 2.5rem; }
+  .values-header h2 { margin: 0; }
+  .pillars-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2rem;
   }
-  .value-num { color: var(--color-text-secondary); font-size: 0.9rem; opacity: 0.6; }
-  .value-item h4 { margin: 0.5rem 0 0.4rem; }
+  .pillar {
+    background: var(--color-bg-secondary);
+    padding: 1.75rem 1.5rem;
+  }
+  .pillar-label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--color-accent); margin-bottom: 0.6rem; }
+  .pillar p { font-size: 0.9rem; color: var(--color-text-secondary); margin: 0; line-height: 1.6; }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    list-style: none;
+  }
+  .value-card {
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: var(--color-card-bg);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .value-card:hover { border-color: var(--color-accent); box-shadow: 0 8px 24px rgba(2,33,121,0.08); }
+  .value-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem; }
+  .value-card p { font-size: 0.82rem; color: var(--color-text-secondary); line-height: 1.65; margin: 0; }
 
-  /* staggered entrance */
-  .about-pillars article:nth-child(2) { transition-delay: 0.08s; }
-  .about-pillars article:nth-child(3) { transition-delay: 0.16s; }
-  .value-item:nth-child(2) { transition-delay: 0.06s; }
-  .value-item:nth-child(3) { transition-delay: 0.12s; }
-  .value-item:nth-child(4) { transition-delay: 0.18s; }
-
+  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    .about-content { grid-template-columns: 1fr; }
-    .about-photo { order: -1; }
-    .about-pillars, .values-grid { grid-template-columns: 1fr; }
-    .about-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .why-moodle-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .founder-grid { grid-template-columns: 1fr; }
+    .founder-photo-col { flex-direction: row; gap: 1rem; align-items: flex-start; }
+    .founder-photo-wrap { width: 120px; flex-shrink: 0; aspect-ratio: 1; border-radius: 50%; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .pillars-row { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .about-hero { padding: 4rem 1.25rem 3.5rem; }
+    .why-moodle-grid, .founder-grid { padding: 0 1.25rem; }
+    .wm-stats { gap: 1.5rem; }
+    .wm-stat strong { font-size: 2rem; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .values-grid { grid-template-columns: 1fr; }
+    .founder-photo-col { flex-direction: column; }
+    .founder-photo-wrap { width: 100%; aspect-ratio: 3/4; border-radius: 14px; }
   }
 </style>
-
-<script is:inline src="/scripts/counter.js"></script>
