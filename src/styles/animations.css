@@ -8,10 +8,13 @@
   transform: translateY(0);
 }
 
+.carousel { overflow: hidden; }
 .carousel-track {
   display: flex;
-  gap: 1.5rem;
-  animation: scroll-x 30s linear infinite;
+  width: max-content;
+  gap: 2rem;
+  animation: scroll-x 35s linear infinite;
+  will-change: transform;
 }
 .carousel:hover .carousel-track { animation-play-state: paused; }
 
