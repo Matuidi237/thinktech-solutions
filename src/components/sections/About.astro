@@ -11,6 +11,8 @@ const isFr = lang === "fr";
 
 <!-- ══ 1. HERO NARRATIF ══ -->
 <section class="about-hero" aria-labelledby="about-title">
+  <img src="/images/about/team-photo.webp" alt="" class="about-hero-bg" aria-hidden="true" loading="eager" />
+  <div class="about-hero-overlay" aria-hidden="true"></div>
   <div class="about-hero-inner">
     <p class="about-eyebrow">
       {isFr ? "Notre histoire · Depuis 2024 · Douala, Cameroun" : "Our story · Since 2024 · Douala, Cameroon"}
@@ -22,8 +24,8 @@ const isFr = lang === "fr";
     </h1>
     <blockquote class="about-hero-quote reveal">
       {isFr
-        ? "En Afrique, la question n'est pas de savoir si le numérique va transformer la formation — c'est déjà en train de se produire. La vraie question, c'est qui va accompagner cette transition avec rigueur, expertise et ancrage local."
-        : "In Africa, the question is not whether digital will transform training — it's already happening. The real question is who will guide this transition with rigour, expertise and local roots."}
+        ? "En Afrique, la question n'est pas de savoir si le numérique va transformer la formation. C'est déjà en train de se produire. La vraie question, c'est qui va accompagner cette transition avec rigueur, expertise et ancrage local."
+        : "In Africa, the question is not whether digital will transform training. It's already happening. The real question is who will guide this transition with rigour, expertise and local roots."}
     </blockquote>
   </div>
 </section>
@@ -39,9 +41,9 @@ const isFr = lang === "fr";
           : "The world's most deployed LMS is no coincidence."}
       </h2>
       <div class="wm-stats">
-        <div class="wm-stat"><strong>450M</strong><span>{isFr ? "apprenants actifs" : "active learners"}</span></div>
-        <div class="wm-stat"><strong>43k+</strong><span>{isFr ? "sites déployés" : "deployed sites"}</span></div>
-        <div class="wm-stat"><strong>100%</strong><span>Open Source</span></div>
+        <div class="wm-stat"><strong class="wm-count" data-target="450" data-suffix="M">0</strong><span>{isFr ? "apprenants actifs" : "active learners"}</span></div>
+        <div class="wm-stat"><strong class="wm-count" data-target="43" data-suffix="k+">0</strong><span>{isFr ? "sites déployés" : "deployed sites"}</span></div>
+        <div class="wm-stat"><strong class="wm-count" data-target="100" data-suffix="%">0</strong><span>Open Source</span></div>
       </div>
     </div>
     <div class="why-right reveal">
@@ -61,8 +63,8 @@ const isFr = lang === "fr";
           <div>
             <strong>{isFr ? "Résilient sur faible bande passante" : "Resilient on low bandwidth"}</strong>
             <p>{isFr
-              ? "Conçu pour fonctionner dans des environnements à connectivité variable — une nécessité sur le terrain africain."
-              : "Built to work in variable connectivity environments — a necessity on the African ground."}</p>
+              ? "Conçu pour fonctionner dans des environnements à connectivité variable, une nécessité sur le terrain africain."
+              : "Built to work in variable connectivity environments, a necessity on the African ground."}</p>
           </div>
         </div>
         <div class="why-reason">
@@ -100,7 +102,7 @@ const isFr = lang === "fr";
         {isFr ? "Le fondateur" : "The founder"}
       </p>
       <h2 id="founder-title" class="founder-name">Ignace ELOUGA</h2>
-      <p class="founder-role">CEO & Founder · {isFr ? "Ingénieur en Réseaux et Sécurité Informatique" : "Network & Information Security Engineer"}</p>
+      <p class="founder-role">CEO &amp; Founder, {isFr ? "Ingénieur en Réseaux et Sécurité Informatique" : "Network &amp; Information Security Engineer"}</p>
       <p class="founder-bio">
         {isFr
           ? "Ingénieur en Réseaux et Sécurité Informatique, Ignace conçoit et déploie des plateformes Moodle depuis 2023. Passionné par l'éducation numérique, il fonde ThinkTech Solutions avec une ambition claire : innover la manière d'enseigner et d'apprendre en Afrique grâce au numérique, en rendant des solutions de classe mondiale accessibles aux organisations du continent."
@@ -187,23 +189,34 @@ const isFr = lang === "fr";
 
   /* ── 1. HERO ── */
   .about-hero {
-    background: var(--color-primary);
-    padding: 6rem 2rem 5rem;
     position: relative;
+    padding: 7rem 2rem 5rem;
     overflow: hidden;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
   }
-  .about-hero::after {
-    content: "";
+  .about-hero-bg {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 80% 50%, rgba(164,37,147,0.18) 0%, transparent 65%);
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 0;
+  }
+  .about-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, rgba(2,33,121,0.96) 0%, rgba(2,33,121,0.82) 55%, rgba(11,14,46,0.7) 100%);
+    z-index: 1;
   }
   .about-hero-inner {
     max-width: 780px;
     margin: 0 auto;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    width: 100%;
   }
   .about-hero-title {
     font-size: clamp(2.2rem, 5vw, 3.6rem);
@@ -212,17 +225,16 @@ const isFr = lang === "fr";
     line-height: 1.07;
     letter-spacing: -0.02em;
     margin-bottom: 2rem;
-    text-wrap: balance;
   }
   .about-hero-title em {
-    color: var(--color-accent-light);
+    color: #f4a0e8;
     font-style: normal;
   }
   .about-hero-quote {
-    font-size: clamp(1rem, 1.5vw, 1.15rem);
-    color: rgba(255,255,255,0.65);
-    line-height: 1.75;
-    border-left: 3px solid var(--color-accent);
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
+    color: rgba(255,255,255,0.88);
+    line-height: 1.8;
+    border-left: 3px solid #f4a0e8;
     padding-left: 1.25rem;
     max-width: 620px;
     margin: 0;
@@ -253,7 +265,7 @@ const isFr = lang === "fr";
   }
   .wm-stats { display: flex; gap: 2.5rem; }
   .wm-stat strong { display: block; font-size: 2.5rem; font-weight: 800; color: var(--color-accent); line-height: 1; margin-bottom: 0.3rem; }
-  .wm-stat span { font-size: 0.72rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+  .wm-stat span { font-size: 0.72rem; color: rgba(255,255,255,0.75); text-transform: uppercase; letter-spacing: 0.06em; }
 
   .why-reasons { display: flex; flex-direction: column; gap: 0; }
   .why-reason {
@@ -265,7 +277,7 @@ const isFr = lang === "fr";
   .why-reason:last-child { border-bottom: none; }
   .wr-icon { color: var(--color-accent); font-size: 1rem; margin-top: 0.25rem; flex-shrink: 0; }
   .why-reason strong { display: block; color: #fff; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; }
-  .why-reason p { color: rgba(255,255,255,0.55); font-size: 0.85rem; line-height: 1.65; margin: 0; }
+  .why-reason p { color: rgba(255,255,255,0.80); font-size: 0.88rem; line-height: 1.7; margin: 0; }
 
   /* ── 3. FONDATEUR ── */
   .founder-section {
@@ -433,7 +445,7 @@ const isFr = lang === "fr";
     .values-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
-    .about-hero { padding: 4rem 1.25rem 3.5rem; }
+    .about-hero { padding: 5rem 1.25rem 3.5rem; min-height: 360px; }
     .why-moodle-grid, .founder-grid { padding: 0 1.25rem; }
     .wm-stats { gap: 1.5rem; }
     .wm-stat strong { font-size: 2rem; }
@@ -443,3 +455,37 @@ const isFr = lang === "fr";
     .founder-photo-wrap { width: 100%; aspect-ratio: 3/4; border-radius: 14px; }
   }
 </style>
+
+<script is:inline>
+(function () {
+  var counters = document.querySelectorAll('.wm-count');
+  if (!counters.length) return;
+
+  function animateCount(el) {
+    var target = parseInt(el.dataset.target, 10);
+    var suffix = el.dataset.suffix || '';
+    var duration = 1600;
+    var start = null;
+
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(function (el) { observer.observe(el); });
+})();
+</script>
