@@ -109,9 +109,17 @@ const t = useTranslations(lang);
     background-size: cover;
     background-position: center top;
     opacity: 0;
+    transform: scale(1);
     transition: opacity 1.2s ease-in-out;
   }
-  .hero-slide.active { opacity: 1; }
+  .hero-slide.active {
+    opacity: 1;
+    animation: hero-kenburns 6s ease-in-out forwards;
+  }
+  @keyframes hero-kenburns {
+    from { transform: scale(1); }
+    to   { transform: scale(1.08); }
+  }
   .hero-overlay {
     position: absolute;
     inset: 0;
