@@ -1,4 +1,4 @@
-{
+﻿{
   "nav": {
     "home": "Accueil",
     "about": "À propos",
@@ -19,11 +19,11 @@
       },
       {
         "title": "Formez vos équipes, où qu'elles soient",
-        "subtitle": "Digitalisez votre plan de formation interne avec une plateforme Moodle sur mesure. Parcours certifiants, suivi des progressions, reporting RH — tout ce dont votre entreprise a besoin pour former efficacement."
+        "subtitle": "Digitalisez votre plan de formation interne avec une plateforme Moodle sur mesure. Parcours certifiants, suivi des progressions, reporting RH, tout ce dont votre entreprise a besoin pour former efficacement."
       },
       {
         "title": "Votre campus numérique, ancré dans la réalité africaine",
-        "subtitle": "Nous créons des environnements d'apprentissage complets pour établissements et centres de formation — robustes, accessibles en zone à faible débit, et pensés pour l'Afrique."
+        "subtitle": "Nous créons des environnements d'apprentissage complets pour établissements et centres de formation, robustes, accessibles en zone à faible débit, et pensés pour l'Afrique."
       }
     ],
     "ctaPrimary": "Demander une démo",
@@ -364,7 +364,7 @@
     "projects": [
       {
         "name": "Bouka Creativ' Learning",
-        "client": "Boukarou — Incubateur jeunesse",
+        "client": "Boukarou, Incubateur jeunesse",
         "sector": "Inclusion numérique",
         "metric": {
           "value": "42 000",
@@ -387,7 +387,7 @@
       },
       {
         "name": "ThinkTech Academy",
-        "client": "ThinkTech Solutions — LMS propriétaire",
+        "client": "ThinkTech Solutions, LMS propriétaire",
         "sector": "Digital skills & Formation certifiante",
         "metric": {
           "value": "5",
@@ -402,7 +402,7 @@
           "Digital Skills",
           "Certifications"
         ],
-        "description": "ThinkTech Academy est le LMS propriétaire de ThinkTech Solutions, conçu pour développer les compétences numériques. La plateforme couvre 5 domaines clés — management, fiscalité, audit, comptabilité et intelligence artificielle — avec des parcours certifiants, une gestion fine des accès et une interface pensée pour l'apprenant africain.",
+        "description": "ThinkTech Academy est le LMS propriétaire de ThinkTech Solutions, conçu pour développer les compétences numériques. La plateforme couvre 5 domaines clés, management, fiscalité, audit, comptabilité et intelligence artificielle, avec des parcours certifiants, une gestion fine des accès et une interface pensée pour l'apprenant africain.",
         "challenge": "Créer un LMS propriétaire capable de structurer et de certifier des apprentissages en digital skills, adapté aux réalités du marché africain, avec une expérience apprenant fluide et engageante.",
         "solution": "Parcours pédagogiques modulaires avec progression verrouillée, système de certification intégré, tableau de bord apprenant et formateur, interface responsive et entièrement personnalisée aux couleurs de ThinkTech.",
         "image": "/images/platforms/training-to-rise-home.webp",
@@ -410,7 +410,7 @@
       },
       {
         "name": "Erfolg Zentrum Online",
-        "client": "Erfolg Zentrum — Centre de formation (Allemagne)",
+        "client": "Erfolg Zentrum, Centre de formation (Allemagne)",
         "sector": "Formation en langue allemande",
         "metric": {
           "value": "J+1",
@@ -433,7 +433,7 @@
       },
       {
         "name": "EST LaSalle Douala",
-        "client": "École Supérieure Technique LaSalle — Douala",
+        "client": "École Supérieure Technique LaSalle, Douala",
         "sector": "Enseignement supérieur technique",
         "metric": {
           "value": "Phase 1",
@@ -456,7 +456,7 @@
       },
       {
         "name": "Owendo Mineral Port",
-        "client": "OMP — Port Minéralier d'Owendo (Gabon)",
+        "client": "OMP, Port Minéralier d'Owendo (Gabon)",
         "sector": "Formation QHSE industrielle",
         "metric": {
           "value": "3",
@@ -471,7 +471,7 @@
           "QHSE",
           "Induction"
         ],
-        "description": "Pour le port minéralier d'Owendo au Gabon, nous avons conçu un parcours d'induction QHSE complet à destination des collaborateurs et prestataires externes. Le programme couvre les règles d'accès et de comportement sur site, l'utilisation des équipements de protection individuelle (EPIs) et la procédure de signalement des dangers — avec vidéos animées, quiz chronométrés, barre de progression et classement en temps réel.",
+        "description": "Pour le port minéralier d'Owendo au Gabon, nous avons conçu un parcours d'induction QHSE complet à destination des collaborateurs et prestataires externes. Le programme couvre les règles d'accès et de comportement sur site, l'utilisation des équipements de protection individuelle (EPIs) et la procédure de signalement des dangers, avec vidéos animées, quiz chronométrés, barre de progression et classement en temps réel.",
         "challenge": "Former rapidement et de manière traçable des centaines de collaborateurs et prestataires aux exigences QHSE d'un site industriel portuaire à hauts risques, tout en maintenant un niveau d'engagement élevé tout au long du parcours.",
         "solution": "Parcours Moodle en 3 sections avec contenus vidéo Powtoon, quiz à temps limité (10 questions par section), système de gamification avec points et classement, et tableau de bord administrateur pour le suivi des résultats.",
         "image": "/images/platforms/omp-1.webp",
@@ -492,7 +492,7 @@
       {
         "num": "02",
         "title": "Construire",
-        "text": "Déploiement, configuration, identité visuelle, contenus de démonstration — on livre une plateforme prête à l'emploi, pas un squelette."
+        "text": "Déploiement, configuration, identité visuelle, contenus de démonstration, on livre une plateforme prête à l'emploi, pas un squelette."
       },
       {
         "num": "03",

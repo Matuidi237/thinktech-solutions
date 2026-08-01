@@ -1,4 +1,4 @@
-{
+﻿{
   "nav": {
     "home": "Home",
     "about": "About",
@@ -19,7 +19,7 @@
       },
       {
         "title": "Train your teams, wherever they are",
-        "subtitle": "Digitise your internal training with a tailored Moodle platform. Certified paths, progress tracking, HR reporting — everything your organisation needs to train effectively."
+        "subtitle": "Digitise your internal training with a tailored Moodle platform. Certified paths, progress tracking, HR reporting, everything your organisation needs to train effectively."
       },
       {
         "title": "Your digital campus, built for Africa",
@@ -239,7 +239,7 @@
       {
         "icon": "check-circle",
         "title": "Moodle without the headaches",
-        "text": "Misconfigured roles, disorganized courses, an interface that puts learners off — that's the reality of most poorly set-up platforms. We deliver a solution ready to train from day one, not a project you have to finish yourself."
+        "text": "Misconfigured roles, disorganized courses, an interface that puts learners off, that's the reality of most poorly set-up platforms. We deliver a solution ready to train from day one, not a project you have to finish yourself."
       },
       {
         "icon": "smartphone",
@@ -364,7 +364,7 @@
     "projects": [
       {
         "name": "Bouka Creativ' Learning",
-        "client": "Boukarou — Youth incubator",
+        "client": "Boukarou, Youth incubator",
         "sector": "Digital inclusion",
         "metric": {
           "value": "42,000",
@@ -387,7 +387,7 @@
       },
       {
         "name": "ThinkTech Academy",
-        "client": "ThinkTech Solutions — Proprietary LMS",
+        "client": "ThinkTech Solutions, Proprietary LMS",
         "sector": "Digital skills & Certified training",
         "metric": {
           "value": "5",
@@ -402,7 +402,7 @@
           "Digital Skills",
           "Certifications"
         ],
-        "description": "ThinkTech Academy is ThinkTech Solutions' proprietary LMS, built to develop digital skills. The platform covers 5 key domains — management, tax, audit, accounting and artificial intelligence — with certified pathways, fine-grained access management and an interface designed for the African learner.",
+        "description": "ThinkTech Academy is ThinkTech Solutions' proprietary LMS, built to develop digital skills. The platform covers 5 key domains, management, tax, audit, accounting and artificial intelligence, with certified pathways, fine-grained access management and an interface designed for the African learner.",
         "challenge": "Build a proprietary LMS capable of structuring and certifying digital skills learning, adapted to the African market, with a smooth and engaging learner experience.",
         "solution": "Modular learning pathways with locked progression, integrated certification system, learner and trainer dashboards, responsive interface fully customised to ThinkTech's brand identity.",
         "image": "/images/platforms/training-to-rise-home.webp",
@@ -410,7 +410,7 @@
       },
       {
         "name": "Erfolg Zentrum Online",
-        "client": "Erfolg Zentrum — Training center (Germany)",
+        "client": "Erfolg Zentrum, Training center (Germany)",
         "sector": "German language training",
         "metric": {
           "value": "Day 1",
@@ -425,7 +425,7 @@
           "International",
           "Turnkey"
         ],
-        "description": "For this training centre based in Germany, we delivered a fully turnkey Moodle platform: complete configuration, ready-to-use course spaces, remote admin training and documentation handed over at delivery. The platform was live and fully operational the day after launch — with no on-site intervention required.",
+        "description": "For this training centre based in Germany, we delivered a fully turnkey Moodle platform: complete configuration, ready-to-use course spaces, remote admin training and documentation handed over at delivery. The platform was live and fully operational the day after launch, with no on-site intervention required.",
         "challenge": "Deliver a complete, operational solution for an international client thousands of kilometres away, meeting high quality standards with fully remote support.",
         "solution": "Phased deployment methodology, training sessions via video call, comprehensive technical and pedagogical documentation delivered at handover, and post-launch support included.",
         "image": "/images/platforms/plateforme-allemand-home.webp",
@@ -433,7 +433,7 @@
       },
       {
         "name": "EST LaSalle Douala",
-        "client": "École Supérieure Technique LaSalle — Douala",
+        "client": "École Supérieure Technique LaSalle, Douala",
         "sector": "Higher technical education",
         "metric": {
           "value": "Phase 1",
@@ -456,7 +456,7 @@
       },
       {
         "name": "Owendo Mineral Port",
-        "client": "OMP — Owendo Mineral Port (Gabon)",
+        "client": "OMP, Owendo Mineral Port (Gabon)",
         "sector": "Industrial QHSE training",
         "metric": {
           "value": "3",
@@ -492,7 +492,7 @@
       {
         "num": "02",
         "title": "Build",
-        "text": "Deployment, configuration, visual identity, demo content — we deliver a ready-to-use platform, not a bare skeleton."
+        "text": "Deployment, configuration, visual identity, demo content, we deliver a ready-to-use platform, not a bare skeleton."
       },
       {
         "num": "03",
