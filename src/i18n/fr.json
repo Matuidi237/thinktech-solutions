@@ -12,6 +12,20 @@
     "trustBar": "Partenaire des incubateurs, cabinets de conseil et centres de formation au Cameroun",
     "title": "Boostez la performance et la rentabilité de vos formations",
     "subtitle": "ThinkTech Solutions conçoit et déploie des plateformes e-learning basées sur Moodle au Cameroun et en Afrique centrale, fluides et sécurisées. Offrez à vos apprenants une expérience intuitive sur tous supports, pour former sans limites, partout et en toute autonomie.",
+    "heroSlides": [
+      {
+        "title": "Boostez la performance et la rentabilité de vos formations",
+        "subtitle": "ThinkTech Solutions conçoit et déploie des plateformes e-learning basées sur Moodle au Cameroun et en Afrique centrale, fluides et sécurisées. Offrez à vos apprenants une expérience intuitive sur tous supports."
+      },
+      {
+        "title": "Formez vos équipes, où qu'elles soient",
+        "subtitle": "Digitalisez votre plan de formation interne avec une plateforme Moodle sur mesure. Parcours certifiants, suivi des progressions, reporting RH — tout ce dont votre entreprise a besoin pour former efficacement."
+      },
+      {
+        "title": "Votre campus numérique, ancré dans la réalité africaine",
+        "subtitle": "Nous créons des environnements d'apprentissage complets pour établissements et centres de formation — robustes, accessibles en zone à faible débit, et pensés pour l'Afrique."
+      }
+    ],
     "ctaPrimary": "Demander une démo",
     "ctaSecondary": "Découvrir nos services",
     "heroImageAlt": "Apprenant utilisant une plateforme de formation sur smartphone",

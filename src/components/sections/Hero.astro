@@ -10,25 +10,29 @@ const t = useTranslations(lang);
 <section id="accueil" class="hero" aria-labelledby="hero-title">
   <div class="hero-fullbg">
     <div class="hero-slides" aria-hidden="true">
-      <div class="hero-slide active" style="background-image: url('/images/hero/hero-accueil-3.webp')"></div>
+      <div class="hero-slide" style="background-image: url('/images/hero/hero-accueil-3.webp')"></div>
       <div class="hero-slide" style="background-image: url('/images/hero/002.webp')"></div>
       <div class="hero-slide" style="background-image: url('/images/hero/003.webp')"></div>
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-circle-deco" aria-hidden="true"></div>
     <div class="hero-slide-dots" aria-hidden="true">
-      <span class="hero-dot active"></span>
+      <span class="hero-dot"></span>
       <span class="hero-dot"></span>
       <span class="hero-dot"></span>
     </div>
     <div class="hero-top">
-      <div class="hero-text reveal">
-        <h1 id="hero-title">{t.hero.title}</h1>
-        <p class="hero-subtitle">{t.hero.subtitle}</p>
-        <div class="hero-cta">
-          <a href={`/${lang}/contact`} class="btn btn-primary">{t.hero.ctaPrimary}</a>
-          <a href={`/${lang}/services`} class="btn btn-secondary btn-secondary--light">{t.hero.ctaSecondary}</a>
-        </div>
+      <div class="hero-texts">
+        {t.hero.heroSlides.map((slide: any, i: number) => (
+          <div class={`hero-text${i === 0 ? ' active' : ''}`} data-slide={i}>
+            <h1 id={i === 0 ? 'hero-title' : undefined}>{slide.title}</h1>
+            <p class="hero-subtitle">{slide.subtitle}</p>
+          </div>
+        ))}
+      </div>
+      <div class="hero-cta">
+        <a href={`/${lang}/contact`} class="btn btn-primary">{t.hero.ctaPrimary}</a>
+        <a href={`/${lang}/services`} class="btn btn-secondary btn-secondary--light">{t.hero.ctaSecondary}</a>
       </div>
     </div>
   </div>
@@ -96,6 +100,7 @@ const t = useTranslations(lang);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
   }
 
   .hero-slides {
@@ -109,17 +114,16 @@ const t = useTranslations(lang);
     background-size: cover;
     background-position: center top;
     opacity: 0;
-    transform: scale(1);
-    transition: opacity 1.2s ease-in-out;
+    will-change: transform, opacity;
+    transition: opacity 1.4s ease-in-out, transform 4s ease-in-out;
   }
-  .hero-slide.active {
-    opacity: 1;
-    animation: hero-kenburns 6s ease-in-out forwards;
-  }
-  @keyframes hero-kenburns {
-    from { transform: scale(1); }
-    to   { transform: scale(1.08); }
-  }
+  /* Zoom-in : part de 1 → arrive à 1.10 */
+  .hero-slide.zoom-in           { transform: scale(1); }
+  .hero-slide.zoom-in.active    { opacity: 1; transform: scale(1.10); }
+
+  /* Zoom-out : part de 1.10 → arrive à 1 */
+  .hero-slide.zoom-out          { transform: scale(1.10); }
+  .hero-slide.zoom-out.active   { opacity: 1; transform: scale(1); }
   .hero-overlay {
     position: absolute;
     inset: 0;
@@ -131,9 +135,28 @@ const t = useTranslations(lang);
     z-index: 2;
     padding: 8rem 2rem 5rem 3rem;
   }
-  .hero-text { max-width: 42%; }
-  .hero-text h1 { color: #fff; margin-bottom: 1.5rem; font-size: clamp(2.4rem, 4.5vw, 4rem); line-height: 1.05; }
-  .hero-subtitle { margin: 0 0 2.5rem; font-size: clamp(1rem, 1.4vw, 1.15rem); max-width: 520px; color: #fff; line-height: 1.7; }
+  .hero-texts {
+    position: relative;
+    max-width: 42%;
+    min-height: 260px;
+    margin-bottom: 2rem;
+  }
+  .hero-text {
+    position: absolute;
+    top: 0; left: 0; width: 100%;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    pointer-events: none;
+  }
+  .hero-text.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+  }
+  .hero-text h1 { color: #fff; margin-bottom: 1.25rem; font-size: clamp(2.4rem, 4.5vw, 4rem); line-height: 1.05; }
+  .hero-subtitle { margin: 0; font-size: clamp(1rem, 1.4vw, 1.15rem); max-width: 520px; color: #fff; line-height: 1.7; }
   .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
   .btn-secondary--light {
     background: rgba(255,255,255,0.12);
@@ -279,6 +302,7 @@ const t = useTranslations(lang);
   @media (max-width: 640px) {
     .hero-fullbg { min-height: 85vh; }
     .hero-top { padding: 6rem 1.25rem 3rem 1.25rem; }
+    .hero-texts { max-width: 100%; min-height: 220px; }
     .hero-text { max-width: 100%; }
     .hero-text h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
     .hero-subtitle { font-size: 1rem; max-width: 100%; }
@@ -294,29 +318,48 @@ const t = useTranslations(lang);
 
 <script is:inline>
 (function() {
-  var slides = document.querySelectorAll('.hero-slide');
+  var slides = Array.from(document.querySelectorAll('.hero-slide'));
   var dots = document.querySelectorAll('.hero-dot');
   var current = 0;
   var total = slides.length;
   var timer;
 
+  function dirClass(i) { return i % 2 === 0 ? 'zoom-in' : 'zoom-out'; }
+
+  // Assign direction classes to all slides
+  slides.forEach(function(s, i) { s.classList.add(dirClass(i)); });
+
+  var texts = Array.from(document.querySelectorAll('.hero-text'));
+
   function goTo(n) {
     slides[current].classList.remove('active');
     dots[current].classList.remove('active');
+    if (texts[current]) texts[current].classList.remove('active');
+
     current = (n + total) % total;
-    slides[current].classList.add('active');
+    var slide = slides[current];
+
+    // Remove direction class, force reflow, re-add so transition restarts from origin
+    slide.classList.remove('zoom-in', 'zoom-out');
+    void slide.offsetWidth;
+    slide.classList.add(dirClass(current));
+    slide.classList.add('active');
     dots[current].classList.add('active');
+    if (texts[current]) texts[current].classList.add('active');
   }
 
-  function next() { goTo(current + 1); }
+  function advance() { goTo(current + 1); }
 
-  function start() { timer = setInterval(next, 3000); }
-  function stop() { clearInterval(timer); }
+  function start() { timer = setInterval(advance, 4000); }
+  function stop()  { clearInterval(timer); }
 
   dots.forEach(function(dot, i) {
     dot.addEventListener('click', function() { stop(); goTo(i); start(); });
   });
 
+  // Activate first slide immediately
+  slides[0].classList.add('active');
+  dots[0].classList.add('active');
   start();
 })();
 </script>
