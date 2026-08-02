@@ -260,12 +260,32 @@ const t = useTranslations(lang);
   .value-item h4 { margin: 0.5rem 0 0.4rem; }
 
   @media (max-width: 900px) {
-    .about-main-grid { grid-template-columns: 1fr; }
-    .about-main-left { padding: 2rem 1.5rem 0; }
-    .about-main-right { height: 320px; padding: 0; }
+    .about-main { padding: 3rem 0 4rem; }
+    .about-main-grid { grid-template-columns: 1fr; gap: 0; }
+    .about-main-left {
+      padding: 0 1.25rem 2rem;
+      order: 2;
+    }
+    .about-main-right {
+      order: 1;
+      height: 260px;
+      padding: 0 1.25rem 2rem;
+    }
     .photo-frame { display: none; }
-    .about-photo { border-radius: 0; box-shadow: none; }
-    .about-pillars, .values-grid { grid-template-columns: 1fr; }
+    .about-photo {
+      border-radius: 12px;
+      box-shadow: 0 12px 32px rgba(2,33,121,0.14);
+      height: 260px;
+    }
+    .about-pillars { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .about-main-right { height: 220px; padding: 0 1rem 1.5rem; }
+    .about-photo { height: 220px; }
+    .about-main-left { padding: 0 1rem 2rem; }
+    .badges-row { gap: 1rem; }
+    .values-grid { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -274,13 +294,34 @@ const t = useTranslations(lang);
   var section = document.querySelector('.about-main');
   if (!section) return;
 
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) { section.classList.add('in-view'); io.disconnect(); }
-    });
-  }, { threshold: 0.1 });
-  io.observe(section);
+  /* Animation photo + texte : attend un vrai scroll si la section
+     est déjà visible au chargement (pas de hero au-dessus) */
+  function startMainObserver() {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { section.classList.add('in-view'); io.disconnect(); }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -80px 0px' });
+    io.observe(section);
+  }
 
+  var rect = section.getBoundingClientRect();
+  var alreadyVisible = rect.top < window.innerHeight * 0.5 && window.scrollY < 10;
+
+  if (alreadyVisible) {
+    /* Attendre que l'utilisateur scroll un peu */
+    var waited = false;
+    window.addEventListener('scroll', function onFirstScroll() {
+      if (waited) return;
+      waited = true;
+      window.removeEventListener('scroll', onFirstScroll);
+      startMainObserver();
+    }, { passive: true });
+  } else {
+    startMainObserver();
+  }
+
+  /* Piliers & valeurs */
   var reveals = document.querySelectorAll('.reveal');
   if (!reveals.length) return;
   var ro = new IntersectionObserver(function(entries) {
