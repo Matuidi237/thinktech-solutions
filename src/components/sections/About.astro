@@ -140,35 +140,22 @@ const t = useTranslations(lang);
   .about-main-right {
     height: 600px;
     overflow: hidden;
+    border-radius: 16px;
+    padding-right: 1.5rem;
   }
   .about-main-photo {
     width: 100%;
-    height: 100%;
+    height: 115%;
     object-fit: cover;
-    border-radius: 16px 0 0 16px;
+    border-radius: 16px;
     display: block;
     opacity: 0;
-    transform: scale(1.14);
+    transform: scale(1.12) translateY(-4%);
     will-change: transform, opacity;
     transition: opacity 0.9s ease 0.1s;
   }
   .about-main.in-view .about-main-photo {
     opacity: 1;
-  }
-
-  /* Scroll-Driven Zoom — navigateurs modernes */
-  @keyframes about-sdz {
-    from { transform: scale(1.14); }
-    to   { transform: scale(1); }
-  }
-  @supports (animation-timeline: scroll()) {
-    .about-main-photo {
-      animation: about-sdz linear both;
-      animation-timeline: view(block);
-      animation-range: entry 0% cover 65%;
-      transition: opacity 0.9s ease 0.1s;
-    }
-    .about-main.in-view .about-main-photo { transform: unset; }
   }
 
   /* ── Piliers & valeurs ── */
@@ -223,23 +210,21 @@ const t = useTranslations(lang);
   }, { threshold: 0.12 });
   io.observe(section);
 
-  /* Scroll-Driven Zoom — fallback pour Safari */
-  var hasSDZ = CSS.supports('animation-timeline', 'scroll()');
-  if (!hasSDZ) {
-    var ticking = false;
-    function updateZoom() {
-      var rect = section.getBoundingClientRect();
-      var total = window.innerHeight + rect.height;
-      var progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / total));
-      var scale = 1.14 - progress * 0.14;
-      photo.style.transform = 'scale(' + scale + ')';
-      ticking = false;
-    }
-    window.addEventListener('scroll', function() {
-      if (!ticking) { requestAnimationFrame(updateZoom); ticking = true; }
-    }, { passive: true });
-    updateZoom();
+  /* Scroll-Driven Zoom — JS universel */
+  var ticking = false;
+  function updateZoom() {
+    var rect = section.getBoundingClientRect();
+    var total = window.innerHeight + rect.height;
+    var progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / total));
+    var scale = 1.12 - progress * 0.12;
+    var ty = -4 + progress * 4;
+    photo.style.transform = 'scale(' + scale + ') translateY(' + ty + '%)';
+    ticking = false;
   }
+  window.addEventListener('scroll', function() {
+    if (!ticking) { requestAnimationFrame(updateZoom); ticking = true; }
+  }, { passive: true });
+  updateZoom();
 
   /* reveal for pillars/values */
   var reveals = document.querySelectorAll('.reveal');
