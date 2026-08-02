@@ -72,7 +72,7 @@ const t = useTranslations(lang);
   <div class="mv-grid">
 
     <!-- Image gauche -->
-    <div class="mv-image-wrap reveal">
+    <div class="mv-image-wrap reveal-left">
       <img
         src="/images/about/mission.webp"
         alt="Apprenant en formation en ligne"
@@ -84,12 +84,12 @@ const t = useTranslations(lang);
 
     <!-- Texte droite -->
     <div class="mv-content">
-      <p class="mv-eyebrow reveal">
+      <p class="mv-eyebrow reveal" style="--rv:0">
         <span class="eyebrow-dot" aria-hidden="true"></span>
         {lang === 'fr' ? 'Mission & Vision' : 'Mission & Vision'}
       </p>
 
-      <div class="mv-block reveal">
+      <div class="mv-block reveal" style="--rv:1">
         <h2 class="mv-block-title">
           {lang === 'fr' ? 'Notre mission' : 'Our mission'}
         </h2>
@@ -100,7 +100,7 @@ const t = useTranslations(lang);
         </p>
       </div>
 
-      <div class="mv-block reveal">
+      <div class="mv-block reveal" style="--rv:2">
         <h2 class="mv-block-title">
           {lang === 'fr' ? 'Notre vision' : 'Our vision'}
         </h2>
@@ -111,7 +111,7 @@ const t = useTranslations(lang);
         </p>
       </div>
 
-      <a href={`/${lang}/contact`} class="mv-cta reveal">
+      <a href={`/${lang}/contact`} class="mv-cta reveal" style="--rv:3">
         {lang === 'fr' ? 'Lancer un projet avec nous' : 'Start a project with us'}
         <span aria-hidden="true">→</span>
       </a>
@@ -142,6 +142,32 @@ const t = useTranslations(lang);
     transition: opacity 0.6s ease var(--d, 0s), transform 0.6s ease var(--d, 0s);
   }
   .about-main.in-view .anim-up { opacity: 1; transform: none; }
+
+  /* Slide depuis la gauche (image Mission) */
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-48px);
+    transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-left.is-visible { opacity: 1; transform: translateX(0); }
+
+  /* Reveal avec stagger via --rv */
+  .mv-content .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s ease calc(var(--rv, 0) * 0.12s),
+                transform 0.55s ease calc(var(--rv, 0) * 0.12s);
+  }
+  .mv-content .reveal.is-visible { opacity: 1; transform: none; }
+
+  /* Valeurs en vague */
+  .value-item.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.5s ease calc(var(--vi, 0) * 0.08s),
+                transform 0.5s ease calc(var(--vi, 0) * 0.08s);
+  }
+  .value-item.reveal.is-visible { opacity: 1; transform: none; }
 
   .about-photo {
     opacity: 0;
@@ -441,20 +467,17 @@ const t = useTranslations(lang);
     startMainObserver();
   }
 
-  /* Piliers & valeurs */
-  var reveals = document.querySelectorAll('.reveal');
-  if (!reveals.length) return;
+  /* Reveal standard + reveal-left */
+  var allReveals = document.querySelectorAll('.reveal, .reveal-left');
+  if (!allReveals.length) return;
   var ro = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting) {
-        var el = e.target;
-        var vi = el.style.getPropertyValue('--vi') || '0';
-        el.style.transitionDelay = (parseFloat(vi) * 0.08) + 's';
-        el.classList.add('is-visible');
-        ro.unobserve(el);
+        e.target.classList.add('is-visible');
+        ro.unobserve(e.target);
       }
     });
-  }, { threshold: 0.15 });
-  reveals.forEach(function(el) { ro.observe(el); });
+  }, { threshold: 0.18 });
+  allReveals.forEach(function(el) { ro.observe(el); });
 })();
 </script>
