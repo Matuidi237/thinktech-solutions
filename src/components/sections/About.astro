@@ -259,34 +259,60 @@ const t = useTranslations(lang);
   .value-num { color: var(--color-text-secondary); font-size: 0.9rem; opacity: 0.6; }
   .value-item h4 { margin: 0.5rem 0 0.4rem; }
 
-  @media (max-width: 900px) {
-    .about-eyebrow { display: none; }
-    .about-main { padding: 3rem 0 4rem; }
-    .about-main-grid { grid-template-columns: 1fr; gap: 0; }
+  /* ── Tablette (600–1024px) ── */
+  @media (max-width: 1024px) and (min-width: 601px) {
+    .about-main { padding: 3.5rem 0 4rem; }
+    .about-main-grid { grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; }
     .about-main-left {
-      padding: 0 1.25rem 2rem;
-      order: 2;
+      padding: 2rem 2rem 2rem max(1.5rem, calc((100vw - 900px) / 2 + 1.5rem));
     }
+    .about-main-right { height: auto; min-height: 420px; padding: 1.5rem 0 1.5rem 1rem; }
+    .about-photo { height: 100%; min-height: 420px; border-radius: 12px; }
+    .photo-frame { display: none; }
+    .about-pillars { grid-template-columns: 1fr; gap: 0.75rem; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ── Mobile (≤ 600px) ── */
+  @media (max-width: 600px) {
+    .about-eyebrow { display: none; }
+    .about-main { padding: 0 0 3rem; }
+    .about-main-grid { grid-template-columns: 1fr; }
+
+    /* Photo en haut, pleine largeur */
     .about-main-right {
       order: 1;
       height: 260px;
-      padding: 0 1.25rem 2rem;
+      padding: 0;
     }
     .photo-frame { display: none; }
     .about-photo {
-      border-radius: 12px;
-      box-shadow: 0 12px 32px rgba(2,33,121,0.14);
+      width: 100%;
       height: 260px;
+      border-radius: 0;
+      box-shadow: none;
     }
-    .about-pillars { grid-template-columns: 1fr; }
-    .values-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 480px) {
-    .about-main-right { height: 220px; padding: 0 1rem 1.5rem; }
-    .about-photo { height: 220px; }
-    .about-main-left { padding: 0 1rem 2rem; }
-    .badges-row { gap: 1rem; }
-    .values-grid { grid-template-columns: 1fr; }
+
+    /* Texte en dessous */
+    .about-main-left {
+      order: 2;
+      padding: 1.75rem 1.25rem 0.5rem;
+    }
+    .about-main-left h1 { font-size: 1.75rem; margin-bottom: 1rem; }
+    .about-desc { font-size: 0.93rem; margin-bottom: 1.25rem; }
+    .about-sep { margin-bottom: 1.25rem; }
+
+    .moodle-card { padding: 1rem 1.25rem; }
+    .badges-row { gap: 1.25rem; justify-content: space-between; }
+    .badge-item img { width: 52px; height: 52px; }
+
+    .about-cta { font-size: 0.88rem; }
+
+    /* Piliers & valeurs */
+    .about-pillars-section { padding: 3rem 0 4rem; }
+    .about-pillars { grid-template-columns: 1fr; gap: 0.75rem; margin-bottom: 2.5rem; }
+    .values-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .value-item { padding: 1.25rem 1rem; }
   }
 </style>
 
