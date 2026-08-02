@@ -67,15 +67,60 @@ const t = useTranslations(lang);
   </div>
 </section>
 
-<!-- Piliers mission / vision -->
-<section class="about-pillars-section" aria-label="Mission et vision">
-  <div class="container">
-    <div class="about-pillars">
-      <article class="reveal"><span class="pillar-label">{t.about.mission.title}</span><p>{t.about.mission.text}</p></article>
-      <article class="reveal"><span class="pillar-label">{t.about.visionMid.title}</span><p>{t.about.visionMid.text}</p></article>
-      <article class="reveal"><span class="pillar-label">{t.about.visionLong.title}</span><p>{t.about.visionLong.text}</p></article>
+<!-- Mission & Vision -->
+<section class="mv-section" aria-label="Mission et vision">
+  <div class="mv-grid">
+
+    <!-- Image gauche -->
+    <div class="mv-image-wrap reveal">
+      <img
+        src="/images/about/mission.webp"
+        alt="Apprenant en formation en ligne"
+        class="mv-image"
+        loading="lazy"
+        width="800" height="600"
+      />
     </div>
 
+    <!-- Texte droite -->
+    <div class="mv-content">
+      <p class="mv-eyebrow reveal">
+        <span class="eyebrow-dot" aria-hidden="true"></span>
+        {lang === 'fr' ? 'Mission & Vision' : 'Mission & Vision'}
+      </p>
+
+      <div class="mv-block reveal">
+        <h2 class="mv-block-title">
+          {lang === 'fr' ? 'Notre mission' : 'Our mission'}
+        </h2>
+        <p>
+          {lang === 'fr'
+            ? 'ThinkTech Solutions œuvre à redorer la qualité de l\'éducation en Afrique centrale en proposant des plateformes e-learning Moodle performantes, accessibles et adaptées aux réalités du terrain. Notre valeur ajoutée : un accompagnement humain de bout en bout, de la conception à la mise en production.'
+            : 'ThinkTech Solutions works to restore the quality of education in Central Africa by offering high-performance, accessible Moodle e-learning platforms tailored to local realities. Our added value: end-to-end human support, from design to deployment.'}
+        </p>
+      </div>
+
+      <div class="mv-block reveal">
+        <h2 class="mv-block-title">
+          {lang === 'fr' ? 'Notre vision' : 'Our vision'}
+        </h2>
+        <p>
+          {lang === 'fr'
+            ? 'Faire de la formation à distance un vecteur d\'inclusion numérique au service des gouvernements africains. En démocratisant l\'accès au savoir, nous contribuons à bâtir les compétences nécessaires à l\'émergence économique et sociale de notre continent.'
+            : 'Making distance learning a driver of digital inclusion in support of African governments. By democratising access to knowledge, we help build the skills needed for the economic and social emergence of our continent.'}
+        </p>
+      </div>
+
+      <a href={`/${lang}/contact`} class="mv-cta reveal">
+        {lang === 'fr' ? 'Lancer un projet avec nous' : 'Start a project with us'}
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Valeurs -->
+  <div class="container">
     <h3 class="values-title reveal">{t.about.valuesTitle}</h3>
     <ul class="values-grid">
       {t.about.values.map((v: any, i: number) => (
@@ -230,46 +275,105 @@ const t = useTranslations(lang);
     box-shadow: 0 24px 60px rgba(2, 33, 121, 0.18);
   }
 
-  /* ── Section piliers & valeurs ── */
-  .about-pillars-section {
+  /* ── Section Mission & Vision ── */
+  .mv-section {
     background: var(--color-bg-secondary);
-    padding: 4rem 0 5rem;
-    position: relative;
+    padding: 5rem 0;
     overflow: hidden;
   }
-  .about-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 4rem; }
-  .about-pillars article {
-    padding: 1.75rem 1.5rem;
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  .mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin-bottom: 5rem;
   }
-  .about-pillars article:hover { transform: translateY(-6px); box-shadow: 0 18px 32px rgba(2,33,121,0.1); border-color: var(--color-accent); }
-  .pillar-label { display: block; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--color-accent); }
 
+  /* Image gauche */
+  .mv-image-wrap {
+    position: relative;
+    height: 560px;
+    overflow: hidden;
+  }
+  .mv-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    border-radius: 0 16px 16px 0;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .mv-image-wrap:hover .mv-image { transform: scale(1.03); }
+
+  /* Texte droite */
+  .mv-content {
+    padding: 2rem max(2rem, calc((100vw - 1200px) / 2 + 2rem)) 2rem 4rem;
+  }
+  .mv-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+  }
+  .mv-block { margin-bottom: 2rem; }
+  .mv-block-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+    padding-left: 0.75rem;
+    border-left: 3px solid var(--color-accent);
+  }
+  .mv-block p {
+    font-size: 0.97rem;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+  }
+  .mv-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    margin-top: 0.5rem;
+    transition: border-color 0.2s ease, gap 0.2s ease;
+  }
+  .mv-cta:hover { border-color: var(--color-accent); gap: 0.75rem; }
+
+  /* Valeurs */
   .values-title { margin-bottom: 1.5rem; }
   .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; list-style: none; }
   .value-item {
     padding: 1.75rem 1.5rem;
     border: 1px solid var(--color-border);
     border-radius: 10px;
+    background: var(--color-bg);
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   }
   .value-item:hover { transform: translateY(-6px); box-shadow: 0 18px 32px rgba(2,33,121,0.1); border-color: var(--color-accent); }
   .value-num { color: var(--color-text-secondary); font-size: 0.9rem; opacity: 0.6; }
   .value-item h4 { margin: 0.5rem 0 0.4rem; }
 
-  /* ── Tablette (600–1024px) ── */
+  /* ── Tablette (601–1024px) ── */
   @media (max-width: 1024px) and (min-width: 601px) {
     .about-main { padding: 3.5rem 0 4rem; }
     .about-main-grid { grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; }
-    .about-main-left {
-      padding: 2rem 2rem 2rem max(1.5rem, calc((100vw - 900px) / 2 + 1.5rem));
-    }
+    .about-main-left { padding: 2rem 2rem 2rem max(1.5rem, calc((100vw - 900px) / 2 + 1.5rem)); }
     .about-main-right { height: auto; min-height: 420px; padding: 1.5rem 0 1.5rem 1rem; }
     .about-photo { height: 100%; min-height: 420px; border-radius: 12px; }
     .photo-frame { display: none; }
-    .about-pillars { grid-template-columns: 1fr; gap: 0.75rem; }
+
+    .mv-grid { grid-template-columns: 1fr 1fr; margin-bottom: 3rem; }
+    .mv-image-wrap { height: 420px; }
+    .mv-content { padding: 2rem 2rem 2rem 2.5rem; }
     .values-grid { grid-template-columns: 1fr 1fr; }
   }
 
@@ -279,38 +383,27 @@ const t = useTranslations(lang);
     .about-main { padding: 0 0 3rem; }
     .about-main-grid { grid-template-columns: 1fr; }
 
-    /* Photo en haut, pleine largeur */
-    .about-main-right {
-      order: 1;
-      height: 260px;
-      padding: 0;
-    }
+    .about-main-right { order: 1; height: 260px; padding: 0; }
     .photo-frame { display: none; }
-    .about-photo {
-      width: 100%;
-      height: 260px;
-      border-radius: 0;
-      box-shadow: none;
-    }
+    .about-photo { width: 100%; height: 260px; border-radius: 0; box-shadow: none; }
 
-    /* Texte en dessous */
-    .about-main-left {
-      order: 2;
-      padding: 1.75rem 1.25rem 0.5rem;
-    }
+    .about-main-left { order: 2; padding: 1.75rem 1.25rem 0.5rem; }
     .about-main-left h1 { font-size: 1.75rem; margin-bottom: 1rem; }
     .about-desc { font-size: 0.93rem; margin-bottom: 1.25rem; }
     .about-sep { margin-bottom: 1.25rem; }
-
     .moodle-card { padding: 1rem 1.25rem; }
     .badges-row { gap: 1.25rem; justify-content: space-between; }
     .badge-item img { width: 52px; height: 52px; }
-
     .about-cta { font-size: 0.88rem; }
 
-    /* Piliers & valeurs */
-    .about-pillars-section { padding: 3rem 0 4rem; }
-    .about-pillars { grid-template-columns: 1fr; gap: 0.75rem; margin-bottom: 2.5rem; }
+    .mv-section { padding: 3rem 0 3.5rem; }
+    .mv-grid { grid-template-columns: 1fr; margin-bottom: 2.5rem; }
+    .mv-image-wrap { height: 260px; border-radius: 0; }
+    .mv-image { border-radius: 0; }
+    .mv-content { padding: 2rem 1.25rem; }
+    .mv-block { margin-bottom: 1.5rem; }
+    .mv-block p { font-size: 0.92rem; }
+
     .values-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
     .value-item { padding: 1.25rem 1rem; }
   }
