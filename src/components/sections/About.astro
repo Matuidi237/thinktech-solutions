@@ -6,51 +6,21 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-const metrics = lang === 'fr'
-  ? [
-      { value: "+10", label: "experts dédiés à vos projets" },
-      { value: "+20", label: "plateformes e-learning déployées" },
-      { value: "3",   label: "pays couverts en Afrique centrale" },
-      { value: "24/7", label: "support technique disponible" },
-    ]
-  : [
-      { value: "+10",  label: "experts dedicated to your projects" },
-      { value: "+20",  label: "e-learning platforms deployed" },
-      { value: "3",    label: "countries covered in Central Africa" },
-      { value: "24/7", label: "technical support available" },
-    ];
 ---
-
-<!-- Hero plein écran -->
-<section class="about-hero" aria-label="Notre histoire">
-  <img src="/images/about/001.webp" alt={t.about.teamImageAlt} class="about-hero-bg" loading="eager" width="1500" height="1001" />
-  <div class="about-hero-overlay" aria-hidden="true"></div>
-  <div class="container about-hero-inner">
-    <p class="eyebrow about-hero-eyebrow">{lang === 'fr' ? 'Notre histoire' : 'Our story'}</p>
-    <h1 id="about-title" class="about-hero-title">{t.about.title}</h1>
-    <p class="about-hero-sub" set:html={t.about.intro2} />
-  </div>
-</section>
 
 <!-- Section principale : layout image -->
 <section id="about" class="about-main" aria-labelledby="about-main-title">
-  <div class="container about-main-grid">
+  <div class="circle-deco about-circle-1" aria-hidden="true"></div>
+  <div class="circle-deco circle-fill circle-delay about-circle-2" aria-hidden="true"></div>
+  <div class="about-main-grid">
 
-    <!-- Gauche : texte + métriques -->
-    <div class="about-main-left reveal">
-      <p class="about-eyebrow-label">{lang === 'fr' ? 'À propos' : 'About us'}</p>
-      <h2 id="about-main-title" set:html={highlightBrand(t.about.intro)} />
+    <!-- Gauche : texte + badges -->
+    <div class="about-main-left">
+      <p class="about-eyebrow-label anim-fade-up" style="--d:0s">{lang === 'fr' ? 'À propos' : 'About us'}</p>
+      <h1 id="about-main-title" class="anim-fade-up" style="--d:0.08s">{t.about.title}</h1>
+      <p class="about-main-desc anim-fade-up" style="--d:0.16s" set:html={highlightBrand(t.about.intro)} />
 
-      <div class="about-metrics">
-        {metrics.map(m => (
-          <div class="about-metric">
-            <span class="metric-value" data-target={m.value}>{m.value}</span>
-            <span class="metric-label">{m.label}</span>
-          </div>
-        ))}
-      </div>
-
-      <div class="moodle-badges">
+      <div class="moodle-badges anim-fade-up" style="--d:0.24s">
         <p class="badges-label">
           {lang === 'fr' ? 'Certifiés Moodle Academy' : 'Moodle Academy certified'}
         </p>
@@ -71,8 +41,8 @@ const metrics = lang === 'fr'
       </div>
     </div>
 
-    <!-- Droite : photo -->
-    <div class="about-main-right reveal">
+    <!-- Droite : photo bord à bord -->
+    <div class="about-main-right">
       <img src="/images/about/001.webp" alt={t.about.teamImageAlt} class="about-main-photo" loading="lazy" width="700" height="520" />
     </div>
 
@@ -91,7 +61,7 @@ const metrics = lang === 'fr'
     <h3 class="values-title reveal">{t.about.valuesTitle}</h3>
     <ul class="values-grid">
       {t.about.values.map((v: any, i: number) => (
-        <li class="value-item reveal">
+        <li class="value-item reveal" style={`--vi:${i}`}>
           <span class="value-num">{String(i + 1).padStart(2, "0")}</span>
           <h4>{v.title}</h4>
           <p>{v.text}</p>
@@ -102,68 +72,38 @@ const metrics = lang === 'fr'
 </section>
 
 <style>
-  /* ── Hero plein écran ── */
-  .about-hero {
-    position: relative;
-    min-height: 58vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+  /* ── Animations ── */
+  .anim-fade-up, .anim-fade-left {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease var(--d, 0s), transform 0.65s ease var(--d, 0s);
   }
-  .about-hero-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    z-index: 0;
-  }
-  .about-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(2,33,121,0.92) 0%, rgba(2,33,121,0.72) 50%, rgba(2,33,121,0.20) 100%);
-    z-index: 1;
-  }
-  .about-hero-inner {
-    position: relative;
-    z-index: 2;
-    padding: 5rem 0 4rem;
-    max-width: 64%;
-    width: 100%;
-  }
-  .about-hero-eyebrow {
-    color: rgba(255,255,255,0.7);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-  .about-hero-title {
-    color: #fff;
-    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-    line-height: 1.08;
-    margin-bottom: 1.25rem;
-  }
-  .about-hero-sub {
-    color: rgba(255,255,255,0.82);
-    font-size: clamp(1rem, 1.4vw, 1.1rem);
-    line-height: 1.75;
-    font-style: italic;
-    margin: 0;
-    text-align: justify;
+  .anim-fade-left { transform: translateX(32px); }
+  .about-main.in-view .anim-fade-up,
+  .about-main.in-view .anim-fade-left {
+    opacity: 1;
+    transform: none;
   }
 
   /* ── Section principale ── */
   .about-main {
     background: var(--color-bg);
-    padding: 5rem 0;
+    padding: 4rem 0 5rem;
+    overflow: hidden;
+    position: relative;
   }
+  .about-circle-1 { top: -80px; left: -60px; width: 320px; height: 320px; }
+  .about-circle-2 { bottom: -60px; left: 30%; width: 200px; height: 200px; }
   .about-main-grid {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .about-main-left {
+    padding-left: max(2rem, calc((100vw - 1200px) / 2 + 2rem));
+    padding-right: 3.5rem;
   }
 
   .about-eyebrow-label {
@@ -174,40 +114,21 @@ const metrics = lang === 'fr'
     color: var(--color-text-secondary);
     margin-bottom: 0.75rem;
   }
-  .about-main-left h2 {
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
-    line-height: 1.35;
-    margin-bottom: 2rem;
+  .about-main-left h1 {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    line-height: 1.15;
+    margin-bottom: 1rem;
     color: var(--color-text-primary);
   }
-
-  /* Grille métriques 2×2 */
-  .about-metrics {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem 2rem;
-    margin-bottom: 2.5rem;
-  }
-  .about-metric {
-    border-top: 3px solid var(--color-primary);
-    padding-top: 0.75rem;
-  }
-  .metric-value {
-    display: block;
-    font-size: 1.9rem;
-    font-weight: 800;
-    color: var(--color-primary);
-    line-height: 1.1;
-    margin-bottom: 0.3rem;
-  }
-  .metric-label {
-    font-size: 0.85rem;
+  .about-main-desc {
+    font-size: 1rem;
+    line-height: 1.75;
     color: var(--color-text-secondary);
-    line-height: 1.4;
+    margin-bottom: 2rem;
   }
 
   /* Badges Moodle */
-  .moodle-badges { margin-top: 0.5rem; }
+  .moodle-badges { margin-bottom: 2rem; }
   .badges-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
   .badges-row { display: flex; gap: 1.25rem; align-items: flex-start; flex-wrap: wrap; }
   .badge-item { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; text-align: center; }
@@ -216,12 +137,23 @@ const metrics = lang === 'fr'
   .badge-item span { font-size: 0.68rem; color: var(--color-text-secondary); line-height: 1.3; }
 
   /* Photo droite */
+  .about-main-right {
+    height: 600px;
+    overflow: hidden;
+  }
   .about-main-photo {
     width: 100%;
-    height: 480px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 16px;
+    border-radius: 16px 0 0 16px;
     display: block;
+    transform: scale(1.04) translateX(32px);
+    opacity: 0;
+    transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s, opacity 0.8s ease 0.15s;
+  }
+  .about-main.in-view .about-main-photo {
+    transform: scale(1) translateX(0);
+    opacity: 1;
   }
 
   /* ── Piliers & valeurs ── */
@@ -254,13 +186,40 @@ const metrics = lang === 'fr'
   .value-item h4 { margin: 0.5rem 0 0.4rem; }
 
   @media (max-width: 900px) {
-    .about-main-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .about-main-right { order: -1; }
-    .about-main-photo { height: 280px; }
+    .about-main-grid { grid-template-columns: 1fr; }
+    .about-main-left { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .about-main-right { order: -1; height: 300px; }
+    .about-main-photo { border-radius: 0; }
     .about-pillars, .values-grid { grid-template-columns: 1fr; }
   }
-  @media (max-width: 640px) {
-    .about-hero-inner { max-width: 100%; }
-    .about-metrics { grid-template-columns: 1fr 1fr; gap: 1rem; }
-  }
 </style>
+
+<script is:inline>
+(function () {
+  /* Animate about-main on scroll */
+  var section = document.querySelector('.about-main');
+  if (!section) return;
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { section.classList.add('in-view'); io.disconnect(); }
+    });
+  }, { threshold: 0.12 });
+  io.observe(section);
+
+  /* reveal for pillars/values */
+  var reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+  var ro = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        var el = e.target;
+        var vi = el.style.getPropertyValue('--vi') || '0';
+        el.style.transitionDelay = (parseFloat(vi) * 0.08) + 's';
+        el.classList.add('is-visible');
+        ro.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(function(el) { ro.observe(el); });
+})();
+</script>
