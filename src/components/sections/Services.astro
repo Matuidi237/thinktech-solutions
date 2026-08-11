@@ -55,7 +55,7 @@ const icons: Record<string, string> = {
     <ul class="services-grid">
       {t.services.cards.map((c: any, i: number) => (
         <li class="service-card reveal" style={`transition-delay:${(i % 3) * 0.08}s`}>
-          <span class="service-icon" aria-hidden="true" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${icons[c.icon] ?? ""}</svg>`} />
+          <span class="service-icon" aria-hidden="true" set:html={`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${icons[c.icon] ?? ""}</svg>`} />
           <span class="service-num">{String(i + 1).padStart(2, "0")}</span>
           <h3>{c.title}</h3>
           <p class="benefit">{c.benefit}</p>
@@ -105,7 +105,7 @@ const icons: Record<string, string> = {
               aria-labelledby={`why-tab-${i}`}
               hidden={i !== 0}
             >
-              <div class="wsp-icon" aria-hidden="true" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${icons[w.icon] ?? icons["check-circle"]}</svg>`} />
+              <div class="wsp-icon" aria-hidden="true" set:html={`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${icons[w.icon] ?? icons["check-circle"]}</svg>`} />
               <span class="wsp-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
               <h3 class="wsp-title">{w.title}</h3>
               <p class="wsp-text">{w.text}</p>
@@ -251,7 +251,7 @@ const icons: Record<string, string> = {
     margin-bottom: 1rem;
     transition: background 0.28s ease, color 0.28s ease, transform 0.28s ease;
   }
-  .service-icon svg { width: 24px; height: 24px; }
+  .service-icon svg { display: block; width: 24px; height: 24px; }
   .service-card:hover .service-icon { background: var(--color-accent); color: #fff; transform: scale(1.08) rotate(-4deg); }
   .service-num { position: absolute; top: 1.75rem; right: 1.75rem; color: var(--color-text-secondary); font-size: 0.85rem; opacity: 0.5; }
   .service-card .benefit { font-weight: 500; color: var(--color-text); margin: 0.5rem 0; }
@@ -346,7 +346,7 @@ const icons: Record<string, string> = {
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 1.5rem;
   }
-  .wsp-icon svg { width: 26px; height: 26px; }
+  .wsp-icon svg { display: block; width: 26px; height: 26px; }
   .wsp-num {
     display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
     color: var(--color-accent); margin-bottom: 0.5rem;
