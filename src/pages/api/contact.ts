@@ -17,8 +17,8 @@ function isRateLimited(ip: string): boolean {
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   const data = await request.formData();
 
-  // Honeypot — bots fill hidden fields, humans never do
-  if (data.get("_confirm_mail") || data.get("fax")) {
+  // Honeypot — look like real fields; humans skip them (tabindex=-1, off-screen), bots fill them
+  if (data.get("email_confirm") || data.get("ref_code")) {
     return new Response(null, { status: 200 });
   }
 
