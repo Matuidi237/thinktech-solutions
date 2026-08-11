@@ -195,8 +195,11 @@ const successMsg = lang === "fr"
         <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="light"></div>
       )}
 
-      <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <!-- Honeypots : ne jamais remplir -->
+      <input type="text"  name="_confirm_mail" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <input type="text"  name="fax"           class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <input type="hidden" name="loadedAt" id="loadedAt" />
+      <input type="hidden" name="_tk"      id="_tk" />
 
       <div class="form-submit-row">
         <button type="submit" class="btn btn-primary">{f.submit}</button>
@@ -448,6 +451,9 @@ const successMsg = lang === "fr"
 <script>
   // ── Init ──────────────────────────────────────────────────────────────────
   document.getElementById("loadedAt")?.setAttribute("value", String(Date.now()));
+  /* Token JS : prouve qu'un vrai navigateur a exécuté le script */
+  var _tk = String(Date.now() ^ 0xA3F1) + "." + navigator.language.length + "." + screen.colorDepth;
+  document.getElementById("_tk")?.setAttribute("value", _tk);
 
   const form         = document.getElementById("demo-form") as HTMLFormElement | null;
   const countrySelect= document.getElementById("country-code") as HTMLSelectElement | null;

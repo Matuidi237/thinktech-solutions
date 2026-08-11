@@ -17,14 +17,20 @@ function isRateLimited(ip: string): boolean {
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   const data = await request.formData();
 
-  // Honeypot
-  if (data.get("website")) {
+  // Honeypot — bots fill hidden fields, humans never do
+  if (data.get("_confirm_mail") || data.get("fax")) {
     return new Response(null, { status: 200 });
   }
 
-  // Anti-bot: minimum delay between page load and submission
+  // JS fingerprint token — must be present and structurally valid (set by client script)
+  const tk = data.get("_tk")?.toString() ?? "";
+  if (!tk || !/^\d+\.\d+\.\d+$/.test(tk)) {
+    return new Response(null, { status: 200 });
+  }
+
+  // Anti-bot: minimum delay between page load and submission (4.5 s)
   const loadedAt = Number(data.get("loadedAt") || 0);
-  if (loadedAt && Date.now() - loadedAt < 3000) {
+  if (loadedAt && Date.now() - loadedAt < 4500) {
     return new Response(null, { status: 200 });
   }
 
@@ -65,8 +71,22 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   }
 
   const phone = data.get("phone")?.toString().trim() ?? "";
-  if (phone.replace(/[\s\+\-]/g, "").length < 5) {
+  const digitsOnly = phone.replace(/[\s\+\-\(\)\.]/g, "");
+  if (digitsOnly.length < 7 || digitsOnly.length > 15 || !/^\d+$/.test(digitsOnly)) {
     return new Response(JSON.stringify({ error: "Téléphone invalide" }), { status: 400 });
+  }
+
+  const name = data.get("name")?.toString().trim() ?? "";
+  const organization = data.get("organization")?.toString().trim() ?? "";
+  // Bot signal: same value for name and organization
+  if (name.toLowerCase() === organization.toLowerCase()) {
+    return new Response(null, { status: 200 });
+  }
+
+  const need = data.get("need")?.toString().trim() ?? "";
+  // Bot signal: non-Latin scripts (Armenian, Cyrillic, Arabic, CJK…) in a French-language form
+  if (/[Ѐ-ӿ԰-֏؀-ۿ一-鿿぀-ヿ]/.test(need)) {
+    return new Response(null, { status: 200 });
   }
 
   const payload = {
