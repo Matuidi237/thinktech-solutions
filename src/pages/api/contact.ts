@@ -17,24 +17,31 @@ function isRateLimited(ip: string): boolean {
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   const data = await request.formData();
 
+  const ip = clientAddress || "unknown";
+
   // Honeypot — look like real fields; humans skip them (tabindex=-1, off-screen), bots fill them
   if (data.get("email_confirm") || data.get("ref_code")) {
+    console.warn(`[bot] honeypot déclenché — ip:${ip} email:${data.get("email")} org:${data.get("organization")}`);
     return new Response(null, { status: 200 });
   }
 
   // JS fingerprint token — must be present and structurally valid (set by client script)
   const tk = data.get("_tk")?.toString() ?? "";
   if (!tk || !/^\d+\.\d+\.\d+$/.test(tk)) {
+    console.warn(`[bot] token _tk absent ou invalide — ip:${ip} tk:"${tk}"`);
     return new Response(null, { status: 200 });
   }
 
   // Anti-bot: minimum delay between page load and submission (4.5 s)
   const loadedAt = Number(data.get("loadedAt") || 0);
-  if (loadedAt && Date.now() - loadedAt < 4500) {
+  const elapsed = loadedAt ? Date.now() - loadedAt : null;
+  if (loadedAt && elapsed !== null && elapsed < 4500) {
+    console.warn(`[bot] soumission trop rapide — ip:${ip} délai:${elapsed}ms`);
     return new Response(null, { status: 200 });
   }
 
-  if (isRateLimited(clientAddress || "unknown")) {
+  if (isRateLimited(ip)) {
+    console.warn(`[bot] rate-limit dépassé — ip:${ip}`);
     return new Response(JSON.stringify({ error: "Too many requests" }), { status: 429 });
   }
 
@@ -80,12 +87,14 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   const organization = data.get("organization")?.toString().trim() ?? "";
   // Bot signal: same value for name and organization
   if (name.toLowerCase() === organization.toLowerCase()) {
+    console.warn(`[bot] nom=organisation — ip:${ip} valeur:"${name}"`);
     return new Response(null, { status: 200 });
   }
 
   const need = data.get("need")?.toString().trim() ?? "";
   // Bot signal: non-Latin scripts (Armenian, Cyrillic, Arabic, CJK…) in a French-language form
   if (/[Ѐ-ӿ԰-֏؀-ۿ一-鿿぀-ヿ]/.test(need)) {
+    console.warn(`[bot] script non-latin dans besoin — ip:${ip} email:${data.get("email")} extrait:"${need.slice(0, 60)}"`);
     return new Response(null, { status: 200 });
   }
 
