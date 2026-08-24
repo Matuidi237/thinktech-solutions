@@ -25,66 +25,44 @@ const t = useTranslations(lang);
         <h2 id="home-why-title" class="reveal">Why digitalise your training in 2026?</h2>
         <p class="why-intro reveal">Across Africa and beyond, organisations that still rely solely on in-person training pay a steep price. E-learning is no longer a luxury — it is a strategic necessity.</p>
 
-        <div class="why-grid">
-          <div class="why-card why-card--problem reveal">
-            <div class="why-card-header">
-              <span class="why-tag">The reality</span>
-              <h3>In-person training has its limits</h3>
-            </div>
-            <ul class="why-list">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
-                Millions spent every year on consumables: paper, printing, supplies
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
-                Physical classroom capacity caps the number of learners you can reach
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
-                Delays pile up the moment a teacher or trainer is unavailable
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
-                A format that today's learners find increasingly unattractive
-              </li>
-            </ul>
-            <div class="why-stat">
-              <strong>100%</strong>
-              <span>of fixed costs repeat with every new in-person session</span>
+        <div class="why-split">
+
+          <div class="why-col why-col-before">
+            <span class="why-col-label">Without digital</span>
+            <div class="why-items">
+              <div class="why-item why-item-before"><p>One absent teacher brings an entire cohort to a halt.</p></div>
+              <div class="why-item why-item-before"><p>Your classrooms set a hard ceiling on how many learners you can train.</p></div>
+              <div class="why-item why-item-before"><p>Teaching materials disappear at the end of every semester.</p></div>
+              <div class="why-item why-item-before"><p>Zero visibility into who is actually learning — and who is falling behind.</p></div>
             </div>
           </div>
 
-          <div class="why-card why-card--solution reveal">
-            <div class="why-card-header">
-              <span class="why-tag">Our solution</span>
-              <h3>ThinkTech Solutions digitalises your training</h3>
-            </div>
-            <ul class="why-list">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-                We deploy your Moodle platform, fully configured and ready to use
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-                Train drastically more learners with no classroom constraints
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-                Content available 24/7 on mobile, tablet and desktop
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-                Automated progress tracking, certifications and reporting
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-                Dedicated support in French and English at every step
-              </li>
-            </ul>
-            <a href={`/${lang}/contact`} class="why-cta">Start my project →</a>
+          <div class="why-divider" aria-hidden="true">
+            <div class="why-divider-line"></div>
+            <span class="why-divider-arrow">→</span>
+            <div class="why-divider-line"></div>
           </div>
+
+          <div class="why-col why-col-after">
+            <span class="why-col-label">With ThinkTech</span>
+            <div class="why-items">
+              <div class="why-item why-item-after"><p>The course stays available 24/7, even when the teacher cannot be there.</p></div>
+              <div class="why-item why-item-after"><p>Train far more learners with no classroom constraints.</p></div>
+              <div class="why-item why-item-after"><p>Every piece of content you produce, reusable year after year.</p></div>
+              <div class="why-item why-item-after"><p>Real-time dashboards for every trainer and every learner.</p></div>
+            </div>
+          </div>
+
         </div>
+
+        <div class="why-footer">
+          <div class="why-footer-stat">
+            <strong class="why-stat-num">100%</strong>
+            <span class="why-stat-text">of fixed in-person costs repeat with every new session</span>
+          </div>
+          <a href={`/${lang}/contact`} class="why-footer-cta">Start my project</a>
+        </div>
+
       </div>
     </section>
 
@@ -162,93 +140,171 @@ const t = useTranslations(lang);
 <style>
   /* ── Why digitalise section ── */
   .home-why { background: var(--color-bg-secondary); }
-  .why-intro { max-width: 680px; color: var(--color-text-secondary); font-size: 1.05rem; margin: 0.5rem 0 2.5rem; line-height: 1.75; }
-
-  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-
-  .why-card {
-    border-radius: 16px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .why-card--problem {
-    background: #fdf4fe;
-    border: 1px solid #e4b8f0;
-  }
-  .why-card--solution {
-    background: linear-gradient(135deg, var(--color-primary) 0%, #0d2d8a 100%);
-    color: #fff;
-  }
-  .why-card-header { display: flex; flex-direction: column; gap: 0.5rem; }
-  .why-tag {
-    display: inline-block;
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 0.25rem 0.75rem; border-radius: 50px;
-  }
-  .why-card--problem .why-tag { background: #f0d0f9; color: #7b1a6e; }
-  .why-card--solution .why-tag { background: rgba(255,255,255,0.18); color: rgba(255,255,255,0.92); }
-  .why-card--problem h3 { font-size: 1.25rem; margin: 0; color: #5b1254; }
-  .why-card--solution h3 { font-size: 1.25rem; margin: 0; color: #fff; }
-
-  .why-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin: 0; }
-  .why-list li { display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.95rem; line-height: 1.5; }
-  .why-card--problem .why-list li { color: #5b1254; }
-  .why-card--solution .why-list li { color: rgba(255,255,255,0.9); }
-  .why-list svg { flex-shrink: 0; margin-top: 2px; }
-  .why-card--problem .why-list svg { color: #a42593; }
-  .why-card--solution .why-list svg { color: #86efac; }
-
-  .why-stat {
-    background: rgba(164,37,147,0.08);
-    border-radius: 10px;
-    padding: 1rem 1.25rem;
-    margin-top: auto;
-  }
-  .why-stat strong { display: block; font-size: 2.25rem; font-weight: 900; color: #a42593; line-height: 1; }
-  .why-stat span { font-size: 0.85rem; color: #7b1a6e; line-height: 1.4; display: block; margin-top: 0.25rem; }
-
-  .why-cta {
-    display: inline-block; margin-top: auto;
-    background: #fff; color: var(--color-primary);
-    font-weight: 700; font-size: 0.95rem;
-    padding: 0.85rem 1.5rem; border-radius: 50px;
-    text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-    align-self: flex-start;
-  }
-  .why-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.22); }
-
-  @media (max-width: 768px) {
-    .why-grid { grid-template-columns: 1fr; }
+  .why-intro {
+    max-width: 640px; color: var(--color-text-secondary);
+    font-size: 1.05rem; margin: 0.5rem 0 2.75rem; line-height: 1.78;
   }
 
-  /* Animations */
-  @keyframes why-slide-up {
-    from { opacity: 0; transform: translateY(32px); }
-    to   { opacity: 1; transform: translateY(0); }
+  /* Grid desktop : before | divider | after */
+  .why-split {
+    display: grid;
+    grid-template-columns: 1fr 48px 1fr;
+    margin-bottom: 2.25rem;
+    align-items: start;
   }
-  @keyframes why-item-in {
-    from { opacity: 0; transform: translateX(-12px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
-  .why-card.is-visible {
-    animation: why-slide-up 0.55s cubic-bezier(0.22,1,0.36,1) forwards;
-  }
-  .why-card--solution.is-visible { animation-delay: 0.15s; }
-  .why-card { opacity: 0; }
 
-  .why-card.is-visible .why-list li {
-    animation: why-item-in 0.4s ease forwards;
+  /* Column label */
+  .why-col-label {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    font-size: 0.67rem; font-weight: 700; letter-spacing: 0.13em;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .why-col-label.is-visible { opacity: 1; transform: translateY(0); }
+  .why-col-label::before {
+    content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .why-col-before .why-col-label { color: var(--color-text-secondary); }
+  .why-col-before .why-col-label::before { background: var(--color-border); }
+  .why-col-after  .why-col-label { color: var(--color-accent); }
+  .why-col-after  .why-col-label::before { background: var(--color-accent); }
+
+  /* Items list */
+  .why-items { display: flex; flex-direction: column; gap: 1rem; }
+
+  .why-item {
+    padding: 0.6rem 0.9rem;
+    border-radius: 0 8px 8px 0;
     opacity: 0;
+    transition: background 0.22s ease, border-color 0.22s ease;
   }
-  .why-card.is-visible .why-list li:nth-child(1) { animation-delay: 0.25s; }
-  .why-card.is-visible .why-list li:nth-child(2) { animation-delay: 0.38s; }
-  .why-card.is-visible .why-list li:nth-child(3) { animation-delay: 0.51s; }
-  .why-card.is-visible .why-list li:nth-child(4) { animation-delay: 0.64s; }
-  .why-card.is-visible .why-list li:nth-child(5) { animation-delay: 0.77s; }
+  .why-item-before {
+    border-left: 2px solid var(--color-border);
+    transform: translateX(-36px);
+    transition: opacity 0.55s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1),
+                background 0.22s ease, border-color 0.22s ease;
+  }
+  .why-item-after {
+    border-left: 2px solid var(--color-accent);
+    transform: translateX(36px);
+    transition: opacity 0.55s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1),
+                background 0.22s ease, border-color 0.22s ease;
+  }
+  .why-item.is-visible { opacity: 1; transform: translateX(0); }
+
+  .why-item-before:hover { background: var(--color-bg); }
+  .why-item-after:hover  { background: rgba(2,33,121,0.04); border-color: var(--color-primary); }
+
+  .why-item p { font-size: 0.93rem; margin: 0; line-height: 1.68; }
+  .why-item-before p { color: var(--color-text-secondary); }
+  .why-item-after  p { color: var(--color-text); font-weight: 500; }
+
+  /* Divider central */
+  .why-divider {
+    display: flex; flex-direction: column; align-items: center;
+    padding-top: 2.5rem;
+  }
+  .why-divider-line {
+    flex: 1; width: 1px; min-height: 24px;
+    background: linear-gradient(to bottom, transparent, var(--color-border) 20%, var(--color-border) 80%, transparent);
+    transform: scaleY(0); transform-origin: top;
+    transition: transform 0.9s cubic-bezier(0.22,1,0.36,1) 0.15s;
+  }
+  .why-divider-line.is-visible { transform: scaleY(1); }
+  .why-divider-arrow {
+    font-size: 0.78rem; color: var(--color-text-secondary); opacity: 0.3;
+    padding: 8px 0; line-height: 1;
+    animation: why-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes why-pulse {
+    0%, 100% { opacity: 0.3; transform: translateX(0); }
+    50%       { opacity: 0.7; transform: translateX(3px); }
+  }
+
+  /* Stat footer */
+  .why-footer {
+    background: #091440;
+    border-radius: 16px;
+    padding: 1.75rem 2.25rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1.5rem; flex-wrap: wrap;
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.65s ease 0.15s, transform 0.7s cubic-bezier(0.22,1,0.36,1) 0.15s;
+    position: relative; overflow: hidden;
+  }
+  .why-footer::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 10% 50%, rgba(164,37,147,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .why-footer.is-visible { opacity: 1; transform: translateY(0); }
+
+  .why-footer-stat { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; position: relative; }
+  .why-stat-num {
+    font-size: 3rem; font-weight: 800; color: #fff;
+    line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums;
+  }
+  .why-stat-text { font-size: 0.85rem; color: rgba(255,255,255,0.48); line-height: 1.6; max-width: 230px; }
+
+  .why-footer-cta {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    background: #fff; color: #091440;
+    font-weight: 700; font-size: 0.9rem;
+    padding: 0.7rem 1.5rem; border-radius: 50px;
+    text-decoration: none; white-space: nowrap; flex-shrink: 0; position: relative;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.2);
+  }
+  .why-footer-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.28); }
+  .why-footer-cta::after {
+    content: '→';
+    transition: transform 0.22s ease;
+  }
+  .why-footer-cta:hover::after { transform: translateX(4px); }
+
+  /* ── Responsive tablet (601–1024px) ── */
+  @media (max-width: 1024px) and (min-width: 601px) {
+    .why-split { grid-template-columns: 1fr 36px 1fr; }
+    .why-footer { padding: 1.5rem 1.75rem; }
+    .why-stat-num { font-size: 2.5rem; }
+  }
+
+  /* ── Responsive mobile (≤600px) ── */
+  @media (max-width: 600px) {
+    .why-intro { font-size: 0.97rem; margin-bottom: 2rem; }
+    .why-split { grid-template-columns: 1fr; gap: 0; }
+    .why-divider { display: none; }
+
+    .why-col-before { padding-bottom: 1.75rem; border-bottom: 1px solid var(--color-border); }
+    .why-col-after  { padding-top: 1.75rem; }
+
+    .why-item-before,
+    .why-item-after { transform: translateY(20px); }
+    .why-item.is-visible { transform: translateY(0); }
+
+    .why-item { padding: 0.5rem 0.75rem; border-radius: 0 6px 6px 0; }
+    .why-item p { font-size: 0.92rem; }
+
+    .why-footer {
+      padding: 1.25rem 1.25rem;
+      border-radius: 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.1rem;
+    }
+    .why-stat-num { font-size: 2.25rem; }
+    .why-stat-text { max-width: 100%; }
+    .why-footer-cta { width: 100%; justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .why-item, .why-col-label, .why-footer { transition: none; animation: none; }
+    .why-divider-line { transition: none; }
+    .why-divider-arrow { animation: none; }
+  }
 
   .home-services { overflow: hidden; }
   .home-services-circle-1 { top: 10%; right: -70px; width: 220px; height: 220px; }
@@ -337,37 +393,54 @@ const t = useTranslations(lang);
 </style>
 
 <script is:inline>
-(function() {
-  var cards = document.querySelectorAll('.why-card');
-  var stat = document.querySelector('.why-stat strong');
+(function () {
+  var isMobile     = window.matchMedia('(max-width: 600px)').matches;
+  var beforeItems  = document.querySelectorAll('.why-item-before');
+  var afterItems   = document.querySelectorAll('.why-item-after');
+  var labels       = document.querySelectorAll('.why-col-label');
+  var divLines     = document.querySelectorAll('.why-divider-line');
+  var footer       = document.querySelector('.why-footer');
+  var statNum      = document.querySelector('.why-stat-num');
 
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
+  function stagger(els, baseDelay, step, cls) {
+    els.forEach(function (el, i) {
+      setTimeout(function () { el.classList.add(cls || 'is-visible'); }, baseDelay + i * step);
     });
-  }, { threshold: 0.2 });
+  }
 
-  cards.forEach(function(c) { observer.observe(c); });
-
-  if (stat) {
-    var statObserver = new IntersectionObserver(function(entries) {
-      if (entries[0].isIntersecting) {
-        var start = performance.now();
-        var duration = 1400;
-        (function step(now) {
-          var p = Math.min((now - start) / duration, 1);
-          var eased = 1 - Math.pow(1 - p, 3);
-          stat.textContent = Math.round(eased * 100) + '%';
-          if (p < 1) requestAnimationFrame(step);
-        })(start);
-        statObserver.unobserve(stat);
+  var splitEl = document.querySelector('.why-split');
+  if (splitEl) {
+    new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      stagger(labels, 0, 80);
+      if (!isMobile) {
+        setTimeout(function () {
+          divLines.forEach(function (l) { l.classList.add('is-visible'); });
+        }, 80);
       }
-    }, { threshold: 0.5 });
-    stat.textContent = '0%';
-    statObserver.observe(stat);
+      stagger(beforeItems, isMobile ? 120 : 100, 120);
+      stagger(afterItems, isMobile ? 560 : 180, 120);
+      this.disconnect();
+    }, { threshold: 0.12 }).observe(splitEl);
+  }
+
+  if (footer) {
+    new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      footer.classList.add('is-visible');
+      if (statNum) {
+        var t0 = performance.now();
+        var dur = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1400;
+        statNum.textContent = '0%';
+        (function tick(now) {
+          var p = Math.min((now - t0) / dur, 1);
+          var eased = dur === 0 ? 1 : 1 - Math.pow(1 - p, 3);
+          statNum.textContent = Math.round(eased * 100) + '%';
+          if (p < 1) requestAnimationFrame(tick);
+        })(t0);
+      }
+      this.disconnect();
+    }, { threshold: 0.35 }).observe(footer);
   }
 })();
 </script>
