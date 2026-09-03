@@ -42,7 +42,7 @@ const t = useTranslations(lang);
             La formation en présentiel coûte cher.<br/>Et ça se voit.
           </h2>
 
-          <p class="why-lead reveal" style="--rv:2">Un enseignant qui jongle entre trois établissements. Des polycopiés à la hâte. Une promo de 80 étudiants pour un seul formateur. Ce n'est pas un manque de volonté — c'est un système qui a atteint ses limites.</p>
+          <p class="why-lead reveal" style="--rv:2">Un enseignant qui jongle entre trois établissements. Des polycopiés à la hâte. Une promo de 80 étudiants pour un seul formateur. Ce n'est pas un manque de volonté : c'est un système qui a atteint ses limites.</p>
 
           <div class="why-block reveal" style="--rv:3">
             <h3 class="why-block-title">L'absentéisme bloque tout</h3>
@@ -64,8 +64,8 @@ const t = useTranslations(lang);
             <p>Chaque nouvelle promotion mobilise les mêmes locaux, les mêmes frais. Le digital casse ce plafond sans changer d'infrastructure.</p>
           </div>
 
-          <a href={`/${lang}/contact`} class="why-cta reveal" style="--rv:7">
-            Parlons de votre projet <span aria-hidden="true">→</span>
+          <a href={`/${lang}/contact`} class="btn btn-primary why-cta reveal" style="--rv:7">
+            Parlons de votre projet
           </a>
         </div>
 
@@ -154,7 +154,7 @@ const t = useTranslations(lang);
   /* Grid identique à mv-grid sur About */
   .why-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: center;
   }
 
@@ -195,9 +195,9 @@ const t = useTranslations(lang);
     background: var(--color-accent); flex-shrink: 0;
   }
 
-  /* Titre principal */
+  /* Titre principal — pleine largeur pour tenir sur une ligne */
   .why-content h2 {
-    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
     font-weight: 800; line-height: 1.18;
     letter-spacing: -0.02em;
     margin-bottom: 1rem;
@@ -213,7 +213,7 @@ const t = useTranslations(lang);
   /* Blocs raisons — calqués sur mv-block */
   .why-block { margin-bottom: 1.5rem; }
   .why-block-title {
-    font-size: 1rem; font-weight: 700;
+    font-size: 1.05rem; font-weight: 700;
     color: var(--color-primary);
     margin-bottom: 0.4rem;
     padding-left: 0.75rem;
@@ -225,17 +225,12 @@ const t = useTranslations(lang);
     margin: 0;
   }
 
-  /* CTA — calqué sur mv-cta */
+  /* CTA — identique au bouton "Demander une démo" */
   .why-cta {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-size: 0.9rem; font-weight: 700;
-    color: var(--color-primary);
-    border-bottom: 2px solid transparent;
-    padding-bottom: 2px; margin-top: 0.5rem;
+    align-self: flex-start;
+    margin-top: 0.5rem;
     text-decoration: none;
-    transition: border-color 0.2s ease, gap 0.2s ease;
   }
-  .why-cta:hover { border-color: var(--color-accent); gap: 0.75rem; }
 
   /* Reveal stagger */
   .why-content .reveal {
@@ -259,6 +254,7 @@ const t = useTranslations(lang);
     .why-image-wrap { height: 260px; border-radius: 0; }
     .why-image { border-radius: 0; }
     .why-content { padding: 2rem 1.25rem; }
+    .why-content h2 { font-size: 1.5rem; white-space: normal; }
     .why-block { margin-bottom: 1.25rem; }
     .why-block p { font-size: 0.92rem; }
   }

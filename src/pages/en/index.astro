@@ -42,7 +42,7 @@ const t = useTranslations(lang);
             In-person training is expensive.<br/>And it shows.
           </h2>
 
-          <p class="why-lead reveal" style="--rv:2">A trainer splitting time across three institutions. Photocopied notes in a rush. A cohort of 80 students for a single instructor. This is not a lack of will — it is a system that has reached its limits.</p>
+          <p class="why-lead reveal" style="--rv:2">A trainer splitting time across three institutions. Photocopied notes in a rush. A cohort of 80 students for a single instructor. This is not a lack of will: it is a system that has reached its limits.</p>
 
           <div class="why-block reveal" style="--rv:3">
             <h3 class="why-block-title">Absenteeism stops everything</h3>
@@ -64,8 +64,8 @@ const t = useTranslations(lang);
             <p>Each new intake ties up the same rooms and the same budget. Digital training breaks that ceiling without changing infrastructure.</p>
           </div>
 
-          <a href={`/${lang}/contact`} class="why-cta reveal" style="--rv:7">
-            Talk about your project <span aria-hidden="true">→</span>
+          <a href={`/${lang}/contact`} class="btn btn-primary why-cta reveal" style="--rv:7">
+            Talk about your project
           </a>
         </div>
 
@@ -153,7 +153,7 @@ const t = useTranslations(lang);
 
   .why-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: center;
   }
 
@@ -192,7 +192,7 @@ const t = useTranslations(lang);
   }
 
   .why-content h2 {
-    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
     font-weight: 800; line-height: 1.18;
     letter-spacing: -0.02em;
     margin-bottom: 1rem;
@@ -206,7 +206,7 @@ const t = useTranslations(lang);
 
   .why-block { margin-bottom: 1.5rem; }
   .why-block-title {
-    font-size: 1rem; font-weight: 700;
+    font-size: 1.05rem; font-weight: 700;
     color: var(--color-primary);
     margin-bottom: 0.4rem;
     padding-left: 0.75rem;
@@ -219,15 +219,10 @@ const t = useTranslations(lang);
   }
 
   .why-cta {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-size: 0.9rem; font-weight: 700;
-    color: var(--color-primary);
-    border-bottom: 2px solid transparent;
-    padding-bottom: 2px; margin-top: 0.5rem;
+    align-self: flex-start;
+    margin-top: 0.5rem;
     text-decoration: none;
-    transition: border-color 0.2s ease, gap 0.2s ease;
   }
-  .why-cta:hover { border-color: var(--color-accent); gap: 0.75rem; }
 
   .why-content .reveal {
     opacity: 0; transform: translateY(20px);
@@ -248,6 +243,7 @@ const t = useTranslations(lang);
     .why-image-wrap { height: 260px; border-radius: 0; }
     .why-image { border-radius: 0; }
     .why-content { padding: 2rem 1.25rem; }
+    .why-content h2 { font-size: 1.5rem; white-space: normal; }
     .why-block { margin-bottom: 1.25rem; }
     .why-block p { font-size: 0.92rem; }
   }
