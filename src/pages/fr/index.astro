@@ -20,49 +20,34 @@ const t = useTranslations(lang);
     <Hero lang={lang} />
 
     <section class="home-why" aria-labelledby="home-why-title">
-      <div class="container">
-        <p class="eyebrow">Formation &amp; Transformation</p>
-        <h2 id="home-why-title" class="reveal">Pourquoi digitaliser votre formation en 2026&nbsp;?</h2>
-        <p class="why-intro reveal">En Afrique comme ailleurs, les organisations qui forment encore uniquement en présentiel paient le prix fort. Le e-learning n'est plus un luxe : c'est une nécessité stratégique.</p>
-
-        <div class="why-split">
-
-          <div class="why-col why-col-before">
-            <span class="why-col-label">Sans digital</span>
-            <div class="why-items">
-              <div class="why-item why-item-before"><p>Un enseignant absent immobilise toute une promotion.</p></div>
-              <div class="why-item why-item-before"><p>Vos salles fixent un plafond sur le nombre d'apprenants que vous pouvez former.</p></div>
-              <div class="why-item why-item-before"><p>Les ressources pédagogiques disparaissent à la fin de chaque semestre.</p></div>
-              <div class="why-item why-item-before"><p>Zéro visibilité sur qui apprend vraiment, et qui décroche.</p></div>
+      <div class="why-inner">
+        <div class="why-image" aria-hidden="true">
+          <img src="/images/hero/002.webp" alt="" loading="lazy" />
+        </div>
+        <div class="why-text">
+          <p class="eyebrow">Pourquoi maintenant</p>
+          <h2 id="home-why-title">La formation en présentiel coûte cher. Et ça se voit.</h2>
+          <p class="why-lead">Un enseignant qui jongle entre trois établissements. Des polycopiés imprimés à la hâte. Une promo de 80 étudiants pour un seul formateur. Ce n'est pas un manque de volonté — c'est un système qui a atteint ses limites.</p>
+          <div class="why-reasons">
+            <div class="why-reason">
+              <span class="why-reason-label">L'absentéisme bloque tout</span>
+              <p>Quand un formateur ne peut pas venir, la session tombe. Sur une plateforme Moodle, le cours est là, qu'il soit disponible ou non.</p>
+            </div>
+            <div class="why-reason">
+              <span class="why-reason-label">Le transport, c'est du temps perdu</span>
+              <p>À Douala ou Yaoundé, un étudiant peut passer deux heures dans les embouteillages pour une heure de cours. L'accès en ligne supprime cette équation.</p>
+            </div>
+            <div class="why-reason">
+              <span class="why-reason-label">Les supports ne survivent pas au semestre</span>
+              <p>Photocopies froissées, documents perdus, polys introuvables l'année suivante. Une plateforme centralise tout, pour tous, pour toujours.</p>
+            </div>
+            <div class="why-reason">
+              <span class="why-reason-label">Les promos grossissent, les salles non</span>
+              <p>Chaque nouvelle promotion mobilise les mêmes locaux, les mêmes ressources, les mêmes frais. Le digital casse ce plafond.</p>
             </div>
           </div>
-
-          <div class="why-divider" aria-hidden="true">
-            <div class="why-divider-line"></div>
-            <span class="why-divider-arrow">→</span>
-            <div class="why-divider-line"></div>
-          </div>
-
-          <div class="why-col why-col-after">
-            <span class="why-col-label">Avec ThinkTech</span>
-            <div class="why-items">
-              <div class="why-item why-item-after"><p>Le cours reste accessible 24h/24, même quand l'enseignant ne peut pas venir.</p></div>
-              <div class="why-item why-item-after"><p>Formez davantage d'apprenants, sans contrainte de salle.</p></div>
-              <div class="why-item why-item-after"><p>Chaque contenu produit, réutilisable année après année.</p></div>
-              <div class="why-item why-item-after"><p>Tableaux de bord en temps réel pour chaque formateur, chaque apprenant.</p></div>
-            </div>
-          </div>
-
+          <a href={`/${lang}/contact`} class="why-cta-link">Parlons de votre projet →</a>
         </div>
-
-        <div class="why-footer">
-          <div class="why-footer-stat">
-            <strong class="why-stat-num">100%</strong>
-            <span class="why-stat-text">des coûts fixes du présentiel se répètent à chaque nouvelle session</span>
-          </div>
-          <a href={`/${lang}/contact`} class="why-footer-cta">Lancer mon projet →</a>
-        </div>
-
       </div>
     </section>
 
@@ -139,173 +124,93 @@ const t = useTranslations(lang);
 
 <style>
   /* ── Section Pourquoi digitaliser ── */
-  .home-why { background: var(--color-bg-secondary); }
-  .why-intro {
-    max-width: 640px; color: var(--color-text-secondary);
-    font-size: 1.05rem; margin: 0.5rem 0 2.75rem; line-height: 1.78;
+  .home-why { background: var(--color-bg-secondary); padding: 0; overflow: hidden; }
+
+  .why-inner {
+    display: flex;
+    min-height: 580px;
   }
 
-  /* Grid desktop : before | divider | after */
-  .why-split {
-    display: grid;
-    grid-template-columns: 1fr 48px 1fr;
-    margin-bottom: 2.25rem;
-    align-items: start;
+  .why-image {
+    flex: 0 0 42%;
+    position: relative;
+    overflow: hidden;
   }
-
-  /* Column label */
-  .why-col-label {
-    display: inline-flex; align-items: center; gap: 0.45rem;
-    font-size: 0.67rem; font-weight: 700; letter-spacing: 0.13em;
-    text-transform: uppercase; margin-bottom: 1.25rem;
-    opacity: 0; transform: translateY(8px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-  .why-col-label.is-visible { opacity: 1; transform: translateY(0); }
-  .why-col-label::before {
-    content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .why-col-before .why-col-label { color: var(--color-text-secondary); }
-  .why-col-before .why-col-label::before { background: var(--color-border); }
-  .why-col-after  .why-col-label { color: var(--color-accent); }
-  .why-col-after  .why-col-label::before { background: var(--color-accent); }
-
-  /* Items list */
-  .why-items { display: flex; flex-direction: column; gap: 1rem; }
-
-  .why-item {
-    padding: 0.6rem 0.9rem;
-    border-radius: 0 8px 8px 0;
-    opacity: 0;
-    transition: background 0.22s ease, border-color 0.22s ease;
-  }
-  .why-item-before {
-    border-left: 2px solid var(--color-border);
-    transform: translateX(-36px);
-    transition: opacity 0.55s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1),
-                background 0.22s ease, border-color 0.22s ease;
-  }
-  .why-item-after {
-    border-left: 2px solid var(--color-accent);
-    transform: translateX(36px);
-    transition: opacity 0.55s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1),
-                background 0.22s ease, border-color 0.22s ease;
-  }
-  .why-item.is-visible { opacity: 1; transform: translateX(0); }
-
-  .why-item-before:hover { background: var(--color-bg); }
-  .why-item-after:hover  { background: rgba(2,33,121,0.04); border-color: var(--color-primary); }
-
-  .why-item p { font-size: 0.93rem; margin: 0; line-height: 1.68; }
-  .why-item-before p { color: var(--color-text-secondary); }
-  .why-item-after  p { color: var(--color-text); font-weight: 500; }
-
-  /* Divider central */
-  .why-divider {
-    display: flex; flex-direction: column; align-items: center;
-    padding-top: 2.5rem;
-  }
-  .why-divider-line {
-    flex: 1; width: 1px; min-height: 24px;
-    background: linear-gradient(to bottom, transparent, var(--color-border) 20%, var(--color-border) 80%, transparent);
-    transform: scaleY(0); transform-origin: top;
-    transition: transform 0.9s cubic-bezier(0.22,1,0.36,1) 0.15s;
-  }
-  .why-divider-line.is-visible { transform: scaleY(1); }
-  .why-divider-arrow {
-    font-size: 0.78rem; color: var(--color-text-secondary); opacity: 0.3;
-    padding: 8px 0; line-height: 1;
-    animation: why-pulse 2.4s ease-in-out infinite;
-  }
-  @keyframes why-pulse {
-    0%, 100% { opacity: 0.3; transform: translateX(0); }
-    50%       { opacity: 0.7; transform: translateX(3px); }
-  }
-
-  /* Stat footer */
-  .why-footer {
-    background: #091440;
-    border-radius: 16px;
-    padding: 1.75rem 2.25rem;
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 1.5rem; flex-wrap: wrap;
-    opacity: 0; transform: translateY(28px);
-    transition: opacity 0.65s ease 0.15s, transform 0.7s cubic-bezier(0.22,1,0.36,1) 0.15s;
-    position: relative; overflow: hidden;
-  }
-  .why-footer::before {
-    content: '';
+  .why-image img {
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 10% 50%, rgba(164,37,147,0.18) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .why-footer.is-visible { opacity: 1; transform: translateY(0); }
-
-  .why-footer-stat { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; position: relative; }
-  .why-stat-num {
-    font-size: 3rem; font-weight: 800; color: #fff;
-    line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums;
-  }
-  .why-stat-text { font-size: 0.85rem; color: rgba(255,255,255,0.48); line-height: 1.6; max-width: 230px; }
-
-  .why-footer-cta {
-    display: inline-flex; align-items: center; gap: 0.45rem;
-    background: #fff; color: #091440;
-    font-weight: 700; font-size: 0.9rem;
-    padding: 0.7rem 1.5rem; border-radius: 50px;
-    text-decoration: none; white-space: nowrap; flex-shrink: 0; position: relative;
-    transition: transform 0.22s ease, box-shadow 0.22s ease;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.2);
-  }
-  .why-footer-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.28); }
-  .why-footer-cta::after {
-    content: '→';
-    transition: transform 0.22s ease;
-  }
-  .why-footer-cta:hover::after { transform: translateX(4px); }
-
-  /* ── Responsive tablet (601–1024px) ── */
-  @media (max-width: 1024px) and (min-width: 601px) {
-    .why-split { grid-template-columns: 1fr 36px 1fr; }
-    .why-footer { padding: 1.5rem 1.75rem; }
-    .why-stat-num { font-size: 2.5rem; }
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    display: block;
   }
 
-  /* ── Responsive mobile (≤600px) ── */
-  @media (max-width: 600px) {
-    .why-intro { font-size: 0.97rem; margin-bottom: 2rem; }
-    .why-split { grid-template-columns: 1fr; gap: 0; }
-    .why-divider { display: none; }
+  .why-text {
+    flex: 1;
+    padding: 5rem 4rem 5rem 4.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
 
-    /* Sur mobile : les deux groupes se suivent, séparés par une ligne */
-    .why-col-before { padding-bottom: 1.75rem; border-bottom: 1px solid var(--color-border); }
-    .why-col-after  { padding-top: 1.75rem; }
+  .why-text h2 {
+    font-size: clamp(1.55rem, 2.8vw, 2.1rem);
+    font-weight: 800; line-height: 1.18;
+    letter-spacing: -0.02em;
+    margin: 0.5rem 0 1.25rem;
+    max-width: 520px;
+  }
 
-    /* Sur mobile les items glissent du bas */
-    .why-item-before,
-    .why-item-after { transform: translateY(20px); }
-    .why-item.is-visible { transform: translateY(0); }
+  .why-lead {
+    font-size: 1rem; line-height: 1.78;
+    color: var(--color-text-secondary);
+    max-width: 500px;
+    margin-bottom: 2.25rem;
+  }
 
-    .why-item { padding: 0.5rem 0.75rem; border-radius: 0 6px 6px 0; }
-    .why-item p { font-size: 0.92rem; }
+  .why-reasons {
+    display: flex; flex-direction: column; gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
 
-    .why-footer {
-      padding: 1.25rem 1.25rem;
-      border-radius: 12px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.1rem;
-    }
-    .why-stat-num { font-size: 2.25rem; }
-    .why-stat-text { max-width: 100%; }
-    .why-footer-cta { width: 100%; justify-content: center; }
+  .why-reason { max-width: 500px; }
+
+  .why-reason-label {
+    display: block;
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--color-text);
+    margin-bottom: 0.3rem;
+  }
+
+  .why-reason p {
+    margin: 0;
+    font-size: 0.93rem; line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+
+  .why-cta-link {
+    display: inline-block;
+    font-weight: 700; font-size: 0.92rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: gap 0.2s ease;
+  }
+  .why-cta-link:hover { text-decoration: underline; }
+
+  @media (max-width: 900px) {
+    .why-inner { flex-direction: column; min-height: auto; }
+    .why-image { flex: 0 0 300px; min-height: 300px; position: relative; }
+    .why-image img { position: absolute; }
+    .why-text { padding: 3rem 2rem; }
+    .why-text h2 { font-size: clamp(1.4rem, 5vw, 1.75rem); }
+  }
+
+  @media (max-width: 520px) {
+    .why-image { flex: 0 0 220px; min-height: 220px; }
+    .why-text { padding: 2.25rem 1.25rem; }
+    .why-lead { font-size: 0.95rem; margin-bottom: 1.75rem; }
+    .why-reasons { gap: 1.25rem; margin-bottom: 2rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .why-item, .why-col-label, .why-footer { transition: none; animation: none; }
-    .why-divider-line { transition: none; }
-    .why-divider-arrow { animation: none; }
+    .why-image img { transition: none; }
   }
 
   .home-services { overflow: hidden; }
@@ -395,62 +300,3 @@ const t = useTranslations(lang);
   }
 </style>
 
-<script is:inline>
-(function () {
-  var isMobile     = window.matchMedia('(max-width: 600px)').matches;
-  var beforeItems  = document.querySelectorAll('.why-item-before');
-  var afterItems   = document.querySelectorAll('.why-item-after');
-  var labels       = document.querySelectorAll('.why-col-label');
-  var divLines     = document.querySelectorAll('.why-divider-line');
-  var footer       = document.querySelector('.why-footer');
-  var statNum      = document.querySelector('.why-stat-num');
-
-  /* Stagger helper */
-  function stagger(els, baseDelay, step, cls) {
-    els.forEach(function (el, i) {
-      setTimeout(function () { el.classList.add(cls || 'is-visible'); }, baseDelay + i * step);
-    });
-  }
-
-  /* Split section */
-  var splitEl = document.querySelector('.why-split');
-  if (splitEl) {
-    new IntersectionObserver(function (entries) {
-      if (!entries[0].isIntersecting) return;
-      /* Labels */
-      stagger(labels, 0, 80);
-      /* Divider lines (desktop only) */
-      if (!isMobile) {
-        setTimeout(function () {
-          divLines.forEach(function (l) { l.classList.add('is-visible'); });
-        }, 80);
-      }
-      /* Before items */
-      stagger(beforeItems, isMobile ? 120 : 100, 120);
-      /* After items — décalage plus court sur mobile car déjà sous les before */
-      stagger(afterItems, isMobile ? 560 : 180, 120);
-      this.disconnect();
-    }, { threshold: 0.12 }).observe(splitEl);
-  }
-
-  /* Footer + compteur */
-  if (footer) {
-    new IntersectionObserver(function (entries) {
-      if (!entries[0].isIntersecting) return;
-      footer.classList.add('is-visible');
-      if (statNum) {
-        var t0 = performance.now();
-        var dur = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1400;
-        statNum.textContent = '0%';
-        (function tick(now) {
-          var p = Math.min((now - t0) / dur, 1);
-          var eased = dur === 0 ? 1 : 1 - Math.pow(1 - p, 3);
-          statNum.textContent = Math.round(eased * 100) + '%';
-          if (p < 1) requestAnimationFrame(tick);
-        })(t0);
-      }
-      this.disconnect();
-    }, { threshold: 0.35 }).observe(footer);
-  }
-})();
-</script>
