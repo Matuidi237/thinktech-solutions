@@ -4,7 +4,7 @@ description: "Themes, activities, integrations: the official Moodle Marketplace 
 publishDate: 2026-09-03
 lang: en
 category: "Tips"
-image: "/images/actualites/Moodle Marketplace.webp"
+image: "/images/actualites/moodle-marketplace.webp"
 ---
 
 When you install Moodle for the first time, you discover a solid but sometimes austere platform. What many institutions don't know is that an official Marketplace lists over 2,000 free plugins, maintained by the global Moodle community. These extensions can deeply transform the user experience without touching a single line of code.

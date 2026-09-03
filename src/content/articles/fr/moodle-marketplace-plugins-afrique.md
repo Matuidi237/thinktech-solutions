@@ -4,7 +4,7 @@ description: "Themes, activités, intégrations : la Marketplace officielle de M
 publishDate: 2026-09-03
 lang: fr
 category: "Conseils"
-image: "/images/actualites/Moodle Marketplace.webp"
+image: "/images/actualites/moodle-marketplace.webp"
 ---
 
 Quand on installe Moodle pour la première fois, on découvre une plateforme solide mais parfois austère. Ce que beaucoup d'établissements ne savent pas, c'est qu'une Marketplace officielle recense plus de 2 000 plugins gratuits, maintenus par la communauté mondiale Moodle. Ces extensions permettent de transformer profondément l'expérience sans toucher une ligne de code.
