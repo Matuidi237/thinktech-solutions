@@ -386,27 +386,27 @@
         "url": "https://boukacreativ-learning.com/"
       },
       {
-        "name": "Train To Rise",
-        "client": "MAXIMMACS, Consulting & Training Firm",
-        "sector": "Professional training & Upskilling",
+        "name": "ThinkTech Academy",
+        "client": "ThinkTech Solutions, Proprietary LMS",
+        "sector": "Digital skills & Certified training",
         "metric": {
-          "value": "6+",
-          "label": "training domains"
+          "value": "5",
+          "label": "skill domains"
         },
         "metric2": {
           "value": "100%",
-          "label": "live on traintorise.com"
+          "label": "online learning pathways"
         },
         "tags": [
-          "Moodle",
-          "Professional training",
-          "AI & Finance"
+          "LMS",
+          "Digital Skills",
+          "Certifications"
         ],
-        "description": "In partnership with MAXIMMACS, we designed and deployed Train To Rise, an e-learning platform dedicated to supporting young African executives and graduates in building their professional skills. The platform covers several strategic domains: artificial intelligence, accounting, management, tax and audit, with structured learning pathways, a modern interface and a learner experience tailored to the African professional context.",
-        "challenge": "Deploy a platform that is professional, accessible and engaging for active learners balancing work and study, while offering high-value content across demanding subject areas.",
-        "solution": "Performance-optimised Moodle architecture, course catalogue organised by domain, responsive interface branded for MAXIMMACS, and full production deployment with hands-on onboarding support.",
-        "image": "/images/platforms/training-to-rise-home.webp",
-        "url": "https://www.traintorise.com"
+        "description": "ThinkTech Academy is ThinkTech Solutions' proprietary LMS, built to develop digital skills. The platform covers 5 key domains, management, tax, audit, accounting and artificial intelligence, with certified pathways, fine-grained access management and an interface designed for the African learner.",
+        "challenge": "Build a proprietary LMS capable of structuring and certifying digital skills learning, adapted to the African market, with a smooth and engaging learner experience.",
+        "solution": "Modular learning pathways with locked progression, integrated certification system, learner and trainer dashboards, responsive interface fully customised to ThinkTech's brand identity.",
+        "image": "/images/platforms/thinktech-academy-home.webp",
+        "url": null
       },
       {
         "name": "Erfolg Zentrum Online",
@@ -476,6 +476,29 @@
         "solution": "Moodle course structured in 3 sections (access & behavior, PPE, hazard reporting), with Powtoon videos, timed quizzes, a points system and live leaderboard.",
         "image": "/images/platforms/omp-1.webp",
         "url": null
+      },
+      {
+        "name": "Train To Rise",
+        "client": "MAXIMMACS, Consulting & Training Firm",
+        "sector": "Professional training & Upskilling",
+        "metric": {
+          "value": "6+",
+          "label": "training domains"
+        },
+        "metric2": {
+          "value": "100%",
+          "label": "live on traintorise.com"
+        },
+        "tags": [
+          "Moodle",
+          "Professional training",
+          "AI & Finance"
+        ],
+        "description": "In partnership with MAXIMMACS, we designed and deployed Train To Rise, an e-learning platform dedicated to supporting young African executives and graduates in building their professional skills. The platform covers several strategic domains: artificial intelligence, accounting, management, tax and audit, with structured learning pathways, a modern interface and a learner experience tailored to the African professional context.",
+        "challenge": "Deploy a platform that is professional, accessible and engaging for active learners balancing work and study, while offering high-value content across demanding subject areas.",
+        "solution": "Performance-optimised Moodle architecture, course catalogue organised by domain, responsive interface branded for MAXIMMACS, and full production deployment with hands-on onboarding support.",
+        "image": "/images/platforms/train-to-rise-home.webp",
+        "url": "https://www.traintorise.com"
       }
     ],
     "statProjects": "platforms deployed",

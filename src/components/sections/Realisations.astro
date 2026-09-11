@@ -6,7 +6,7 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const r = t.realisations;
-const [bouka, training, erfolg, lasalle, omp] = r.projects;
+const [bouka, training, erfolg, lasalle, omp, traintorise] = r.projects;
 
 const projectScreens: Record<string, string[]> = {
   "bouka": [
@@ -15,10 +15,11 @@ const projectScreens: Record<string, string[]> = {
     "/images/platforms/bouka-creativ-login.webp",
   ],
   "training": [
-    "/images/platforms/training-to-rise-home.webp",
-    "/images/platforms/training-to-rise-courses.webp",
-    "/images/platforms/training-to-rise-course1.webp",
+    "/images/platforms/thinktech-academy-home.webp",
+    "/images/platforms/thinktech-academy-courses.webp",
+    "/images/platforms/thinktech-academy-course1.webp",
   ],
+  "traintorise": [] as string[],
   "erfolg": [
     "/images/platforms/Erfolg1.webp",
     "/images/platforms/Erfolg2.webp",
@@ -390,6 +391,68 @@ const projectScreens: Record<string, string[]> = {
             </div>
           )}
         </div>
+      </div>
+    </article>
+
+    <!-- Projet 6 — Train To Rise -->
+    <article class="rl-item rl-reveal">
+      <div class="rl-info">
+        <span class="rl-num">06</span>
+        <p class="rl-sector">{traintorise.sector}</p>
+        <h2 class="rl-name">{traintorise.name}</h2>
+        <p class="rl-client">{traintorise.client}</p>
+        <p class="rl-desc">{traintorise.description}</p>
+        <ul class="rl-tags">
+          {traintorise.tags.map((tag: string) => <li>{tag}</li>)}
+        </ul>
+        <div class="rl-kpi-group">
+          <div class="rl-kpi">
+            <span class="rl-kpi-val">{traintorise.metric.value}</span>
+            <span class="rl-kpi-lbl">{traintorise.metric.label}</span>
+          </div>
+          <div class="rl-kpi">
+            <span class="rl-kpi-val">{traintorise.metric2.value}</span>
+            <span class="rl-kpi-lbl">{traintorise.metric2.label}</span>
+          </div>
+        </div>
+        {traintorise.url && (
+          <a href={traintorise.url} target="_blank" rel="noopener noreferrer" class="rl-link">
+            {r.visitLabel}
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        )}
+      </div>
+
+      <div class="rl-carousel" data-carousel data-project={traintorise.name}>
+        <div class="rl-carousel-track">
+          {projectScreens.traintorise.length > 0 ? projectScreens.traintorise.map((src, i) => (
+            <div class="rl-slide">
+              <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+              <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
+                <img src={src} alt={`${traintorise.name} — vue ${i + 1}`} width="700" height="420" loading="lazy" />
+                <span class="rl-zoom-hint" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+                </span>
+              </button>
+            </div>
+          )) : (
+            <div class="rl-slide rl-slide--placeholder">
+              <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="rl-placeholder-inner">
+                <p>Captures d'écran à venir</p>
+              </div>
+            </div>
+          )}
+        </div>
+        {projectScreens.traintorise.length > 0 && (
+          <div class="rl-carousel-footer">
+            <div class="rl-dots" aria-hidden="true">
+              {projectScreens.traintorise.map((_: string, i: number) => (
+                <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </article>
 
@@ -987,6 +1050,19 @@ const projectScreens: Record<string, string[]> = {
 .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,0.28); }
 .btn-hero svg { transition: transform 0.22s ease; }
 .btn-hero:hover svg { transform: translateX(4px); }
+
+/* Placeholder carousel */
+.rl-slide--placeholder { border-bottom: none; }
+.rl-placeholder-inner {
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+  font-style: italic;
+}
 
 /* ══ RESPONSIVE ══ */
 @media (max-width: 900px) {
