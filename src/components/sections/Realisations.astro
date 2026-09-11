@@ -1,4 +1,4 @@
-﻿---
+---
 import type { Lang } from "../../i18n/utils";
 import { useTranslations } from "../../i18n/utils";
 
@@ -51,6 +51,16 @@ const projectScreens: Record<string, string[]> = {
     "/images/platforms/lasalle-8.webp",
   ],
 };
+
+const projects = [
+  { key: "bouka",       data: bouka,      screens: projectScreens.bouka,      num: "01" },
+  { key: "training",    data: training,   screens: projectScreens.training,   num: "02" },
+  { key: "erfolg",      data: erfolg,     screens: projectScreens.erfolg,     num: "03" },
+  { key: "lasalle",     data: lasalle,    screens: projectScreens.lasalle,    num: "04" },
+  { key: "omp",         data: omp,        screens: projectScreens.omp,        num: "05" },
+  { key: "traintorise", data: traintorise,screens: projectScreens.traintorise,num: "06" },
+];
+const total = projects.length;
 ---
 
 <!-- ══ HERO ══ -->
@@ -80,386 +90,111 @@ const projectScreens: Record<string, string[]> = {
 </section>
 
 <!-- ══ PROJETS ══ -->
-<section class="rl-projects">
+<section class="rl-projects" aria-label="Nos réalisations">
   <div class="container">
 
-    <!-- Projet 1 — Bouka -->
-    <article class="rl-item rl-reveal">
-      <div class="rl-info">
-        <span class="rl-num">01</span>
-        <p class="rl-sector">{bouka.sector}</p>
-        <h2 class="rl-name">{bouka.name}</h2>
-        <p class="rl-client">{bouka.client}</p>
-        <p class="rl-desc">{bouka.description}</p>
-        <ul class="rl-tags">
-          {bouka.tags.map((tag: string) => <li>{tag}</li>)}
-        </ul>
-        <div class="rl-kpi-group">
-          <div class="rl-kpi">
-            <span class="rl-kpi-val">{bouka.metric.value}</span>
-            <span class="rl-kpi-lbl">{bouka.metric.label}</span>
-          </div>
-          <div class="rl-kpi">
-            <span class="rl-kpi-val">{bouka.metric2.value}</span>
-            <span class="rl-kpi-lbl">{bouka.metric2.label}</span>
-          </div>
-        </div>
-        {bouka.url && (
-          <a href={bouka.url} target="_blank" rel="noopener noreferrer" class="rl-link">
-            {r.visitLabel}
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        )}
+    <!-- Barre de navigation entre projets -->
+    <div class="rl-pager" data-pager>
+      <div class="rl-pager-counter" aria-live="polite" aria-atomic="true">
+        <span class="rl-pager-current" data-pager-current>01</span>
+        <span class="rl-pager-sep">/</span>
+        <span class="rl-pager-total">{String(total).padStart(2, "0")}</span>
       </div>
 
-      <div class="rl-carousel" data-carousel data-project={bouka.name}>
-        <div class="rl-carousel-track">
-          {projectScreens.bouka.map((src, i) => (
-            <div class="rl-slide">
-              <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-              <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
-                <img src={src} alt={`${bouka.name} — vue ${i + 1}`} width="700" height="420" loading={i === 0 ? "eager" : "lazy"} />
-                <span class="rl-zoom-hint" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-                </span>
-              </button>
-            </div>
-          ))}
-        </div>
-        <div class="rl-carousel-footer">
-          <div class="rl-dots" aria-hidden="true">
-            {projectScreens.bouka.map((_: string, i: number) => (
-              <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
-            ))}
-          </div>
-          {projectScreens.bouka.length > 1 && (
-            <div class="rl-arrows">
-              <button class="rl-arrow rl-arrow--prev" aria-label="Image précédente">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
-              </button>
-              <button class="rl-arrow rl-arrow--next" aria-label="Image suivante">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-    </article>
-
-    <!-- Projet 2 — Train To Rise (inversé) -->
-    <article class="rl-item rl-item--reverse rl-reveal">
-      <div class="rl-info">
-        <span class="rl-num">02</span>
-        <p class="rl-sector">{training.sector}</p>
-        <h2 class="rl-name">{training.name}</h2>
-        <p class="rl-client">{training.client}</p>
-        <p class="rl-desc">{training.description}</p>
-        <ul class="rl-tags">
-          {training.tags.map((tag: string) => <li>{tag}</li>)}
-        </ul>
-        <div class="rl-kpi-group">
-          <div class="rl-kpi">
-            <span class="rl-kpi-val">{training.metric.value}</span>
-            <span class="rl-kpi-lbl">{training.metric.label}</span>
-          </div>
-          <div class="rl-kpi">
-            <span class="rl-kpi-val">{training.metric2.value}</span>
-            <span class="rl-kpi-lbl">{training.metric2.label}</span>
-          </div>
-        </div>
-        {training.url && (
-          <a href={training.url} target="_blank" rel="noopener noreferrer" class="rl-link">
-            {r.visitLabel}
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        )}
+      <div class="rl-pager-dots" role="tablist" aria-label="Sélectionner un projet">
+        {projects.map((p, i) => (
+          <button
+            class={`rl-pdot${i === 0 ? " rl-pdot--active" : ""}`}
+            data-pidx={i}
+            role="tab"
+            aria-selected={i === 0 ? "true" : "false"}
+            aria-label={`Projet ${p.num} : ${p.data.name}`}
+          ></button>
+        ))}
       </div>
 
-      <div class="rl-carousel" data-carousel data-project={training.name}>
-        <div class="rl-carousel-track">
-          {projectScreens.training.map((src, i) => (
-            <div class="rl-slide">
-              <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-              <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
-                <img src={src} alt={`${training.name} — vue ${i + 1}`} width="700" height="420" loading={i === 0 ? "eager" : "lazy"} />
-                <span class="rl-zoom-hint" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-                </span>
-              </button>
-            </div>
-          ))}
-        </div>
-        <div class="rl-carousel-footer">
-          <div class="rl-dots" aria-hidden="true">
-            {projectScreens.training.map((_: string, i: number) => (
-              <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
-            ))}
-          </div>
-          {projectScreens.training.length > 1 && (
-            <div class="rl-arrows">
-              <button class="rl-arrow rl-arrow--prev" aria-label="Image précédente">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
-              </button>
-              <button class="rl-arrow rl-arrow--next" aria-label="Image suivante">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
-              </button>
-            </div>
-          )}
-        </div>
+      <div class="rl-pager-btns">
+        <button class="rl-pnav rl-pnav--prev" data-pnav="prev" aria-label="Projet précédent" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="rl-pnav rl-pnav--next" data-pnav="next" aria-label="Projet suivant">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
       </div>
-    </article>
+    </div>
 
-    <!-- Projet 3 — Erfolg -->
-    <article class="rl-item rl-reveal">
-      <div class="rl-info">
-        <span class="rl-num">03</span>
-        <p class="rl-sector">{erfolg.sector}</p>
-        <h2 class="rl-name">{erfolg.name}</h2>
-        <p class="rl-client">{erfolg.client}</p>
-        <p class="rl-desc">{erfolg.description}</p>
-        <ul class="rl-tags">
-          {erfolg.tags.map((tag: string) => <li>{tag}</li>)}
-        </ul>
-        <div class="rl-kpi-group">
-          <div class="rl-kpi">
-            <span class="rl-kpi-val">{erfolg.metric.value}</span>
-            <span class="rl-kpi-lbl">{erfolg.metric.label}</span>
-          </div>
-          <div class="rl-kpi">
-            <span class="rl-kpi-val">{erfolg.metric2.value}</span>
-            <span class="rl-kpi-lbl">{erfolg.metric2.label}</span>
-          </div>
-        </div>
-        {erfolg.url && (
-          <a href={erfolg.url} target="_blank" rel="noopener noreferrer" class="rl-link">
-            {r.visitLabel}
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        )}
-      </div>
+    <!-- Slider projets -->
+    <div class="rl-slider" data-project-slider>
 
-      <div class="rl-carousel" data-carousel data-project={erfolg.name}>
-        <div class="rl-carousel-track">
-          {projectScreens.erfolg.map((src, i) => (
-            <div class="rl-slide">
-              <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-              <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
-                <img src={src} alt={`${erfolg.name} — vue ${i + 1}`} width="700" height="420" loading={i === 0 ? "eager" : "lazy"} />
-                <span class="rl-zoom-hint" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-                </span>
-              </button>
-            </div>
-          ))}
-        </div>
-        <div class="rl-carousel-footer">
-          <div class="rl-dots" aria-hidden="true">
-            {projectScreens.erfolg.map((_: string, i: number) => (
-              <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
-            ))}
-          </div>
-          {projectScreens.erfolg.length > 1 && (
-            <div class="rl-arrows">
-              <button class="rl-arrow rl-arrow--prev" aria-label="Image précédente">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
-              </button>
-              <button class="rl-arrow rl-arrow--next" aria-label="Image suivante">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-    </article>
-
-    <!-- Projet 4 — OMP -->
-    <article class="rl-item rl-reveal">
-      <div class="rl-info">
-        <span class="rl-num">04</span>
-        <p class="rl-sector">{omp.sector}</p>
-        <h2 class="rl-name">{omp.name}</h2>
-        <p class="rl-client">{omp.client}</p>
-        <p class="rl-desc">{omp.description}</p>
-        <ul class="rl-tags">
-          {omp.tags.map((tag: string) => <li>{tag}</li>)}
-        </ul>
-        <div class="rl-kpi-group">
-          <div class="rl-kpi">
-            <span class="rl-kpi-val">{omp.metric.value}</span>
-            <span class="rl-kpi-lbl">{omp.metric.label}</span>
-          </div>
-          <div class="rl-kpi">
-            <span class="rl-kpi-val">{omp.metric2.value}</span>
-            <span class="rl-kpi-lbl">{omp.metric2.label}</span>
-          </div>
-        </div>
-        {omp.url && (
-          <a href={omp.url} target="_blank" rel="noopener noreferrer" class="rl-link">
-            {r.visitLabel}
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        )}
-      </div>
-
-      <div class="rl-carousel" data-carousel data-project={omp.name}>
-        <div class="rl-carousel-track">
-          {projectScreens.omp.map((src, i) => (
-            <div class="rl-slide">
-              <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-              <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
-                <img src={src} alt={`${omp.name} — vue ${i + 1}`} width="700" height="420" loading={i === 0 ? "eager" : "lazy"} />
-                <span class="rl-zoom-hint" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-                </span>
-              </button>
-            </div>
-          ))}
-        </div>
-        <div class="rl-carousel-footer">
-          <div class="rl-dots" aria-hidden="true">
-            {projectScreens.omp.map((_: string, i: number) => (
-              <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
-            ))}
-          </div>
-          {projectScreens.omp.length > 1 && (
-            <div class="rl-arrows">
-              <button class="rl-arrow rl-arrow--prev" aria-label="Image précédente">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
-              </button>
-              <button class="rl-arrow rl-arrow--next" aria-label="Image suivante">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-    </article>
-
-    <!-- Projet 5 — LaSalle -->
-    <article class="rl-item rl-item--reverse rl-reveal">
-      <div class="rl-info">
-        <span class="rl-num">05</span>
-        <p class="rl-sector">{lasalle.sector}</p>
-        <h2 class="rl-name">{lasalle.name}</h2>
-        <p class="rl-client">{lasalle.client}</p>
-        <p class="rl-desc">{lasalle.description}</p>
-        <ul class="rl-tags">
-          {lasalle.tags.map((tag: string) => <li>{tag}</li>)}
-        </ul>
-        <div class="rl-kpi-group">
-          <div class="rl-kpi">
-            <span class="rl-kpi-val">{lasalle.metric.value}</span>
-            <span class="rl-kpi-lbl">{lasalle.metric.label}</span>
-          </div>
-          <div class="rl-kpi">
-            <span class="rl-kpi-val">{lasalle.metric2.value}</span>
-            <span class="rl-kpi-lbl">{lasalle.metric2.label}</span>
-          </div>
-        </div>
-        {lasalle.url && (
-          <a href={lasalle.url} target="_blank" rel="noopener noreferrer" class="rl-link">
-            {r.visitLabel}
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        )}
-      </div>
-
-      <div class="rl-carousel" data-carousel data-project={lasalle.name}>
-        <div class="rl-carousel-track">
-          {projectScreens.lasalle.map((src, i) => (
-            <div class="rl-slide">
-              <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-              <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
-                <img src={src} alt={`${lasalle.name} — vue ${i + 1}`} width="700" height="420" loading={i === 0 ? "eager" : "lazy"} />
-                <span class="rl-zoom-hint" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-                </span>
-              </button>
-            </div>
-          ))}
-        </div>
-        <div class="rl-carousel-footer">
-          <div class="rl-dots" aria-hidden="true">
-            {projectScreens.lasalle.map((_: string, i: number) => (
-              <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
-            ))}
-          </div>
-          {projectScreens.lasalle.length > 1 && (
-            <div class="rl-arrows">
-              <button class="rl-arrow rl-arrow--prev" aria-label="Image précédente">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
-              </button>
-              <button class="rl-arrow rl-arrow--next" aria-label="Image suivante">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-    </article>
-
-    <!-- Projet 6 — Train To Rise -->
-    <article class="rl-item rl-reveal">
-      <div class="rl-info">
-        <span class="rl-num">06</span>
-        <p class="rl-sector">{traintorise.sector}</p>
-        <h2 class="rl-name">{traintorise.name}</h2>
-        <p class="rl-client">{traintorise.client}</p>
-        <p class="rl-desc">{traintorise.description}</p>
-        <ul class="rl-tags">
-          {traintorise.tags.map((tag: string) => <li>{tag}</li>)}
-        </ul>
-        <div class="rl-kpi-group">
-          <div class="rl-kpi">
-            <span class="rl-kpi-val">{traintorise.metric.value}</span>
-            <span class="rl-kpi-lbl">{traintorise.metric.label}</span>
-          </div>
-          <div class="rl-kpi">
-            <span class="rl-kpi-val">{traintorise.metric2.value}</span>
-            <span class="rl-kpi-lbl">{traintorise.metric2.label}</span>
-          </div>
-        </div>
-        {traintorise.url && (
-          <a href={traintorise.url} target="_blank" rel="noopener noreferrer" class="rl-link">
-            {r.visitLabel}
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        )}
-      </div>
-
-      <div class="rl-carousel" data-carousel data-project={traintorise.name}>
-        <div class="rl-carousel-track">
-          {projectScreens.traintorise.length > 0 ? projectScreens.traintorise.map((src, i) => (
-            <div class="rl-slide">
-              <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-              <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
-                <img src={src} alt={`${traintorise.name} — vue ${i + 1}`} width="700" height="420" loading="lazy" />
-                <span class="rl-zoom-hint" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-                </span>
-              </button>
-            </div>
-          )) : (
-            <div class="rl-slide rl-slide--placeholder">
-              <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-              <div class="rl-placeholder-inner">
-                <p>Captures d'écran à venir</p>
+      {projects.map(({ key, data, screens, num }, idx) => (
+        <article
+          class={`rl-item${idx % 2 !== 0 ? " rl-item--reverse" : ""}${idx === 0 ? " active" : ""}`}
+          data-slide={idx}
+          aria-hidden={idx !== 0 ? "true" : "false"}
+        >
+          <div class="rl-info">
+            <span class="rl-num">{num}</span>
+            <p class="rl-sector">{data.sector}</p>
+            <h2 class="rl-name">{data.name}</h2>
+            <p class="rl-client">{data.client}</p>
+            <p class="rl-desc">{data.description}</p>
+            <ul class="rl-tags">
+              {data.tags.map((tag: string) => <li>{tag}</li>)}
+            </ul>
+            <div class="rl-kpi-group">
+              <div class="rl-kpi">
+                <span class="rl-kpi-val">{data.metric.value}</span>
+                <span class="rl-kpi-lbl">{data.metric.label}</span>
+              </div>
+              <div class="rl-kpi">
+                <span class="rl-kpi-val">{data.metric2.value}</span>
+                <span class="rl-kpi-lbl">{data.metric2.label}</span>
               </div>
             </div>
-          )}
-        </div>
-        {projectScreens.traintorise.length > 0 && (
-          <div class="rl-carousel-footer">
-            <div class="rl-dots" aria-hidden="true">
-              {projectScreens.traintorise.map((_: string, i: number) => (
-                <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
+            {data.url && (
+              <a href={data.url} target="_blank" rel="noopener noreferrer" class="rl-link">
+                {r.visitLabel}
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            )}
+          </div>
+
+          <div class="rl-carousel" data-carousel data-project={data.name}>
+            <div class="rl-carousel-track">
+              {screens.map((src, i) => (
+                <div class="rl-slide">
+                  <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
+                    <img src={src} alt={`${data.name} — vue ${i + 1}`} width="700" height="420" loading={idx === 0 && i === 0 ? "eager" : "lazy"} />
+                    <span class="rl-zoom-hint" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+                    </span>
+                  </button>
+                </div>
               ))}
             </div>
+            <div class="rl-carousel-footer">
+              <div class="rl-dots" aria-hidden="true">
+                {screens.map((_: string, i: number) => (
+                  <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
+                ))}
+              </div>
+              {screens.length > 1 && (
+                <div class="rl-arrows">
+                  <button class="rl-arrow rl-arrow--prev" aria-label="Image précédente">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+                  </button>
+                  <button class="rl-arrow rl-arrow--next" aria-label="Image suivante">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
-        )}
-      </div>
-    </article>
+        </article>
+      ))}
 
+    </div><!-- /rl-slider -->
   </div>
 </section>
 
@@ -510,6 +245,12 @@ const projectScreens: Record<string, string[]> = {
   animation: rh-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: var(--d, 0s);
 }
+
+@keyframes rl-project-in {
+  from { opacity: 0; transform: translateY(28px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
 @keyframes rl-in {
   from { opacity: 0; transform: translateY(32px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -536,9 +277,9 @@ const projectScreens: Record<string, string[]> = {
   background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
   transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.rl-reveal.visible .rl-name::after {
+.rl-item.active .rl-name::after {
   width: 100%;
-  transition-delay: 0.35s;
+  transition-delay: 0.3s;
 }
 
 /* ══ HERO ══ */
@@ -625,18 +366,135 @@ const projectScreens: Record<string, string[]> = {
 
 /* ══ PROJETS ══ */
 .rl-projects {
-  padding: 5rem 0 2rem;
+  padding: 4rem 0 2rem;
 }
+
+/* Barre de navigation projet */
+.rl-pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 3.5rem;
+}
+.rl-pager-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.rl-pager-current {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  min-width: 2ch;
+  transition: all 0.3s;
+}
+.rl-pager-sep {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  opacity: 0.4;
+  margin: 0 0.15rem;
+}
+.rl-pager-total {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  opacity: 0.5;
+}
+
+.rl-pager-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+}
+.rl-pdot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-border);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s, width 0.3s cubic-bezier(0.22,1,0.36,1), border-radius 0.3s;
+  flex-shrink: 0;
+}
+.rl-pdot--active {
+  background: var(--color-accent);
+  width: 28px;
+  border-radius: 4px;
+}
+.rl-pdot:hover:not(.rl-pdot--active) {
+  background: var(--color-text-secondary);
+  opacity: 0.5;
+}
+
+.rl-pager-btns {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.rl-pnav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.22s, border-color 0.22s, color 0.22s, transform 0.22s;
+}
+.rl-pnav:hover:not(:disabled) {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  transform: scale(1.07);
+}
+.rl-pnav--prev:hover:not(:disabled) { transform: scale(1.07) translateX(-2px); }
+.rl-pnav--next:hover:not(:disabled) { transform: scale(1.07) translateX(2px); }
+.rl-pnav:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+/* Slider container */
+.rl-slider {
+  position: relative;
+  /* height controlled by active article */
+}
+
+/* Chaque projet */
 .rl-item {
   display: grid;
   grid-template-columns: 380px 1fr;
   gap: 4.5rem;
   align-items: start;
-  padding: 4rem 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: 0.5rem 0 3rem;
+  /* hidden by default */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
-.rl-item:first-child { padding-top: 0; }
-.rl-item:last-child { border-bottom: none; }
+.rl-item.active {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  animation: rl-project-in 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
 .rl-item--reverse {
   grid-template-columns: 1fr 380px;
 }
@@ -1055,22 +913,12 @@ const projectScreens: Record<string, string[]> = {
 .btn-hero svg { transition: transform 0.22s ease; }
 .btn-hero:hover svg { transform: translateX(4px); }
 
-/* Placeholder carousel */
-.rl-slide--placeholder { border-bottom: none; }
-.rl-placeholder-inner {
-  min-height: 260px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-bg-secondary);
-  color: var(--color-text-secondary);
-  font-size: 0.88rem;
-  font-style: italic;
-}
-
 /* ══ RESPONSIVE ══ */
-@media (max-width: 900px) {
-  .rl-item { grid-template-columns: 1fr; gap: 2.5rem; }
+@media (max-width: 960px) {
+  .rl-item {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
   .rl-item--reverse .rl-info { order: 1; }
   .rl-item--reverse .rl-carousel { order: 2; }
 }
@@ -1081,13 +929,85 @@ const projectScreens: Record<string, string[]> = {
   .rh-stats li { padding: 1.25rem 1.5rem 0 0; margin-right: 1.5rem; }
   .rcta { padding: 4rem 0; }
   .rcta-inner { margin-left: 0; }
+
+  .rl-pager { gap: 0.75rem; }
+  .rl-pager-current { font-size: 1.4rem; }
+  .rl-pnav { width: 38px; height: 38px; }
+  .rl-pdot { width: 7px; height: 7px; }
+  .rl-pdot--active { width: 20px; }
 }
 </style>
 
 <script is:inline>
 (function () {
 
-  /* ══ CAROUSELS ══ */
+  /* ══ SLIDER PROJETS ══ */
+  var slider    = document.querySelector("[data-project-slider]");
+  var slides    = slider ? Array.from(slider.querySelectorAll("[data-slide]")) : [];
+  var pager     = document.querySelector("[data-pager]");
+  var dots      = pager ? Array.from(pager.querySelectorAll(".rl-pdot")) : [];
+  var btnPrev   = pager && pager.querySelector("[data-pnav='prev']");
+  var btnNext   = pager && pager.querySelector("[data-pnav='next']");
+  var counter   = pager && pager.querySelector("[data-pager-current]");
+  var current   = 0;
+  var total     = slides.length;
+
+  function goTo(idx) {
+    if (idx < 0 || idx >= total || idx === current) return;
+
+    slides[current].classList.remove("active");
+    slides[current].setAttribute("aria-hidden", "true");
+
+    current = idx;
+
+    slides[current].classList.add("active");
+    slides[current].setAttribute("aria-hidden", "false");
+
+    dots.forEach(function (d, i) {
+      d.classList.toggle("rl-pdot--active", i === current);
+      d.setAttribute("aria-selected", i === current ? "true" : "false");
+    });
+
+    if (counter) counter.textContent = String(current + 1).padStart(2, "0");
+    if (btnPrev) btnPrev.disabled = current === 0;
+    if (btnNext) btnNext.disabled = current === total - 1;
+
+    /* scroll to pager bar so the project is visible */
+    if (pager) {
+      var top = pager.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: top, behavior: "smooth" });
+    }
+  }
+
+  if (btnPrev) btnPrev.addEventListener("click", function () { goTo(current - 1); });
+  if (btnNext) btnNext.addEventListener("click", function () { goTo(current + 1); });
+
+  dots.forEach(function (dot, i) {
+    dot.addEventListener("click", function () { goTo(i); });
+  });
+
+  /* initialise état boutons */
+  if (btnPrev) btnPrev.disabled = true;
+
+  /* keyboard navigation (only when lightbox is closed) */
+  document.addEventListener("keydown", function (e) {
+    var lb = document.getElementById("lightbox");
+    if (lb && !lb.hasAttribute("hidden")) return;
+    if (e.key === "ArrowRight") goTo(current + 1);
+    if (e.key === "ArrowLeft")  goTo(current - 1);
+  });
+
+  /* touch swipe on the slider */
+  var tx = 0;
+  if (slider) {
+    slider.addEventListener("touchstart", function (e) { tx = e.touches[0].clientX; }, { passive: true });
+    slider.addEventListener("touchend", function (e) {
+      var diff = tx - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) diff > 0 ? goTo(current + 1) : goTo(current - 1);
+    }, { passive: true });
+  }
+
+  /* ══ CAROUSELS (images dans chaque projet) ══ */
   document.querySelectorAll("[data-carousel]").forEach(function (carousel) {
     var track   = carousel.querySelector(".rl-carousel-track");
     var dots    = Array.from(carousel.querySelectorAll(".rl-dot"));
@@ -1180,7 +1100,7 @@ const projectScreens: Record<string, string[]> = {
     var t0 = performance.now(), big = target >= 1000;
     (function step(ts) {
       var p = Math.min((ts - t0) / dur, 1), ease = 1 - Math.pow(1 - p, 3);
-      el.textContent = big ? Math.round(ease * target).toLocaleString("fr-FR").replace(/ /g, " ") : String(Math.round(ease * target));
+      el.textContent = big ? Math.round(ease * target).toLocaleString("fr-FR").replace(/ /g, " ") : String(Math.round(ease * target));
       if (p < 1) requestAnimationFrame(step);
     })(performance.now());
   }
@@ -1194,7 +1114,7 @@ const projectScreens: Record<string, string[]> = {
   var sl = document.querySelector(".rh-stats");
   if (sl) statsObs.observe(sl);
 
-  /* ══ SCROLL REVEAL ══ */
+  /* ══ SCROLL REVEAL (CTA uniquement) ══ */
   var revObs = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("visible"); revObs.unobserve(e.target); } });
   }, { threshold: 0.1 });
