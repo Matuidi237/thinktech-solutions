@@ -386,27 +386,27 @@
         "url": "https://boukacreativ-learning.com/"
       },
       {
-        "name": "ThinkTech Academy",
-        "client": "ThinkTech Solutions, LMS propriétaire",
-        "sector": "Digital skills & Formation certifiante",
+        "name": "Train To Rise",
+        "client": "MAXIMMACS, Cabinet de conseil et de formation",
+        "sector": "Formation professionnelle & Montée en compétences",
         "metric": {
-          "value": "5",
-          "label": "domaines de compétences"
+          "value": "6+",
+          "label": "domaines de formation"
         },
         "metric2": {
           "value": "100%",
-          "label": "parcours accessibles en ligne"
+          "label": "en production sur traintorise.com"
         },
         "tags": [
-          "LMS",
-          "Digital Skills",
-          "Certifications"
+          "Moodle",
+          "Formation professionnelle",
+          "IA & Finance"
         ],
-        "description": "ThinkTech Academy est le LMS propriétaire de ThinkTech Solutions, conçu pour développer les compétences numériques. La plateforme couvre 5 domaines clés, management, fiscalité, audit, comptabilité et intelligence artificielle, avec des parcours certifiants, une gestion fine des accès et une interface pensée pour l'apprenant africain.",
-        "challenge": "Créer un LMS propriétaire capable de structurer et de certifier des apprentissages en digital skills, adapté aux réalités du marché africain, avec une expérience apprenant fluide et engageante.",
-        "solution": "Parcours pédagogiques modulaires avec progression verrouillée, système de certification intégré, tableau de bord apprenant et formateur, interface responsive et entièrement personnalisée aux couleurs de ThinkTech.",
+        "description": "En partenariat avec le cabinet MAXIMMACS, nous avons conçu et déployé Train To Rise, la plateforme e-learning dédiée à l'accompagnement des jeunes cadres et diplômés africains dans le renforcement de leurs compétences. La plateforme couvre plusieurs domaines stratégiques : intelligence artificielle, comptabilité, gestion, fiscalité et audit, avec des parcours structurés, une interface moderne et une expérience apprenant pensée pour le contexte professionnel africain.",
+        "challenge": "Déployer une plateforme à la fois professionnelle, accessible et engageante pour des apprenants actifs jonglant entre vie professionnelle et formation, tout en proposant des contenus à forte valeur ajoutée sur des thématiques pointues.",
+        "solution": "Architecture Moodle optimisée pour la performance, catalogue de cours structuré par domaine, interface responsive aux couleurs de MAXIMMACS, et mise en production complète avec accompagnement à la prise en main.",
         "image": "/images/platforms/training-to-rise-home.webp",
-        "url": null
+        "url": "https://www.traintorise.com"
       },
       {
         "name": "Erfolg Zentrum Online",

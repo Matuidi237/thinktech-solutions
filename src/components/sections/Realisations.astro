@@ -141,7 +141,7 @@ const projectScreens: Record<string, string[]> = {
       </div>
     </article>
 
-    <!-- Projet 2 — ThinkTech Academy (inversé) -->
+    <!-- Projet 2 — Train To Rise (inversé) -->
     <article class="rl-item rl-item--reverse rl-reveal">
       <div class="rl-info">
         <span class="rl-num">02</span>
@@ -162,6 +162,12 @@ const projectScreens: Record<string, string[]> = {
             <span class="rl-kpi-lbl">{training.metric2.label}</span>
           </div>
         </div>
+        {training.url && (
+          <a href={training.url} target="_blank" rel="noopener noreferrer" class="rl-link">
+            {r.visitLabel}
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        )}
       </div>
 
       <div class="rl-carousel" data-carousel data-project={training.name}>
