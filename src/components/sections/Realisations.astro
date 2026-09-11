@@ -89,113 +89,119 @@ const total = projects.length;
   </div>
 </section>
 
-<!-- ══ PROJETS ══ -->
-<section class="rl-projects" aria-label="Nos réalisations">
-  <div class="container">
+<!-- ══ CARROUSEL PROJETS ══ -->
+<section class="cf-section" aria-label="Nos réalisations">
 
-    <!-- Barre de navigation entre projets -->
-    <div class="rl-pager" data-pager>
-      <div class="rl-pager-counter" aria-live="polite" aria-atomic="true">
-        <span class="rl-pager-current" data-pager-current>01</span>
-        <span class="rl-pager-sep">/</span>
-        <span class="rl-pager-total">{String(total).padStart(2, "0")}</span>
-      </div>
+  <!-- Viewport de défilement -->
+  <div class="cf-viewport" data-cf-viewport>
 
-      <div class="rl-pager-dots" role="tablist" aria-label="Sélectionner un projet">
-        {projects.map((p, i) => (
-          <button
-            class={`rl-pdot${i === 0 ? " rl-pdot--active" : ""}`}
-            data-pidx={i}
-            role="tab"
-            aria-selected={i === 0 ? "true" : "false"}
-            aria-label={`Projet ${p.num} : ${p.data.name}`}
-          ></button>
-        ))}
-      </div>
+    <!-- Bouton prev (flottant gauche) -->
+    <button class="cf-nav cf-nav--prev" data-cf-prev aria-label="Projet précédent" disabled>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
 
-      <div class="rl-pager-btns">
-        <button class="rl-pnav rl-pnav--prev" data-pnav="prev" aria-label="Projet précédent" disabled>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button class="rl-pnav rl-pnav--next" data-pnav="next" aria-label="Projet suivant">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Slider projets -->
-    <div class="rl-slider" data-project-slider>
-
-      {projects.map(({ key, data, screens, num }, idx) => (
+    <!-- Piste -->
+    <div class="cf-track" data-cf-track>
+      {projects.map(({ data, screens, num }, idx) => (
         <article
-          class={`rl-item${idx % 2 !== 0 ? " rl-item--reverse" : ""}${idx === 0 ? " active" : ""}`}
-          data-slide={idx}
-          aria-hidden={idx !== 0 ? "true" : "false"}
+          class={`cf-card${idx === 0 ? " cf-card--active" : ""}`}
+          data-cf-card={idx}
+          aria-label={`Projet ${num} : ${data.name}`}
         >
-          <div class="rl-info">
-            <span class="rl-num">{num}</span>
-            <p class="rl-sector">{data.sector}</p>
-            <h2 class="rl-name">{data.name}</h2>
-            <p class="rl-client">{data.client}</p>
-            <p class="rl-desc">{data.description}</p>
-            <ul class="rl-tags">
+          <!-- Info -->
+          <div class="cf-info">
+            <span class="cf-num">{num}</span>
+            <p class="cf-sector">{data.sector}</p>
+            <h2 class="cf-name">{data.name}</h2>
+            <p class="cf-client">{data.client}</p>
+            <p class="cf-desc">{data.description}</p>
+            <ul class="cf-tags">
               {data.tags.map((tag: string) => <li>{tag}</li>)}
             </ul>
-            <div class="rl-kpi-group">
-              <div class="rl-kpi">
-                <span class="rl-kpi-val">{data.metric.value}</span>
-                <span class="rl-kpi-lbl">{data.metric.label}</span>
+            <div class="cf-kpi-group">
+              <div class="cf-kpi">
+                <span class="cf-kpi-val">{data.metric.value}</span>
+                <span class="cf-kpi-lbl">{data.metric.label}</span>
               </div>
-              <div class="rl-kpi">
-                <span class="rl-kpi-val">{data.metric2.value}</span>
-                <span class="rl-kpi-lbl">{data.metric2.label}</span>
+              <div class="cf-kpi">
+                <span class="cf-kpi-val">{data.metric2.value}</span>
+                <span class="cf-kpi-lbl">{data.metric2.label}</span>
               </div>
             </div>
             {data.url && (
-              <a href={data.url} target="_blank" rel="noopener noreferrer" class="rl-link">
+              <a href={data.url} target="_blank" rel="noopener noreferrer" class="cf-link">
                 {r.visitLabel}
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
               </a>
             )}
           </div>
 
-          <div class="rl-carousel" data-carousel data-project={data.name}>
-            <div class="rl-carousel-track">
-              {screens.map((src, i) => (
-                <div class="rl-slide">
-                  <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-                  <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
-                    <img src={src} alt={`${data.name} — vue ${i + 1}`} width="700" height="420" loading={idx === 0 && i === 0 ? "eager" : "lazy"} />
-                    <span class="rl-zoom-hint" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-                    </span>
-                  </button>
-                </div>
-              ))}
-            </div>
-            <div class="rl-carousel-footer">
-              <div class="rl-dots" aria-hidden="true">
-                {screens.map((_: string, i: number) => (
-                  <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
+          <!-- Carousel images -->
+          <div class="cf-media">
+            <div class="rl-carousel" data-carousel data-project={data.name}>
+              <div class="rl-carousel-track">
+                {screens.map((src, i) => (
+                  <div class="rl-slide">
+                    <div class="rl-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <button class="rl-zoom-btn" data-src={src} data-idx={i} aria-label="Agrandir l'image">
+                      <img src={src} alt={`${data.name} — vue ${i + 1}`} width="700" height="420" loading={idx === 0 && i === 0 ? "eager" : "lazy"} />
+                      <span class="rl-zoom-hint" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+                      </span>
+                    </button>
+                  </div>
                 ))}
               </div>
-              {screens.length > 1 && (
-                <div class="rl-arrows">
-                  <button class="rl-arrow rl-arrow--prev" aria-label="Image précédente">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
-                  </button>
-                  <button class="rl-arrow rl-arrow--next" aria-label="Image suivante">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
-                  </button>
+              <div class="rl-carousel-footer">
+                <div class="rl-dots" aria-hidden="true">
+                  {screens.map((_: string, i: number) => (
+                    <button class={`rl-dot${i === 0 ? " rl-dot--active" : ""}`} data-index={i}></button>
+                  ))}
                 </div>
-              )}
+                {screens.length > 1 && (
+                  <div class="rl-arrows">
+                    <button class="rl-arrow rl-arrow--prev" aria-label="Image précédente">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <button class="rl-arrow rl-arrow--next" aria-label="Image suivante">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
+
         </article>
       ))}
+    </div>
 
-    </div><!-- /rl-slider -->
+    <!-- Bouton next (flottant droite) -->
+    <button class="cf-nav cf-nav--next" data-cf-next aria-label="Projet suivant">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
   </div>
+
+  <!-- Controles en dessous -->
+  <div class="cf-controls">
+    <div class="cf-dots" role="tablist" aria-label="Sélectionner un projet">
+      {projects.map((p, i) => (
+        <button
+          class={`cf-dot${i === 0 ? " cf-dot--active" : ""}`}
+          data-cf-dot={i}
+          role="tab"
+          aria-selected={i === 0 ? "true" : "false"}
+          aria-label={`Projet ${p.num} : ${p.data.name}`}
+        ></button>
+      ))}
+    </div>
+    <span class="cf-counter" data-cf-counter aria-live="polite" aria-atomic="true">
+      <span class="cf-counter-cur">1</span>
+      <span class="cf-counter-sep">/</span>
+      <span class="cf-counter-tot">{total}</span>
+    </span>
+  </div>
+
 </section>
 
 <!-- ══ LIGHTBOX ══ -->
@@ -223,13 +229,13 @@ const total = projects.length;
   <div class="rcta-overlay" aria-hidden="true"></div>
   <div class="container">
     <div class="rcta-inner rl-reveal">
-    <p class="rcta-eyebrow">{r.ctaEyebrow}</p>
-    <h2 class="rcta-title">{r.ctaTitle}</h2>
-    <p class="rcta-sub">{r.ctaSub}</p>
-    <a href={`/${lang}/contact`} class="btn-hero">
-      {r.cta}
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
-    </a>
+      <p class="rcta-eyebrow">{r.ctaEyebrow}</p>
+      <h2 class="rcta-title">{r.ctaTitle}</h2>
+      <p class="rcta-sub">{r.ctaSub}</p>
+      <a href={`/${lang}/contact`} class="btn-hero">
+        {r.cta}
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -245,42 +251,12 @@ const total = projects.length;
   animation: rh-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: var(--d, 0s);
 }
-
-@keyframes rl-project-in {
-  from { opacity: 0; transform: translateY(28px) scale(0.98); }
-  to   { opacity: 1; transform: translateY(0)    scale(1); }
-}
-
 @keyframes rl-in {
   from { opacity: 0; transform: translateY(32px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.rl-reveal {
-  opacity: 0;
-  transition: none;
-}
-.rl-reveal.visible {
-  animation: rl-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-/* Ligne décorative animée sous le titre du projet */
-.rl-name {
-  position: relative;
-  display: inline-block;
-}
-.rl-name::after {
-  content: "";
-  position: absolute;
-  left: 0; bottom: -4px;
-  height: 2px;
-  width: 0;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
-  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.rl-item.active .rl-name::after {
-  width: 100%;
-  transition-delay: 0.3s;
-}
+.rl-reveal { opacity: 0; transition: none; }
+.rl-reveal.visible { animation: rl-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 
 /* ══ HERO ══ */
 .rh {
@@ -301,18 +277,9 @@ const total = projects.length;
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    110deg,
-    rgba(2, 33, 121, 0.93) 0%,
-    rgba(2, 33, 121, 0.78) 55%,
-    rgba(164, 37, 147, 0.28) 100%
-  );
+  background: linear-gradient(110deg, rgba(2,33,121,0.93) 0%, rgba(2,33,121,0.78) 55%, rgba(164,37,147,0.28) 100%);
 }
-.rh-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 640px;
-}
+.rh-inner { position: relative; z-index: 1; max-width: 640px; }
 .rh-eyebrow {
   display: inline-block;
   font-size: 0.75rem;
@@ -352,239 +319,176 @@ const total = projects.length;
   border-right: 1px solid rgba(255,255,255,0.15);
 }
 .rh-stats li:last-child { border-right: none; margin-right: 0; }
-.rh-stat-val {
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-.rh-stat-lbl {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.62);
+.rh-stat-val { font-size: 1.75rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1; }
+.rh-stat-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.62); }
+
+/* ══ SECTION CARROUSEL ══ */
+.cf-section {
+  padding: 4.5rem 0 3rem;
+  overflow: hidden; /* empêche scroll horizontal sur la page */
 }
 
-/* ══ PROJETS ══ */
-.rl-projects {
-  padding: 4rem 0 2rem;
-}
-
-/* Barre de navigation projet */
-.rl-pager {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1.5rem 0 2.5rem;
-  border-bottom: 1px solid var(--color-border);
-  margin-bottom: 3.5rem;
-}
-.rl-pager-counter {
-  display: flex;
-  align-items: baseline;
-  gap: 0.2rem;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-.rl-pager-current {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--color-primary);
-  letter-spacing: -0.02em;
-  line-height: 1;
-  min-width: 2ch;
-  transition: all 0.3s;
-}
-.rl-pager-sep {
-  font-size: 1rem;
-  color: var(--color-text-secondary);
-  opacity: 0.4;
-  margin: 0 0.15rem;
-}
-.rl-pager-total {
-  font-size: 1rem;
-  color: var(--color-text-secondary);
-  opacity: 0.5;
-}
-
-.rl-pager-dots {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-  justify-content: center;
-}
-.rl-pdot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: none;
-  background: var(--color-border);
-  cursor: pointer;
-  padding: 0;
-  transition: background 0.25s, width 0.3s cubic-bezier(0.22,1,0.36,1), border-radius 0.3s;
-  flex-shrink: 0;
-}
-.rl-pdot--active {
-  background: var(--color-accent);
-  width: 28px;
-  border-radius: 4px;
-}
-.rl-pdot:hover:not(.rl-pdot--active) {
-  background: var(--color-text-secondary);
-  opacity: 0.5;
-}
-
-.rl-pager-btns {
-  display: flex;
-  gap: 8px;
-  flex-shrink: 0;
-}
-.rl-pnav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1.5px solid var(--color-border);
-  background: var(--color-bg);
-  color: var(--color-text);
-  cursor: pointer;
-  transition: background 0.22s, border-color 0.22s, color 0.22s, transform 0.22s;
-}
-.rl-pnav:hover:not(:disabled) {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #fff;
-  transform: scale(1.07);
-}
-.rl-pnav--prev:hover:not(:disabled) { transform: scale(1.07) translateX(-2px); }
-.rl-pnav--next:hover:not(:disabled) { transform: scale(1.07) translateX(2px); }
-.rl-pnav:disabled {
-  opacity: 0.28;
-  cursor: default;
-}
-
-/* Slider container */
-.rl-slider {
+/* Viewport : contient la piste + les boutons flottants */
+.cf-viewport {
   position: relative;
-  /* height controlled by active article */
+  overflow: hidden;
+  /* espace vertical pour que le scale ne soit pas rogné */
+  padding: 2rem 0 2.5rem;
 }
 
-/* Chaque projet */
-.rl-item {
+/* Piste horizontale */
+.cf-track {
+  display: flex;
+  gap: 28px;
+  /* translateX géré par JS */
+  will-change: transform;
+  transition: transform 0.58s cubic-bezier(0.22, 1, 0.36, 1);
+  /* aligner le premier carte à gauche, JS centre ensuite */
+}
+
+/* Carte projet */
+.cf-card {
+  /* largeur : ~76 % du viewport, calculée en JS */
+  flex: 0 0 auto;
+  width: var(--cf-card-w, 76%);
   display: grid;
-  grid-template-columns: 380px 1fr;
-  gap: 4.5rem;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: 3.5rem;
   align-items: start;
-  padding: 0.5rem 0 3rem;
-  /* hidden by default */
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-}
-.rl-item.active {
-  position: relative;
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
-  animation: rl-project-in 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.rl-item--reverse {
-  grid-template-columns: 1fr 380px;
-}
-.rl-item--reverse .rl-info { order: 2; }
-.rl-item--reverse .rl-carousel { order: 1; }
 
-/* Info */
-.rl-num {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 2.75rem;
+  box-shadow: 0 8px 32px rgba(2,33,121,0.07);
+
+  /* effet coverflow */
+  transform: scale(0.88);
+  opacity: 0.45;
+  transition:
+    transform 0.58s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity   0.58s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.58s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* contenu non-actif non cliquable sauf le clic de navigation */
+  cursor: pointer;
+}
+.cf-card--active {
+  transform: scale(1);
+  opacity: 1;
+  cursor: default;
+  box-shadow: 0 20px 60px rgba(2,33,121,0.14), 0 4px 16px rgba(2,33,121,0.08);
+}
+
+/* Verrouille l'interactivité interne sur les cartes non-actives */
+.cf-card:not(.cf-card--active) .cf-info,
+.cf-card:not(.cf-card--active) .cf-media {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ══ CONTENU CARTE ══ */
+.cf-num {
   display: block;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--color-text-secondary);
   opacity: 0.4;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.1rem;
 }
-.rl-sector {
-  font-size: 0.75rem;
+.cf-sector {
+  font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.09em;
   color: var(--color-accent);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.55rem;
 }
-.rl-name {
-  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+.cf-name {
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.01em;
-  margin-bottom: 0.35rem;
   color: var(--color-text);
+  margin-bottom: 0.3rem;
+  position: relative;
+  display: inline-block;
 }
-.rl-client {
-  font-size: 0.85rem;
+.cf-name::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+  transition: width 0.55s cubic-bezier(0.22,1,0.36,1) 0.25s;
+}
+.cf-card--active .cf-name::after { width: 100%; }
+
+.cf-client {
+  font-size: 0.84rem;
   color: var(--color-text-secondary);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.15rem;
 }
-.rl-desc {
-  font-size: 0.95rem;
+.cf-desc {
+  font-size: 0.93rem;
   line-height: 1.8;
   color: var(--color-text-secondary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.4rem;
+  /* 4 lignes max pour garder une hauteur cohérente entre cartes */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.rl-tags {
+.cf-tags {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.6rem;
 }
-.rl-tags li {
-  font-size: 0.75rem;
+.cf-tags li {
+  font-size: 0.74rem;
   font-weight: 600;
-  padding: 0.28rem 0.75rem;
+  padding: 0.27rem 0.72rem;
   border-radius: 20px;
   border: 1px solid var(--color-border);
   color: var(--color-text-secondary);
   background: var(--color-bg-secondary);
 }
-.rl-kpi-group {
+.cf-kpi-group {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.7rem;
   flex-wrap: wrap;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.4rem;
 }
-.rl-kpi {
+.cf-kpi {
   display: inline-flex;
   align-items: baseline;
-  gap: 0.55rem;
-  padding: 0.9rem 1.25rem;
+  gap: 0.5rem;
+  padding: 0.8rem 1.1rem;
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   border-radius: 10px;
 }
-.rl-kpi-val {
-  font-size: 1.65rem;
+.cf-kpi-val {
+  font-size: 1.55rem;
   font-weight: 800;
   color: var(--color-primary);
   letter-spacing: -0.02em;
   line-height: 1;
 }
-.rl-kpi-lbl {
-  font-size: 0.82rem;
+.cf-kpi-lbl {
+  font-size: 0.8rem;
   color: var(--color-text-secondary);
 }
-.rl-link {
+.cf-link {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 0.88rem;
+  font-size: 0.87rem;
   font-weight: 600;
   color: var(--color-accent);
   text-decoration: none;
@@ -592,16 +496,22 @@ const total = projects.length;
   padding-bottom: 0.1rem;
   transition: gap 0.2s;
 }
-.rl-link:hover { gap: 0.7rem; }
+.cf-link:hover { gap: 0.7rem; }
 
-/* Carousel */
+/* Zone image */
+.cf-media {
+  position: sticky;
+  top: 6rem; /* colle en haut au scroll dans la carte */
+}
+
+/* ══ CAROUSEL IMAGES (réutilisé) ══ */
 .rl-carousel {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--color-border);
   background: var(--color-bg-secondary);
-  box-shadow: 0 12px 40px rgba(2,33,121,0.09);
+  box-shadow: 0 8px 28px rgba(2,33,121,0.09);
 }
 .rl-carousel-track {
   display: flex;
@@ -612,11 +522,7 @@ const total = projects.length;
   touch-action: pan-x;
 }
 .rl-carousel-track::-webkit-scrollbar { display: none; }
-.rl-slide {
-  flex: 0 0 100%;
-  scroll-snap-align: start;
-  position: relative;
-}
+.rl-slide { flex: 0 0 100%; scroll-snap-align: start; position: relative; }
 .rl-bar {
   height: 26px;
   background: var(--color-bg-secondary);
@@ -630,8 +536,6 @@ const total = projects.length;
 .rl-bar span:nth-child(1) { background: #ff5f57; }
 .rl-bar span:nth-child(2) { background: #febc2e; }
 .rl-bar span:nth-child(3) { background: #28c840; }
-
-/* Zoom button */
 .rl-zoom-btn {
   display: block;
   width: 100%;
@@ -659,23 +563,16 @@ const total = projects.length;
 .rl-zoom-hint svg { filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4)); transform: scale(0.8); transition: transform 0.3s; }
 .rl-zoom-btn:hover .rl-zoom-hint { opacity: 1; background: rgba(2,33,121,0.22); }
 .rl-zoom-btn:hover .rl-zoom-hint svg { transform: scale(1); }
-
-/* Footer : dots + arrows */
 .rl-carousel-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.55rem 0.75rem;
+  padding: 0.5rem 0.75rem;
   background: var(--color-bg-secondary);
   border-top: 1px solid var(--color-border);
   min-height: 40px;
 }
-.rl-dots {
-  display: flex;
-  gap: 6px;
-  flex: 1;
-  justify-content: center;
-}
+.rl-dots { display: flex; gap: 6px; flex: 1; justify-content: center; }
 .rl-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
@@ -683,17 +580,10 @@ const total = projects.length;
   background: var(--color-border);
   cursor: pointer;
   padding: 0;
-  transition: background 0.2s, transform 0.25s, width 0.25s;
+  transition: background 0.2s, width 0.25s;
 }
-.rl-dot--active {
-  background: var(--color-accent);
-  width: 18px;
-  border-radius: 3px;
-}
-.rl-arrows {
-  display: flex;
-  gap: 4px;
-}
+.rl-dot--active { background: var(--color-accent); width: 18px; border-radius: 3px; }
+.rl-arrows { display: flex; gap: 4px; }
 .rl-arrow {
   display: flex;
   align-items: center;
@@ -709,6 +599,86 @@ const total = projects.length;
 .rl-arrow:hover { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
 .rl-arrow:disabled { opacity: 0.3; cursor: default; }
 
+/* ══ BOUTONS DE NAVIGATION COVERFLOW ══ */
+.cf-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(2,33,121,0.12);
+  transition: background 0.22s, border-color 0.22s, color 0.22s, transform 0.22s, opacity 0.22s;
+}
+.cf-nav--prev { left: 1.25rem; }
+.cf-nav--next { right: 1.25rem; }
+.cf-nav:hover:not(:disabled) {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(2,33,121,0.22);
+}
+.cf-nav--prev:hover:not(:disabled) { transform: translateY(-50%) translateX(-2px); }
+.cf-nav--next:hover:not(:disabled) { transform: translateY(-50%) translateX(2px); }
+.cf-nav:disabled { opacity: 0.25; cursor: default; }
+
+/* ══ CONTROLES BAS ══ */
+.cf-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding-top: 1.75rem;
+}
+.cf-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cf-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-border);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s, width 0.3s cubic-bezier(0.22,1,0.36,1), border-radius 0.3s;
+}
+.cf-dot--active {
+  background: var(--color-accent);
+  width: 28px;
+  border-radius: 4px;
+}
+.cf-dot:hover:not(.cf-dot--active) {
+  background: var(--color-text-secondary);
+  opacity: 0.5;
+}
+.cf-counter {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: baseline;
+  gap: 0.15rem;
+  min-width: 3.5rem;
+}
+.cf-counter-cur {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+.cf-counter-sep { opacity: 0.35; }
+.cf-counter-tot { opacity: 0.5; }
+
 /* ══ LIGHTBOX ══ */
 .lb {
   position: fixed;
@@ -723,7 +693,7 @@ const total = projects.length;
 .lb-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(2, 5, 30, 0.92);
+  background: rgba(2,5,30,0.92);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   cursor: pointer;
@@ -754,13 +724,7 @@ const total = projects.length;
 .lb-frame-bar span:nth-child(1) { background: #ff5f57; }
 .lb-frame-bar span:nth-child(2) { background: #febc2e; }
 .lb-frame-bar span:nth-child(3) { background: #28c840; }
-.lb-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  background: #0d1023;
-  transition: opacity 0.2s;
-}
+.lb-img { width: 100%; height: auto; display: block; background: #0d1023; transition: opacity 0.2s; }
 .lb-img.switching { opacity: 0; }
 .lb-close {
   position: absolute;
@@ -793,38 +757,13 @@ const total = projects.length;
 .lb-nav:disabled { opacity: 0.2; cursor: default; transform: none; }
 @media (max-width: 600px) {
   .lb { padding: 0; flex-direction: column; justify-content: center; }
-  .lb-stage {
-    max-width: 100vw;
-    width: 100vw;
-    border-radius: 0;
-    box-shadow: none;
-  }
-  .lb-img {
-    width: 100%;
-    max-height: calc(100dvh - 28px);
-    object-fit: contain;
-  }
-  .lb-nav {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1001;
-  }
+  .lb-stage { max-width: 100vw; width: 100vw; border-radius: 0; box-shadow: none; }
+  .lb-img { width: 100%; max-height: calc(100dvh - 28px); object-fit: contain; }
+  .lb-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 1001; }
   .lb-nav--prev { left: 0.5rem; }
   .lb-nav--next { right: 0.5rem; }
-  .lb-close {
-    position: fixed;
-    top: 0.75rem;
-    right: 0.75rem;
-    z-index: 1001;
-  }
-  .lb-counter {
-    position: fixed;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1001;
-  }
+  .lb-close { position: fixed; top: 0.75rem; right: 0.75rem; z-index: 1001; }
+  .lb-counter { position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%); z-index: 1001; }
 }
 .lb-counter {
   position: absolute;
@@ -844,7 +783,7 @@ const total = projects.length;
   overflow: hidden;
   padding: 5.5rem 0;
   color: #fff;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 .rcta-img {
   position: absolute;
@@ -857,21 +796,10 @@ const total = projects.length;
 .rcta-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    110deg,
-    rgba(2, 33, 121, 0.95) 0%,
-    rgba(2, 33, 121, 0.80) 60%,
-    rgba(164, 37, 147, 0.50) 100%
-  );
+  background: linear-gradient(110deg, rgba(2,33,121,0.95) 0%, rgba(2,33,121,0.80) 60%, rgba(164,37,147,0.50) 100%);
   z-index: 1;
 }
-.rcta-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 580px;
-  margin-left: 4rem;
-  text-align: left;
-}
+.rcta-inner { position: relative; z-index: 2; max-width: 580px; margin-left: 4rem; text-align: left; }
 .rcta-eyebrow {
   font-size: 0.75rem;
   font-weight: 700;
@@ -914,13 +842,12 @@ const total = projects.length;
 .btn-hero:hover svg { transform: translateX(4px); }
 
 /* ══ RESPONSIVE ══ */
-@media (max-width: 960px) {
-  .rl-item {
+@media (max-width: 860px) {
+  .cf-card {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
-  .rl-item--reverse .rl-info { order: 1; }
-  .rl-item--reverse .rl-carousel { order: 2; }
+  .cf-media { position: static; }
 }
 @media (max-width: 600px) {
   .rh { padding: 4rem 0 3.5rem; }
@@ -930,66 +857,127 @@ const total = projects.length;
   .rcta { padding: 4rem 0; }
   .rcta-inner { margin-left: 0; }
 
-  .rl-pager { gap: 0.75rem; }
-  .rl-pager-current { font-size: 1.4rem; }
-  .rl-pnav { width: 38px; height: 38px; }
-  .rl-pdot { width: 7px; height: 7px; }
-  .rl-pdot--active { width: 20px; }
+  .cf-card { padding: 1.75rem 1.4rem; }
+  .cf-nav { width: 40px; height: 40px; }
+  .cf-nav--prev { left: 0.5rem; }
+  .cf-nav--next { right: 0.5rem; }
 }
 </style>
 
 <script is:inline>
 (function () {
 
-  /* ══ SLIDER PROJETS ══ */
-  var slider    = document.querySelector("[data-project-slider]");
-  var slides    = slider ? Array.from(slider.querySelectorAll("[data-slide]")) : [];
-  var pager     = document.querySelector("[data-pager]");
-  var dots      = pager ? Array.from(pager.querySelectorAll(".rl-pdot")) : [];
-  var btnPrev   = pager && pager.querySelector("[data-pnav='prev']");
-  var btnNext   = pager && pager.querySelector("[data-pnav='next']");
-  var counter   = pager && pager.querySelector("[data-pager-current]");
+  /* ══ COVERFLOW PROJETS ══ */
+  var viewport  = document.querySelector("[data-cf-viewport]");
+  var track     = document.querySelector("[data-cf-track]");
+  var cards     = track ? Array.from(track.querySelectorAll("[data-cf-card]")) : [];
+  var btnPrev   = document.querySelector("[data-cf-prev]");
+  var btnNext   = document.querySelector("[data-cf-next]");
+  var dots      = Array.from(document.querySelectorAll("[data-cf-dot]"));
+  var counterEl = document.querySelector("[data-cf-counter]");
+  var curEl     = counterEl && counterEl.querySelector(".cf-counter-cur");
+
   var current   = 0;
-  var total     = slides.length;
+  var total     = cards.length;
+  var GAP       = 28; /* pixels, identique au CSS gap */
 
-  function goTo(idx) {
-    if (idx < 0 || idx >= total || idx === current) return;
-
-    slides[current].classList.remove("active");
-    slides[current].setAttribute("aria-hidden", "true");
-
-    current = idx;
-
-    slides[current].classList.add("active");
-    slides[current].setAttribute("aria-hidden", "false");
-
-    dots.forEach(function (d, i) {
-      d.classList.toggle("rl-pdot--active", i === current);
-      d.setAttribute("aria-selected", i === current ? "true" : "false");
-    });
-
-    if (counter) counter.textContent = String(current + 1).padStart(2, "0");
-    if (btnPrev) btnPrev.disabled = current === 0;
-    if (btnNext) btnNext.disabled = current === total - 1;
-
-    /* scroll to pager bar so the project is visible */
-    if (pager) {
-      var top = pager.getBoundingClientRect().top + window.pageYOffset - 80;
-      window.scrollTo({ top: top, behavior: "smooth" });
-    }
+  function cardWidth() {
+    /* Largeur adaptive : 76 % desktop, 84 % tablette, 90 % mobile */
+    var vw = viewport ? viewport.offsetWidth : window.innerWidth;
+    if (vw >= 960) return Math.round(vw * 0.76);
+    if (vw >= 600) return Math.round(vw * 0.84);
+    return Math.round(vw * 0.90);
   }
 
+  function applyWidths() {
+    var w = cardWidth();
+    cards.forEach(function (c) { c.style.width = w + "px"; });
+  }
+
+  function getOffset(idx) {
+    var vw  = viewport ? viewport.offsetWidth : window.innerWidth;
+    var cw  = cardWidth();
+    var center = (vw - cw) / 2;
+    return center - idx * (cw + GAP);
+  }
+
+  function applyScale(idx) {
+    cards.forEach(function (card, i) {
+      var dist  = Math.abs(i - idx);
+      var scale, opacity;
+      if (dist === 0)      { scale = 1;    opacity = 1; }
+      else if (dist === 1) { scale = 0.91; opacity = 0.55; }
+      else                 { scale = 0.85; opacity = 0.28; }
+      card.style.transform = "scale(" + scale + ")";
+      card.style.opacity   = String(opacity);
+      card.classList.toggle("cf-card--active", i === idx);
+      card.setAttribute("aria-hidden", i !== idx ? "true" : "false");
+    });
+  }
+
+  function goTo(idx) {
+    if (idx < 0 || idx >= total) return;
+    current = idx;
+
+    /* translation */
+    if (track) track.style.transform = "translateX(" + getOffset(idx) + "px)";
+
+    /* scale + opacité */
+    applyScale(idx);
+
+    /* dots */
+    dots.forEach(function (d, i) {
+      d.classList.toggle("cf-dot--active", i === idx);
+      d.setAttribute("aria-selected", i === idx ? "true" : "false");
+    });
+
+    /* compteur */
+    if (curEl) curEl.textContent = String(idx + 1);
+
+    /* boutons */
+    if (btnPrev) btnPrev.disabled = idx === 0;
+    if (btnNext) btnNext.disabled = idx === total - 1;
+  }
+
+  /* Init */
+  applyWidths();
+  goTo(0);
+
+  /* Redimensionnement */
+  window.addEventListener("resize", function () {
+    applyWidths();
+    goTo(current);
+  }, { passive: true });
+
+  /* Boutons prev/next */
   if (btnPrev) btnPrev.addEventListener("click", function () { goTo(current - 1); });
   if (btnNext) btnNext.addEventListener("click", function () { goTo(current + 1); });
 
+  /* Dots */
   dots.forEach(function (dot, i) {
     dot.addEventListener("click", function () { goTo(i); });
   });
 
-  /* initialise état boutons */
-  if (btnPrev) btnPrev.disabled = true;
+  /* Clic sur carte non-active pour aller dessus */
+  cards.forEach(function (card, i) {
+    card.addEventListener("click", function () {
+      if (i !== current) goTo(i);
+    });
+  });
 
-  /* keyboard navigation (only when lightbox is closed) */
+  /* Swipe tactile sur le viewport */
+  var touchX = 0;
+  if (viewport) {
+    viewport.addEventListener("touchstart", function (e) {
+      touchX = e.touches[0].clientX;
+    }, { passive: true });
+    viewport.addEventListener("touchend", function (e) {
+      var diff = touchX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 45) diff > 0 ? goTo(current + 1) : goTo(current - 1);
+    }, { passive: true });
+  }
+
+  /* Clavier (touches non interceptées par lightbox) */
   document.addEventListener("keydown", function (e) {
     var lb = document.getElementById("lightbox");
     if (lb && !lb.hasAttribute("hidden")) return;
@@ -997,47 +985,37 @@ const total = projects.length;
     if (e.key === "ArrowLeft")  goTo(current - 1);
   });
 
-  /* touch swipe on the slider */
-  var tx = 0;
-  if (slider) {
-    slider.addEventListener("touchstart", function (e) { tx = e.touches[0].clientX; }, { passive: true });
-    slider.addEventListener("touchend", function (e) {
-      var diff = tx - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 50) diff > 0 ? goTo(current + 1) : goTo(current - 1);
-    }, { passive: true });
-  }
-
-  /* ══ CAROUSELS (images dans chaque projet) ══ */
+  /* ══ CAROUSELS IMAGES ══ */
   document.querySelectorAll("[data-carousel]").forEach(function (carousel) {
-    var track   = carousel.querySelector(".rl-carousel-track");
-    var dots    = Array.from(carousel.querySelectorAll(".rl-dot"));
-    var btnPrev = carousel.querySelector(".rl-arrow--prev");
-    var btnNext = carousel.querySelector(".rl-arrow--next");
+    var tr      = carousel.querySelector(".rl-carousel-track");
+    var idots   = Array.from(carousel.querySelectorAll(".rl-dot"));
+    var bPrev   = carousel.querySelector(".rl-arrow--prev");
+    var bNext   = carousel.querySelector(".rl-arrow--next");
     var slides  = Array.from(carousel.querySelectorAll(".rl-slide"));
-    if (!track) return;
+    if (!tr) return;
 
-    function currentIdx() { return Math.round(track.scrollLeft / track.offsetWidth); }
-    function goTo(i) { track.scrollTo({ left: i * track.offsetWidth, behavior: "smooth" }); }
-    function syncUI() {
-      var i = currentIdx();
-      dots.forEach(function (d, j) { d.classList.toggle("rl-dot--active", j === i); });
-      if (btnPrev) btnPrev.disabled = i === 0;
-      if (btnNext) btnNext.disabled = i === slides.length - 1;
+    function idx()   { return Math.round(tr.scrollLeft / tr.offsetWidth); }
+    function go(i)   { tr.scrollTo({ left: i * tr.offsetWidth, behavior: "smooth" }); }
+    function sync()  {
+      var i = idx();
+      idots.forEach(function (d, j) { d.classList.toggle("rl-dot--active", j === i); });
+      if (bPrev) bPrev.disabled = i === 0;
+      if (bNext) bNext.disabled = i === slides.length - 1;
     }
 
-    track.addEventListener("scroll", syncUI, { passive: true });
-    dots.forEach(function (dot, i) { dot.addEventListener("click", function () { goTo(i); }); });
-    if (btnPrev) btnPrev.addEventListener("click", function () { goTo(Math.max(0, currentIdx() - 1)); });
-    if (btnNext) btnNext.addEventListener("click", function () { goTo(Math.min(slides.length - 1, currentIdx() + 1)); });
+    tr.addEventListener("scroll", sync, { passive: true });
+    idots.forEach(function (d, i) { d.addEventListener("click", function () { go(i); }); });
+    if (bPrev) bPrev.addEventListener("click", function () { go(Math.max(0, idx() - 1)); });
+    if (bNext) bNext.addEventListener("click", function () { go(Math.min(slides.length - 1, idx() + 1)); });
 
     var tx = 0;
-    track.addEventListener("touchstart", function (e) { tx = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener("touchend", function (e) {
-      var diff = tx - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) goTo(diff > 0 ? Math.min(slides.length-1, currentIdx()+1) : Math.max(0, currentIdx()-1));
+    tr.addEventListener("touchstart", function (e) { tx = e.touches[0].clientX; }, { passive: true });
+    tr.addEventListener("touchend",   function (e) {
+      var d = tx - e.changedTouches[0].clientX;
+      if (Math.abs(d) > 40) go(d > 0 ? Math.min(slides.length-1, idx()+1) : Math.max(0, idx()-1));
     }, { passive: true });
 
-    syncUI();
+    sync();
 
     carousel._lb = slides.map(function (sl) {
       var img = sl.querySelector("img"); return img ? img.src : "";
@@ -1047,7 +1025,7 @@ const total = projects.length;
   /* ══ LIGHTBOX ══ */
   var lb      = document.getElementById("lightbox");
   var lbImg   = lb && lb.querySelector(".lb-img");
-  var lbCloseBtns = lb ? lb.querySelectorAll(".lb-close, .lb-backdrop") : [];
+  var lbClose = lb ? lb.querySelectorAll(".lb-close, .lb-backdrop") : [];
   var lbPrev  = lb && lb.querySelector(".lb-nav--prev");
   var lbNext  = lb && lb.querySelector(".lb-nav--next");
   var lbCount = lb && lb.querySelector(".lb-counter");
@@ -1056,38 +1034,28 @@ const total = projects.length;
   function lbShow() {
     if (!lbImg) return;
     lbImg.classList.add("switching");
-    setTimeout(function () {
-      lbImg.src = lbSrcs[lbIdx];
-      lbImg.classList.remove("switching");
-    }, 160);
+    setTimeout(function () { lbImg.src = lbSrcs[lbIdx]; lbImg.classList.remove("switching"); }, 160);
     if (lbCount) lbCount.textContent = lbSrcs.length > 1 ? (lbIdx + 1) + " / " + lbSrcs.length : "";
     if (lbPrev) { lbPrev.disabled = lbIdx === 0; lbPrev.style.visibility = lbSrcs.length > 1 ? "" : "hidden"; }
     if (lbNext) { lbNext.disabled = lbIdx === lbSrcs.length - 1; lbNext.style.visibility = lbSrcs.length > 1 ? "" : "hidden"; }
   }
-  function lbOpen(srcs, idx) {
-    lbSrcs = srcs; lbIdx = idx;
-    lb.removeAttribute("hidden");
-    document.body.style.overflow = "hidden";
-    lbShow();
-  }
-  function lbCloseF() {
-    lb.setAttribute("hidden", "");
-    document.body.style.overflow = "";
-  }
+  function lbOpen(srcs, idx) { lbSrcs = srcs; lbIdx = idx; lb.removeAttribute("hidden"); document.body.style.overflow = "hidden"; lbShow(); }
+  function lbClose2() { lb.setAttribute("hidden", ""); document.body.style.overflow = ""; }
 
-  lbCloseBtns.forEach(function (el) { el.addEventListener("click", lbCloseF); });
+  lbClose.forEach(function (el) { el.addEventListener("click", lbClose2); });
   if (lbPrev) lbPrev.addEventListener("click", function () { if (lbIdx > 0) { lbIdx--; lbShow(); } });
   if (lbNext) lbNext.addEventListener("click", function () { if (lbIdx < lbSrcs.length - 1) { lbIdx++; lbShow(); } });
 
   document.addEventListener("keydown", function (e) {
     if (!lb || lb.hasAttribute("hidden")) return;
-    if (e.key === "Escape") lbCloseF();
-    if (e.key === "ArrowLeft"  && lbIdx > 0)                  { lbIdx--; lbShow(); }
-    if (e.key === "ArrowRight" && lbIdx < lbSrcs.length - 1)  { lbIdx++; lbShow(); }
+    if (e.key === "Escape") lbClose2();
+    if (e.key === "ArrowLeft"  && lbIdx > 0)                 { lbIdx--; lbShow(); }
+    if (e.key === "ArrowRight" && lbIdx < lbSrcs.length - 1) { lbIdx++; lbShow(); }
   });
 
   document.querySelectorAll(".rl-zoom-btn").forEach(function (btn) {
-    btn.addEventListener("click", function () {
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation(); /* ne pas déclencher goTo sur la carte */
       var carousel = btn.closest("[data-carousel]");
       var srcs = carousel && carousel._lb;
       if (!srcs || !srcs.length) return;
@@ -1095,7 +1063,7 @@ const total = projects.length;
     });
   });
 
-  /* ══ COMPTEURS STATS ══ */
+  /* ══ COMPTEURS STATS HERO ══ */
   function animateCount(el, target, dur) {
     var t0 = performance.now(), big = target >= 1000;
     (function step(ts) {
@@ -1114,7 +1082,7 @@ const total = projects.length;
   var sl = document.querySelector(".rh-stats");
   if (sl) statsObs.observe(sl);
 
-  /* ══ SCROLL REVEAL (CTA uniquement) ══ */
+  /* ══ SCROLL REVEAL (CTA) ══ */
   var revObs = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("visible"); revObs.unobserve(e.target); } });
   }, { threshold: 0.1 });
