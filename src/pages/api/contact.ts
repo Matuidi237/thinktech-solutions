@@ -15,9 +15,7 @@ function isRateLimited(ip: string): boolean {
 }
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
-  console.log(`[debug] POST /api/contact reçu — ip:${clientAddress} ct:${request.headers.get("content-type")}`);
   const data = await request.formData();
-  console.log(`[debug] formData parsée — champs: ${[...data.keys()].join(",")}`);
 
   const ip = clientAddress || "unknown";
 
