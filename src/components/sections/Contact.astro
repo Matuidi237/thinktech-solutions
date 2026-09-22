@@ -458,7 +458,7 @@ const successMsg = lang === "fr"
   // ── Init ──────────────────────────────────────────────────────────────────
   document.getElementById("loadedAt")?.setAttribute("value", String(Date.now()));
   /* Token JS : prouve qu'un vrai navigateur a exécuté le script */
-  var _tk = String(Date.now() ^ 0xA3F1) + "." + navigator.language.length + "." + screen.colorDepth;
+  var _tk = String((Date.now() ^ 0xA3F1) >>> 0) + "." + navigator.language.length + "." + screen.colorDepth;
   document.getElementById("_tk")?.setAttribute("value", _tk);
 
   const form         = document.getElementById("demo-form") as HTMLFormElement | null;
