@@ -79,7 +79,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
   const phone = data.get("phone")?.toString().trim() ?? "";
   const digitsOnly = phone.replace(/[\s\+\-\(\)\.]/g, "");
-  if (digitsOnly.length < 7 || digitsOnly.length > 15 || !/^\d+$/.test(digitsOnly)) {
+  if (digitsOnly.length < 8 || digitsOnly.length > 13 || !/^\d+$/.test(digitsOnly)) {
     return new Response(JSON.stringify({ error: "Téléphone invalide" }), { status: 400 });
   }
 
@@ -95,6 +95,11 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   // Bot signal: non-Latin scripts (Armenian, Cyrillic, Arabic, CJK…) in a French-language form
   if (/[Ѐ-ӿ԰-֏؀-ۿ一-鿿぀-ヿ]/.test(need)) {
     console.warn(`[bot] script non-latin dans besoin — ip:${ip} email:${data.get("email")} extrait:"${need.slice(0, 60)}"`);
+    return new Response(null, { status: 200 });
+  }
+  // Bot signal: URL dans le besoin (spam classique)
+  if (/https?:\/\//i.test(need)) {
+    console.warn(`[bot] URL dans besoin — ip:${ip} email:${data.get("email")} extrait:"${need.slice(0, 80)}"`);
     return new Response(null, { status: 200 });
   }
 
