@@ -472,29 +472,6 @@
         "solution": "Parcours Moodle en 3 sections avec contenus vidéo Powtoon, quiz à temps limité (10 questions par section), système de gamification avec points et classement, et tableau de bord administrateur pour le suivi des résultats.",
         "image": "/images/platforms/omp-1.webp",
         "url": null
-      },
-      {
-        "name": "Train To Rise",
-        "client": "MAXIMMACS, Cabinet de conseil et de formation",
-        "sector": "Formation professionnelle & Montée en compétences",
-        "metric": {
-          "value": "6+",
-          "label": "domaines de formation"
-        },
-        "metric2": {
-          "value": "100%",
-          "label": "en production sur traintorise.com"
-        },
-        "tags": [
-          "Moodle",
-          "Formation professionnelle",
-          "IA & Finance"
-        ],
-        "description": "En partenariat avec le cabinet MAXIMMACS, nous avons conçu et déployé Train To Rise, la plateforme e-learning dédiée à l'accompagnement des jeunes cadres et diplômés africains dans le renforcement de leurs compétences. La plateforme couvre plusieurs domaines stratégiques : intelligence artificielle, comptabilité, gestion, fiscalité et audit, avec des parcours structurés, une interface moderne et une expérience apprenant pensée pour le contexte professionnel africain.",
-        "challenge": "Déployer une plateforme à la fois professionnelle, accessible et engageante pour des apprenants actifs jonglant entre vie professionnelle et formation, tout en proposant des contenus à forte valeur ajoutée sur des thématiques pointues.",
-        "solution": "Architecture Moodle optimisée pour la performance, catalogue de cours structuré par domaine, interface responsive aux couleurs de MAXIMMACS, et mise en production complète avec accompagnement à la prise en main.",
-        "image": "/images/platforms/train-to-rise-home.webp",
-        "url": "https://www.traintorise.com"
       }
     ],
     "statProjects": "plateformes déployées",
