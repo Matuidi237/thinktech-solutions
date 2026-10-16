@@ -4,6 +4,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+ARG PUBLIC_TURNSTILE_SITE_KEY
+ENV PUBLIC_TURNSTILE_SITE_KEY=$PUBLIC_TURNSTILE_SITE_KEY
 RUN npm run build
 
 # Étape 2 : exécution du serveur Node Astro (SSR, nécessaire pour /api/contact)
