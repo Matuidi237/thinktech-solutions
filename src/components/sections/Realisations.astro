@@ -6,7 +6,7 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const r = t.realisations;
-const [bouka, training, erfolg, lasalle, omp, traintorise] = r.projects;
+const [bouka, training, erfolg, lasalle, omp] = r.projects;
 
 const projectScreens: Record<string, string[]> = {
   "bouka": [
@@ -18,11 +18,6 @@ const projectScreens: Record<string, string[]> = {
     "/images/platforms/thinktech-academy-home.webp",
     "/images/platforms/thinktech-academy-courses.webp",
     "/images/platforms/thinktech-academy-course1.webp",
-  ],
-  "traintorise": [
-    "/images/platforms/train-to-rise-home.webp",
-    "/images/platforms/train-to-rise-courses.webp",
-    "/images/platforms/train-to-rise-course1.webp",
   ],
   "erfolg": [
     "/images/platforms/Erfolg1.webp",
@@ -53,12 +48,11 @@ const projectScreens: Record<string, string[]> = {
 };
 
 const projects = [
-  { key: "bouka",       data: bouka,      screens: projectScreens.bouka,      num: "01" },
-  { key: "training",    data: training,   screens: projectScreens.training,   num: "02" },
-  { key: "erfolg",      data: erfolg,     screens: projectScreens.erfolg,     num: "03" },
-  { key: "lasalle",     data: lasalle,    screens: projectScreens.lasalle,    num: "04" },
-  { key: "omp",         data: omp,        screens: projectScreens.omp,        num: "05" },
-  { key: "traintorise", data: traintorise,screens: projectScreens.traintorise,num: "06" },
+  { key: "bouka",    data: bouka,    screens: projectScreens.bouka,    num: "01" },
+  { key: "training", data: training, screens: projectScreens.training, num: "02" },
+  { key: "erfolg",   data: erfolg,   screens: projectScreens.erfolg,   num: "03" },
+  { key: "lasalle",  data: lasalle,  screens: projectScreens.lasalle,  num: "04" },
+  { key: "omp",      data: omp,      screens: projectScreens.omp,      num: "05" },
 ];
 const total = projects.length;
 ---
